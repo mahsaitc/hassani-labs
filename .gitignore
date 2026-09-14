@@ -61,3 +61,6 @@ desktop.ini
 
 # Claude session notes
 .remember/
+
+# Browser automation artefacts
+.playwright-mcp/

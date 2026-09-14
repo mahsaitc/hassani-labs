@@ -540,7 +540,7 @@ input[type="radio"] {
 	position: sticky;
 	top: 0;
 	z-index: 100;
-	background: rgba(7, 11, 36, 0.86);
+	background: rgba(7, 11, 36, 0.97);
 	backdrop-filter: saturate(160%) blur(14px);
 	-webkit-backdrop-filter: saturate(160%) blur(14px);
 	border-bottom: 1px solid var(--c-on-dark-line);

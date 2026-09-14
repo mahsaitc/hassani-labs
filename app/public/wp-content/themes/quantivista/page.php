@@ -12,7 +12,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$qv_is_wc_page = function_exists( 'is_cart' ) && ( is_cart() || is_checkout() || is_account_page() );
+$qv_is_wc_page = ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() || is_account_page() ) )
+	|| has_shortcode( (string) get_post_field( 'post_content', get_queried_object_id() ), 'qv_wishlist' );
 
 while ( have_posts() ) :
 	the_post();

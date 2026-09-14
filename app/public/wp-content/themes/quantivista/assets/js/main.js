@@ -316,9 +316,10 @@
 	 * Copy link
 	 * ---------------------------------------------------------------- */
 	d.addEventListener('click', (event) => {
-		const btn = event.target.closest('[data-copy-link]');
+		const btn = event.target.closest('[data-copy-link], [data-copy-text]');
 		if (!btn || !navigator.clipboard) return;
-		navigator.clipboard.writeText(btn.dataset.copyLink).then(() => toast(data.i18n.copied));
+		const text = btn.dataset.copyLink || btn.dataset.copyText;
+		navigator.clipboard.writeText(text).then(() => toast(btn.dataset.copyMessage || data.i18n.copied));
 	});
 
 	/* ------------------------------------------------------------------
