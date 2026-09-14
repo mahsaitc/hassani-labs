@@ -1,0 +1,63 @@
+# ------------------------------------------------------------------
+# Quantivista — WordPress project (Local by Flywheel layout)
+# Strategy: ignore everything under app/public by default and only
+# whitelist code we own (custom theme, mu-plugins). WordPress core and
+# third-party plugins are reproducible via scripts/provision.sh.
+# ------------------------------------------------------------------
+
+# Secrets & environment
+wp-config.php
+**/wp-config.php
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+auth.json
+.htpasswd
+
+# Local by Flywheel runtime
+logs/
+conf/
+app/.envrc
+app/sql/
+*.sql
+*.sql.gz
+
+# WordPress core & content (whitelist below)
+app/public/*
+!app/public/wp-content/
+app/public/wp-content/*
+!app/public/wp-content/themes/
+app/public/wp-content/themes/*
+!app/public/wp-content/themes/quantivista/
+!app/public/wp-content/mu-plugins/
+
+# Uploads, caches, backups, upgrade leftovers
+wp-content/uploads/
+**/uploads/
+**/cache/
+**/wflogs/
+**/backup*/
+**/backups/
+**/upgrade/
+**/ai1wm-backups/
+**/updraft/
+*.log
+
+# Tooling
+node_modules/
+vendor/
+.sass-cache/
+*.map
+
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# Claude session notes
+.remember/

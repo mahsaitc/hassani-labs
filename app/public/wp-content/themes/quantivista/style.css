@@ -1,0 +1,19 @@
+/*
+Theme Name: Quantivista
+Theme URI: https://quantivista.com
+Author: Quantivista
+Author URI: https://quantivista.com
+Description: Custom, performance-focused theme for Quantivista — software products, WooCommerce store and web design services.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: quantivista
+Tags: e-commerce, custom-menu, custom-logo, featured-images, accessibility-ready
+WC requires at least: 9.0
+WC tested up to: 11.1
+*/
+
+/* Styles live in assets/css/main.css (enqueued in inc/enqueue.php). */
