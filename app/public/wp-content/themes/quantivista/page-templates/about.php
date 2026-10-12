@@ -2,7 +2,8 @@
 /**
  * Template Name: About Us
  *
- * Story, mission/vision/values, stats, team (CPT), milestones (CPT), CTA.
+ * The founder and the studio: story, links, mission/vision/values, skills
+ * (qv_skills JSON), milestones (CPT), selected work, CTA.
  *
  * @package Quantivista
  */
@@ -17,12 +18,14 @@ while ( have_posts() ) :
 	$qv_id     = get_the_ID();
 	$qv_image  = (int) qv_field( 'qv_story_image', $qv_id );
 	$qv_values = qv_lines( qv_field( 'qv_values', $qv_id ) );
-	$qv_team   = get_posts( array( 'post_type' => 'qv_team', 'posts_per_page' => 12, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
+	$qv_skills = json_decode( (string) get_post_meta( $qv_id, 'qv_skills', true ), true );
+	$qv_resume = qv_field( 'qv_resume_url', $qv_id );
+	$qv_work   = function_exists( 'qvc_projects' ) ? qvc_projects( 3, true ) : array();
 	$qv_steps  = get_posts( array( 'post_type' => 'qv_milestone', 'posts_per_page' => 12, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
 
 	qv_page_hero(
 		array(
-			'eyebrow' => __( 'About Quantivista', 'quantivista' ),
+			'eyebrow' => __( 'About Hassani Labs', 'quantivista' ),
 			'title'   => get_the_title(),
 			'lead'    => has_excerpt() ? get_the_excerpt() : '',
 		)
@@ -32,19 +35,34 @@ while ( have_posts() ) :
 	<section class="section" aria-labelledby="story-title">
 		<div class="container split">
 			<div data-reveal>
-				<p class="eyebrow"><?php esc_html_e( 'Our story', 'quantivista' ); ?></p>
-				<h2 id="story-title"><?php echo esc_html( qv_field( 'qv_story_title', $qv_id ) ? qv_field( 'qv_story_title', $qv_id ) : __( 'From client projects to products used worldwide', 'quantivista' ) ); ?></h2>
+				<p class="eyebrow"><?php echo esc_html( qv_mod( 'founder_role' ) ); ?></p>
+				<h2 id="story-title"><?php echo esc_html( qv_field( 'qv_story_title', $qv_id ) ? qv_field( 'qv_story_title', $qv_id ) : qv_mod( 'founder_name' ) ); ?></h2>
 				<div class="prose"><?php the_content(); ?></div>
+				<div class="btn-row founder-links">
+					<?php if ( qv_mod( 'social_github' ) ) : ?>
+						<a class="btn btn--primary" href="<?php echo esc_url( qv_mod( 'social_github' ) ); ?>" target="_blank" rel="noopener"><?php qv_the_icon( 'github', array( 'size' => 16 ) ); ?> GitHub</a>
+					<?php endif; ?>
+					<?php if ( qv_mod( 'social_linkedin' ) ) : ?>
+						<a class="btn btn--outline" href="<?php echo esc_url( qv_mod( 'social_linkedin' ) ); ?>" target="_blank" rel="noopener"><?php qv_the_icon( 'linkedin', array( 'size' => 16 ) ); ?> LinkedIn</a>
+					<?php endif; ?>
+					<?php if ( $qv_resume ) : ?>
+						<a class="btn btn--outline" href="<?php echo esc_url( $qv_resume ); ?>"><?php qv_the_icon( 'download', array( 'size' => 16 ) ); ?> <?php esc_html_e( 'Résumé (PDF)', 'quantivista' ); ?></a>
+					<?php endif; ?>
+				</div>
 			</div>
-			<div class="split__media" data-reveal>
+			<div class="split__media founder-photo" data-reveal>
 				<?php
-				if ( $qv_image ) {
+				if ( has_post_thumbnail() ) {
+					the_post_thumbnail( 'large', array( 'sizes' => '(min-width: 960px) 50vw, 100vw' ) );
+				} elseif ( $qv_image ) {
 					echo wp_get_attachment_image( $qv_image, 'large', false, array( 'sizes' => '(min-width: 960px) 50vw, 100vw' ) );
+				} else {
+					printf( '<img src="%s" alt="" width="1344" height="768">', esc_url( QV_URI . '/assets/img/founder-story.webp' ) );
 				}
 				?>
 				<div class="floating-stat">
-					<strong><?php echo esc_html( qv_mod( 'stat_2_value' ) ); ?>+</strong>
-					<span><?php echo esc_html( qv_mod( 'stat_2_label' ) ); ?></span>
+					<strong><?php echo esc_html( qv_mod( 'stat_1_value' ) ); ?></strong>
+					<span><?php echo esc_html( qv_mod( 'stat_1_label' ) ); ?></span>
 				</div>
 			</div>
 		</div>
@@ -88,48 +106,34 @@ while ( have_posts() ) :
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/home/trust' ); ?>
-
-	<?php if ( $qv_team ) : ?>
-		<section class="section" aria-labelledby="team-title">
+	<?php if ( $qv_skills ) : ?>
+		<section class="section" aria-labelledby="skills-title">
 			<div class="container">
 				<?php
 				qv_section_head(
 					array(
-						'eyebrow' => __( 'The team', 'quantivista' ),
-						'title'   => __( 'Meet the people behind Quantivista', 'quantivista' ),
-						'lead'    => __( 'A senior, distributed team of engineers, designers and strategists across four time zones.', 'quantivista' ),
-						'id'      => 'team-title',
+						'eyebrow' => __( 'Skills', 'quantivista' ),
+						'title'   => __( 'What I work with', 'quantivista' ),
+						'id'      => 'skills-title',
 					)
 				);
 				?>
-				<ul class="grid grid--4" style="list-style:none;margin:0;padding:0;">
-					<?php foreach ( $qv_team as $qv_member ) : ?>
-						<?php $qv_linkedin = qv_field( 'qv_linkedin', $qv_member->ID ); ?>
-						<li class="team-card" data-reveal>
-							<div class="team-card__photo">
-								<?php
-								echo get_the_post_thumbnail(
-									$qv_member,
-									'qv-square',
-									array(
-										/* translators: %s: team member name */
-										'alt' => sprintf( __( 'Portrait of %s', 'quantivista' ), get_the_title( $qv_member ) ),
-									)
-								);
-								?>
-								<?php if ( $qv_linkedin ) : ?>
-									<a class="team-card__social" href="<?php echo esc_url( $qv_linkedin ); ?>" target="_blank" rel="noopener noreferrer">
-										<?php qv_the_icon( 'linkedin', array( 'size' => 16 ) ); ?>
-										<span class="screen-reader-text"><?php echo esc_html( sprintf( /* translators: %s: name */ __( '%s on LinkedIn', 'quantivista' ), get_the_title( $qv_member ) ) ); ?></span>
-									</a>
-								<?php endif; ?>
-							</div>
-							<h3 class="team-card__name"><?php echo esc_html( get_the_title( $qv_member ) ); ?></h3>
-							<p class="team-card__role"><?php echo esc_html( qv_field( 'qv_role', $qv_member->ID ) ); ?></p>
-						</li>
+				<div class="grid grid--2 skills-grid">
+					<?php foreach ( $qv_skills as $qv_group ) : ?>
+						<div class="skill-group" data-reveal>
+							<h3><?php echo esc_html( $qv_group['title'] ?? '' ); ?></h3>
+							<p class="muted"><?php echo esc_html( $qv_group['blurb'] ?? '' ); ?></p>
+							<ul class="skill-list">
+								<?php foreach ( (array) ( $qv_group['skills'] ?? array() ) as $qv_skill ) : ?>
+									<li>
+										<strong><?php echo esc_html( $qv_skill['name'] ?? '' ); ?></strong>
+										<span><?php echo esc_html( $qv_skill['note'] ?? '' ); ?></span>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
 					<?php endforeach; ?>
-				</ul>
+				</div>
 			</div>
 		</section>
 	<?php endif; ?>
@@ -140,8 +144,8 @@ while ( have_posts() ) :
 				<?php
 				qv_section_head(
 					array(
-						'eyebrow' => __( 'Milestones', 'quantivista' ),
-						'title'   => __( 'From a two-person studio to a global product company', 'quantivista' ),
+						'eyebrow' => __( 'Path so far', 'quantivista' ),
+						'title'   => __( 'From medicine to software', 'quantivista' ),
 						'id'      => 'timeline-title',
 					)
 				);
@@ -152,11 +156,34 @@ while ( have_posts() ) :
 							<span class="timeline__year"><?php echo esc_html( qv_field( 'qv_year', $qv_step->ID ) ); ?></span>
 							<div class="timeline__card">
 								<h3><?php echo esc_html( get_the_title( $qv_step ) ); ?></h3>
-								<p><?php echo esc_html( wp_strip_all_tags( $qv_step->post_content ) ); ?></p>
+								<?php if ( trim( wp_strip_all_tags( $qv_step->post_content ) ) ) : ?>
+									<p><?php echo esc_html( wp_strip_all_tags( $qv_step->post_content ) ); ?></p>
+								<?php endif; ?>
 							</div>
 						</li>
 					<?php endforeach; ?>
 				</ol>
+			</div>
+		</section>
+	<?php endif; ?>
+
+<?php if ( $qv_work ) : ?>
+		<section class="section section--muted" aria-labelledby="about-work-title">
+			<div class="container">
+				<?php
+				qv_section_head(
+					array(
+						'eyebrow' => __( 'Selected work', 'quantivista' ),
+						'title'   => __( 'Case studies', 'quantivista' ),
+						'id'      => 'about-work-title',
+					)
+				);
+				?>
+				<div class="grid grid--3 work-grid">
+					<?php foreach ( $qv_work as $qv_project ) : ?>
+						<?php get_template_part( 'template-parts/work/card', null, array( 'project' => $qv_project ) ); ?>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</section>
 	<?php endif; ?>

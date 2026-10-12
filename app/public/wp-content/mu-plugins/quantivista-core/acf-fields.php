@@ -87,7 +87,7 @@ function qvc_register_acf_fields() {
 	acf_add_local_field_group(
 		array(
 			'key'      => 'group_qv_product',
-			'title'    => 'Product Details (Quantivista)',
+			'title'    => 'Product Details',
 			'fields'   => array(
 				qvc_acf_field(
 					'qv_delivery',
@@ -96,7 +96,7 @@ function qvc_register_acf_fields() {
 					array(
 						'choices'       => array(
 							'download' => 'Digital download + license key',
-							'service'  => 'Service package (delivered by our team)',
+							'service'  => 'Service package (delivered by Hassani Labs)',
 						),
 						'default_value' => 'download',
 						'wrapper'       => array( 'width' => 34 ),

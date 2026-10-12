@@ -19,7 +19,7 @@ $qv_lead = '';
 if ( $qv_term && $qv_term->description ) {
 	$qv_lead = wp_strip_all_tags( $qv_term->description );
 } elseif ( is_shop() ) {
-	$qv_lead = __( 'Production-ready web software, mobile app kits and website design packages — built, documented and supported by the Quantivista team.', 'quantivista' );
+	$qv_lead = __( 'Clinic software, web applications and website packages — built, documented and supported by Hassani Labs.', 'quantivista' );
 }
 
 $qv_eyebrow = __( 'Store', 'quantivista' );

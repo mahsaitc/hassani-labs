@@ -1,0 +1,677 @@
+{
+ "person": {
+  "name": "Mahsa Hassani",
+  "title": "Computer Engineer — Software Design",
+  "role": "Full-Stack Developer · ASP.NET Core & React",
+  "tagline": "I design systems that stay clean under pressure.",
+  "description": "Computer Engineer specialising in software design. Full-stack developer building production systems with ASP.NET Core (Clean Architecture, CQRS, EF Core) and React + TypeScript.",
+  "email": "mahsaitc74@gmail.com",
+  "location": "Iran · Remote friendly",
+  "availability": "Open to senior back-end & full-stack roles"
+ },
+ "hero": {
+  "headline": "Software\nthat stays\nlegible.",
+  "intro": "I'm **Mahsa Hassani** — a computer engineer specialising in software design. I build production systems with **ASP.NET Core** and **React**, where the architecture is the feature that keeps paying rent."
+ },
+ "about": {
+  "headline": "Two disciplines, one habit of mind.",
+  "body": "I'm a computer engineer specialising in software design, working full-stack across ASP.NET Core and React. Most of my energy goes into the part nobody sees on a screenshot: where the boundaries sit, which invariants the type system enforces, and what happens the day a requirement arrives that nobody planned for.\n\nI started in **General Medicine** before moving into engineering. That is not a detour I apologise for — it is the reason I model domains the way I do. Medicine trains you to reason from symptoms to cause under incomplete information, to distrust the first plausible explanation, and to write notes precise enough that a stranger can act on them safely. Debugging a distributed system asks for exactly the same discipline.\n\nDay to day that shows up as: Clean Architecture and CQRS on the back end, typed and accessible React on the front, containers for anything that needs to run twice the same way, and a healthy interest in automation and applied AI."
+ },
+ "links": {
+  "github": "https://github.com/mahsaitc",
+  "linkedin": "https://www.linkedin.com/in/mahsahassani"
+ },
+ "skills": [
+  {
+   "id": "backend",
+   "title": "Back end",
+   "blurb": "Where most of my thinking happens — domain models, boundaries and data.",
+   "skills": [
+    {
+     "name": "ASP.NET Core",
+     "icon": "dotnet",
+     "level": 95,
+     "note": "Minimal APIs, middleware, policy-based auth"
+    },
+    {
+     "name": "C#",
+     "icon": "csharp",
+     "level": 94,
+     "note": "Records, spans, source generators"
+    },
+    {
+     "name": "EF Core",
+     "icon": "efcore",
+     "level": 92,
+     "note": "Projections, compiled queries, migrations"
+    },
+    {
+     "name": "SignalR",
+     "icon": "signalr",
+     "level": 86,
+     "note": "Pushing live updates to connected clients"
+    },
+    {
+     "name": "xUnit",
+     "icon": "xunit",
+     "level": 88,
+     "note": "Unit and integration suites"
+    }
+   ]
+  },
+  {
+   "id": "frontend",
+   "title": "Front end",
+   "blurb": "Typed, accessible interfaces that survive contact with real data.",
+   "skills": [
+    {
+     "name": "React",
+     "icon": "react",
+     "level": 92,
+     "note": "Hooks, suspense, render discipline"
+    },
+    {
+     "name": "TypeScript",
+     "icon": "typescript",
+     "level": 93,
+     "note": "Generics, discriminated unions, strict mode"
+    },
+    {
+     "name": "Next.js",
+     "icon": "nextjs",
+     "level": 87,
+     "note": "App Router, server components, ISR"
+    },
+    {
+     "name": "Tailwind CSS",
+     "icon": "tailwind",
+     "level": 90,
+     "note": "Design tokens over ad-hoc classes"
+    }
+   ]
+  },
+  {
+   "id": "data",
+   "title": "Data & caching",
+   "blurb": "Schemas that hold their shape, and caches that invalidate on purpose.",
+   "skills": [
+    {
+     "name": "PostgreSQL",
+     "icon": "postgres",
+     "level": 89,
+     "note": "Indexing, constraints, query plans"
+    },
+    {
+     "name": "Redis",
+     "icon": "redis",
+     "level": 82,
+     "note": "Caching alongside a relational store"
+    }
+   ]
+  },
+  {
+   "id": "platform",
+   "title": "Platform & delivery",
+   "blurb": "Getting it to production repeatably, then keeping it observable.",
+   "skills": [
+    {
+     "name": "Docker",
+     "icon": "docker",
+     "level": 88,
+     "note": "Multi-stage builds, Compose stacks"
+    },
+    {
+     "name": "GitHub Actions",
+     "icon": "githubactions",
+     "level": 86,
+     "note": "Matrix builds, container-backed tests"
+    },
+    {
+     "name": "Git",
+     "icon": "git",
+     "level": 91,
+     "note": "Trunk-based flow, reviewable history"
+    },
+    {
+     "name": "Nginx",
+     "icon": "nginx",
+     "level": 78,
+     "note": "Reverse proxy, TLS, caching headers"
+    },
+    {
+     "name": "AI tooling",
+     "icon": "openai",
+     "level": 80,
+     "note": "LLM integration, embeddings, automation"
+    }
+   ]
+  }
+ ],
+ "timeline": [
+  {
+   "period": "1999",
+   "title": "Doctor of General Medicine",
+   "org": "",
+   "kind": "education"
+  },
+  {
+   "period": "2020",
+   "title": "ASP.NET Core Certification",
+   "org": "",
+   "kind": "certification"
+  },
+  {
+   "period": "2024",
+   "title": "Computer Engineering — Software Design, Shiraz University",
+   "org": "",
+   "kind": "education"
+  },
+  {
+   "period": "2025",
+   "title": "RxClinic",
+   "org": "",
+   "kind": "project"
+  },
+  {
+   "period": "2025",
+   "title": "InvenTrack",
+   "org": "",
+   "kind": "project"
+  },
+  {
+   "period": "2025",
+   "title": "ArticleForge",
+   "org": "",
+   "kind": "project"
+  },
+  {
+   "period": "2026",
+   "title": "TaskFlow",
+   "org": "",
+   "kind": "project"
+  },
+  {
+   "period": "2026",
+   "title": "CartForge",
+   "org": "",
+   "kind": "project"
+  }
+ ],
+ "projects": [
+  {
+   "slug": "rxclinic",
+   "repoName": "clinic-appointment-api",
+   "name": "RxClinic",
+   "tagline": "Clinic appointment API and booking front end",
+   "summary": "A clinic appointment system built as a single ASP.NET Core Web API project — deliberately not a layered solution — with EF Core over SQLite for storage and a React front end written in plain JavaScript.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "ASP.NET Core",
+    "EF Core",
+    "SQLite",
+    "React",
+    "JavaScript"
+   ],
+   "stack": [
+    "ASP.NET Core Web API",
+    "EF Core",
+    "SQLite",
+    "React (JavaScript / JSX)"
+   ],
+   "repo": "https://github.com/mahsaitc/clinic-appointment-api",
+   "architecture": {
+    "overview": "One ASP.NET Core Web API project rather than a layered Clean Architecture solution, paired with a separate React client. Persistence is EF Core against SQLite.",
+    "layers": [
+     {
+      "name": "ASP.NET Core Web API",
+      "detail": "A single project — not split into Domain, Application and Infrastructure layers."
+     },
+     {
+      "name": "React client",
+      "detail": "Written in plain JavaScript and JSX, with no TypeScript in the codebase."
+     }
+    ]
+   },
+   "poster": "rxclinic.svg",
+   "alt": "RxClinic appointment booking interface"
+  },
+  {
+   "slug": "inventrack",
+   "repoName": "InvenTrack",
+   "name": "InvenTrack",
+   "tagline": "Inventory management with real-time low-stock alerts",
+   "summary": "Inventory system on a Clean Architecture solution, using SignalR to push low-stock alerts to the React and TypeScript front end. EF Core runs against a configurable provider: SQLite by default, or SQL Server.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "ASP.NET Core",
+    "SignalR",
+    "EF Core",
+    "SQLite",
+    "SQL Server",
+    "React",
+    "TypeScript"
+   ],
+   "stack": [
+    "ASP.NET Core",
+    "Clean Architecture",
+    "EF Core — SQLite (default) or SQL Server",
+    "SignalR",
+    "React + TypeScript"
+   ],
+   "repo": "https://github.com/mahsaitc/InvenTrack",
+   "architecture": {
+    "overview": "Clean Architecture across API, Application, Domain and Infrastructure projects. Low-stock alerts reach connected clients over SignalR, and the EF Core provider is configurable rather than fixed to one database engine.",
+    "layers": [
+     {
+      "name": "InvenTrack.Domain",
+      "detail": "Domain layer."
+     },
+     {
+      "name": "InvenTrack.Application",
+      "detail": "Application layer."
+     },
+     {
+      "name": "InvenTrack.Infrastructure",
+      "detail": "Infrastructure layer."
+     },
+     {
+      "name": "InvenTrack.API",
+      "detail": "API layer."
+     }
+    ]
+   },
+   "poster": "inventrack.svg",
+   "alt": "InvenTrack stock dashboard with a low-stock alert"
+  },
+  {
+   "slug": "articleforge",
+   "repoName": "ArticleForge",
+   "name": "ArticleForge",
+   "tagline": "CMS and blog platform on Clean Architecture",
+   "summary": "Content platform on a Clean Architecture solution, without MediatR or a CQRS split. Content is rendered with react-markdown rather than a rich-text editor, and EF Core runs against SQLite by default or SQL Server.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "ASP.NET Core",
+    "EF Core",
+    "SQLite",
+    "SQL Server",
+    "React",
+    "TypeScript"
+   ],
+   "stack": [
+    "ASP.NET Core",
+    "Clean Architecture",
+    "EF Core — SQLite (default) or SQL Server",
+    "react-markdown",
+    "React + TypeScript"
+   ],
+   "repo": "https://github.com/mahsaitc/ArticleForge",
+   "architecture": {
+    "overview": "Clean Architecture across Api, Application, Domain and Infrastructure projects, kept deliberately free of MediatR and a CQRS read/write split. Markdown is rendered client-side with react-markdown instead of embedding a rich-text editor.",
+    "layers": [
+     {
+      "name": "ArticleForge.Domain",
+      "detail": "Domain layer."
+     },
+     {
+      "name": "ArticleForge.Application",
+      "detail": "Application layer."
+     },
+     {
+      "name": "ArticleForge.Infrastructure",
+      "detail": "Infrastructure layer."
+     },
+     {
+      "name": "ArticleForge.Api",
+      "detail": "API layer."
+     }
+    ]
+   },
+   "poster": "articleforge.svg",
+   "alt": "ArticleForge content editing interface"
+  },
+  {
+   "slug": "taskflow",
+   "repoName": "TaskFlow",
+   "name": "TaskFlow",
+   "tagline": "Team task manager with CQRS, real-time sync and background jobs",
+   "summary": "Task manager built on Clean Architecture with CQRS through MediatR, backed by PostgreSQL. SignalR keeps clients in sync and Hangfire runs background jobs against the same database.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "ASP.NET Core",
+    "CQRS",
+    "SignalR",
+    "Hangfire",
+    "PostgreSQL"
+   ],
+   "stack": [
+    "ASP.NET Core",
+    "Clean Architecture",
+    "CQRS via MediatR 12.4.1",
+    "PostgreSQL (Npgsql)",
+    "SignalR",
+    "Hangfire + Hangfire.PostgreSql"
+   ],
+   "repo": "https://github.com/mahsaitc/TaskFlow",
+   "metrics": [
+    {
+     "label": "Tests passing",
+     "value": "473 / 473"
+    }
+   ],
+   "architecture": {
+    "overview": "Clean Architecture with CQRS handled by MediatR, pinned to 12.4.1 on purpose: the 12.x line is Apache-2.0 licensed and 13.x is not. PostgreSQL is the datastore via Npgsql, SignalR carries real-time updates, and Hangfire.PostgreSql keeps background jobs in the same database."
+   },
+   "outcome": {
+    "heading": "A suite that cannot rot",
+    "body": "All 473 tests pass. One had been failing for a reason worth keeping: a refresh-token test pinned a fixed date while the entity stamped creation from the ambient clock, so the two drifted a day apart for every day after it was written. Making the creation instant injectable — defaulted, so no caller changed — let the test pin both clocks to the same instant and removed the class of failure rather than the symptom."
+   },
+   "poster": "taskflow.svg",
+   "alt": "TaskFlow team task board"
+  },
+  {
+   "slug": "cartforge",
+   "repoName": "CartForge",
+   "name": "CartForge",
+   "tagline": "E-commerce API with PostgreSQL and Redis",
+   "summary": "Commerce back end on a Clean Architecture solution, storing data in PostgreSQL with Redis alongside it. Its 150-case test suite runs entirely on SQLite and Moq, so no external service is needed to execute it.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "ASP.NET Core",
+    "PostgreSQL",
+    "Redis",
+    "Testing"
+   ],
+   "stack": [
+    "ASP.NET Core",
+    "Clean Architecture",
+    "PostgreSQL (Npgsql)",
+    "Redis",
+    "xUnit with SQLite + Moq"
+   ],
+   "repo": "https://github.com/mahsaitc/CartForge",
+   "metrics": [
+    {
+     "label": "Tests passing",
+     "value": "150 / 150"
+    }
+   ],
+   "architecture": {
+    "overview": "Clean Architecture across API, Application, Domain and Infrastructure projects, with PostgreSQL via Npgsql and Redis alongside it.",
+    "layers": [
+     {
+      "name": "CartForge.Domain",
+      "detail": "Domain layer."
+     },
+     {
+      "name": "CartForge.Application",
+      "detail": "Application layer."
+     },
+     {
+      "name": "CartForge.Infrastructure",
+      "detail": "Infrastructure layer."
+     },
+     {
+      "name": "CartForge.API",
+      "detail": "API layer."
+     }
+    ]
+   },
+   "outcome": {
+    "heading": "A suite that runs anywhere",
+    "body": "All 150 tests pass against SQLite and Moq rather than containerised services, so the suite runs on a laptop or in CI with nothing to provision first."
+   },
+   "poster": "cartforge.svg",
+   "alt": "CartForge commerce API"
+  }
+ ],
+ "posts": [
+  {
+   "slug": "check-then-act-double-booking-guard",
+   "title": "The double-booking guard I actually shipped",
+   "excerpt": "RxClinic prevents overlapping appointments with a read before the write. That is a real guard with a real race window, and it is worth being honest about both.",
+   "date": "2025-11-18",
+   "readingMinutes": 5,
+   "tags": [
+    "ASP.NET Core",
+    "EF Core",
+    "SQLite",
+    "Concurrency"
+   ],
+   "body": [
+    {
+     "type": "p",
+     "text": "RxClinic is a clinic appointment API: patients book slots, staff book on their behalf, and no doctor should end up with two appointments over the same minutes. The guard that enforces this is a query immediately before the insert, and it is the whole mechanism."
+    },
+    {
+     "type": "h2",
+     "text": "What the handler does"
+    },
+    {
+     "type": "p",
+     "text": "Overlap is a range comparison, not an equality check. Two appointments collide when one starts before the other ends and ends after the other starts, and only appointments still in play count — a cancelled slot is free again."
+    },
+    {
+     "type": "code",
+     "lang": "csharp",
+     "code": "// Conflict: same doctor, active status, overlapping time range.\nbool overlaps = await _db.Appointments.AnyAsync(a =>\n    a.DoctorId == request.DoctorId &&\n    (a.Status == AppointmentStatus.Pending || a.Status == AppointmentStatus.Confirmed) &&\n    a.StartTime < request.EndTime &&\n    a.EndTime > request.StartTime);\n\nif (overlaps)\n    return Conflict(new { message = \"The selected time slot is already booked for this doctor.\" });"
+    },
+    {
+     "type": "p",
+     "text": "Three details in that predicate are doing real work. Status filtering means cancellations release the slot without deleting history. The strict inequalities let a 09:00-09:30 appointment sit flush against a 09:30-10:00 one instead of falsely colliding. And the whole thing is one AnyAsync, so it costs a single existence check rather than loading the day."
+    },
+    {
+     "type": "h2",
+     "text": "The window I am not pretending is closed"
+    },
+    {
+     "type": "p",
+     "text": "Between that read and the SaveChangesAsync a few lines later, nothing stops a second request from running the same query and getting the same answer. Two concurrent bookings for the same slot can both pass the check and both insert. This is check-then-act, and check-then-act has a race."
+    },
+    {
+     "type": "p",
+     "text": "For where RxClinic actually runs — a single process against a SQLite file — that window is narrow and the operational risk is small. It is not zero, and the honest description is \"a guard that holds under the load it was built for\", not \"a guarantee\"."
+    },
+    {
+     "type": "h2",
+     "text": "Why the storage engine has not closed it for me"
+    },
+    {
+     "type": "p",
+     "text": "The reflex answer is a unique index, and it is the right instinct: a constraint the database enforces cannot be raced past, however many processes are running. But overlap is not equality. A unique index can enforce \"no two appointments for this doctor start at exactly this instant\"; it cannot express \"no two appointments for this doctor overlap at all\". The range case needs an exclusion constraint, which SQLite does not have and PostgreSQL does, via btree_gist."
+    },
+    {
+     "type": "quote",
+     "text": "Push invariants to the lowest layer that can enforce them. The catch is that the lowest layer has to be able to express the invariant — and range overlap is where that stops being free."
+    },
+    {
+     "type": "h2",
+     "text": "Next steps — not yet implemented"
+    },
+    {
+     "type": "p",
+     "text": "Everything in this section is intention, not shipped code. RxClinic today has exactly one unique index, on User.Username, and no overlap constraint of any kind."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Fixed-length slots would make overlap collapse into equality, and a unique index on (DoctorId, StartTime) filtered to active statuses would then close the race outright.",
+      "Staying with arbitrary ranges means moving to PostgreSQL and an EXCLUDE USING gist constraint — the only option here that enforces true overlap in the engine.",
+      "Either route needs the unique-violation exception translated at the persistence boundary into the same 409 the read path already returns, so callers see one behaviour."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Until one of those lands, the read-before-write guard is what is running, and saying so is more useful than describing a constraint that is not there."
+    }
+   ]
+  },
+  {
+   "slug": "cqrs-without-the-ceremony",
+   "title": "CQRS without the ceremony",
+   "excerpt": "You do not need event sourcing, two databases, or a message broker. You need to stop making reads and writes share a model.",
+   "date": "2025-09-02",
+   "readingMinutes": 6,
+   "tags": [
+    "CQRS",
+    "Architecture",
+    "MediatR",
+    "PostgreSQL"
+   ],
+   "body": [
+    {
+     "type": "p",
+     "text": "CQRS has an unfortunate reputation because it usually arrives packaged with event sourcing, eventual consistency and a broker nobody asked for. The core idea is much smaller and much more useful: reads and writes have different shapes, so stop forcing them through one model. TaskFlow is built this way and uses none of the expensive parts."
+    },
+    {
+     "type": "h2",
+     "text": "The tension made concrete"
+    },
+    {
+     "type": "p",
+     "text": "A board wants every task in a project, grouped into columns, each card flattened to the handful of fields the UI draws. A status change wants one TaskItem loaded with its invariants intact so it can refuse an illegal transition. Serve both from the same entity graph and you get either an over-fetching read or a write model shredded by projection concerns."
+    },
+    {
+     "type": "p",
+     "text": "The read side answers with types that exist only for the screen. Nothing here is a domain entity:"
+    },
+    {
+     "type": "code",
+     "lang": "csharp",
+     "code": "public sealed record BoardCardDto(\n    Guid Id,\n    string Key,\n    string Title,\n    TaskPriority Priority,\n    DateTime? DueDateUtc,\n    Guid? AssigneeId,\n    bool IsOverdue,\n    IReadOnlyList<Guid> LabelIds,\n    IReadOnlyList<TaskItemStatus> AllowedStatusTargets);\n\npublic sealed record BoardColumnDto(TaskItemStatus Status, IReadOnlyList<BoardCardDto> Cards);\n\npublic sealed record BoardDto(Guid ProjectId, IReadOnlyList<BoardColumnDto> Columns);"
+    },
+    {
+     "type": "p",
+     "text": "AllowedStatusTargets is the detail I would defend hardest. The domain already knows which transitions are legal from a given status, so the read model carries them and the UI greys out the rest without duplicating the rule in TypeScript. The read side stays dumb; the domain stays the single source of that answer."
+    },
+    {
+     "type": "h2",
+     "text": "One handler, one shape"
+    },
+    {
+     "type": "p",
+     "text": "The query handler checks access, asks a repository for the tasks, and shapes them. Every column is emitted even when empty, so the board does not reflow as cards move between them:"
+    },
+    {
+     "type": "code",
+     "lang": "csharp",
+     "code": "var tasks = await _taskItems\n    .ListByProjectAsync(request.ProjectId, cancellationToken)\n    .ConfigureAwait(false);\n\nvar columns = columnOrder\n    .Select(status => new BoardColumnDto(\n        status,\n        tasks\n            .Where(task => task.Status == status)\n            .OrderByDescending(task => task.Priority)\n            .ThenBy(task => task.DueDateUtc ?? DateTime.MaxValue)\n            .ThenBy(task => task.CreatedAtUtc)\n            .Select(task => new BoardCardDto(\n                task.Id,\n                task.Key,\n                task.Title,\n                task.Priority,\n                task.DueDateUtc,\n                task.AssigneeId,\n                task.IsOverdue(asOfUtc),\n                task.Labels.Select(link => link.LabelId).ToArray(),\n                task.AllowedStatusTargets().OrderBy(target => target).ToArray()))\n            .ToArray()))\n    .ToArray();"
+    },
+    {
+     "type": "p",
+     "text": "Worth being precise about what this is not: the projection runs in memory, after the repository has materialised the entities. It is not a database-side projection, and there is no ordering trick hiding in the repository — the sort is right there in the handler. That is a deliberate trade. Reads stay behind the same repository abstraction as writes, at the cost of loading more than the screen strictly needs."
+    },
+    {
+     "type": "h2",
+     "text": "What you actually adopt"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Two folders per feature: Commands and Queries. That is the whole structural change.",
+      "Marker interfaces over MediatR — IQuery for reads, ICommand for writes — so the two sides stay visually separate and the pipeline can treat them differently later.",
+      "Queries return DTOs shaped for a screen. Commands load aggregates and enforce invariants. Neither borrows the other’s model.",
+      "One database, same transaction. No eventual consistency unless you have a reason."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "The marker interfaces are four lines and earn their place: IQuery<T> : IRequest<T> and ICommand : IRequest<Unit>. Wrapping commands in a transaction and leaving queries alone becomes a pipeline behaviour rather than a convention people have to remember."
+    },
+    {
+     "type": "h2",
+     "text": "What you skip"
+    },
+    {
+     "type": "p",
+     "text": "Event sourcing, read replicas, a separate read store, and a broker are all independent decisions. Each is justified by a specific pressure — audit requirements, read scale, cross-service integration. Adopt them when that pressure exists, not because a diagram showed them next to the letters CQRS."
+    },
+    {
+     "type": "quote",
+     "text": "Separating the models is the pattern. Everything else usually attached to the acronym is an optional, expensive add-on."
+    }
+   ]
+  },
+  {
+   "slug": "level-triggered-alerts-and-the-inbound-exception",
+   "title": "A low-stock alert with one condition worth arguing about",
+   "excerpt": "InvenTrack alerts whenever an outbound movement leaves a product low. The interesting part is not the threshold — it is why inbound movements are excluded.",
+   "date": "2025-06-21",
+   "readingMinutes": 4,
+   "tags": [
+    "SignalR",
+    "Realtime",
+    "Design"
+   ],
+   "body": [
+    {
+     "type": "p",
+     "text": "InvenTrack pushes low-stock alerts to a dashboard over SignalR. The rule that decides whether an alert fires is two clauses long, and one of them is a design decision rather than an obvious check."
+    },
+    {
+     "type": "code",
+     "lang": "csharp",
+     "code": "if (transaction.Type != StockTransactionType.Out || !product.IsLowStock)\n{\n    return;\n}"
+    },
+    {
+     "type": "p",
+     "text": "The second clause is the threshold, and it lives on the entity beside the data it depends on: IsLowStock is QuantityInStock <= LowStockThreshold. The first clause is the one worth explaining."
+    },
+    {
+     "type": "h2",
+     "text": "Why inbound movements stay quiet"
+    },
+    {
+     "type": "p",
+     "text": "A stock movement is either In or Out. Receiving twenty units of a product sitting well below its threshold still leaves it below the threshold, so a naive \"is it low after this write\" check would fire an alert. That alert would be technically true and actively unhelpful: it reports a situation that just got better as though something had gone wrong."
+    },
+    {
+     "type": "quote",
+     "text": "An inbound movement that still leaves the product below its threshold is an improving situation and does not warrant an alert."
+    },
+    {
+     "type": "p",
+     "text": "That sentence is the comment above the method, and it is the whole justification for the first clause. The alert is not really about the level being low — it is about the level being low and having just got lower."
+    },
+    {
+     "type": "h2",
+     "text": "What this is and is not"
+    },
+    {
+     "type": "p",
+     "text": "This is a level-triggered alert with a direction filter. It fires on every outbound movement while the product is low, so shipping ten units one at a time from an already-low product produces ten alerts. It is not edge-triggered: nothing compares the previous quantity with the new one, so nothing detects the single moment the threshold is crossed."
+    },
+    {
+     "type": "p",
+     "text": "Edge-triggering is the better answer for alert volume, and it is a real piece of work rather than a one-line change — the handler would need the previous value, which means either an extra read or carrying it through from the mutation. The direction filter is the cheap approximation, and it removes the most annoying category of false alert for the cost of one enum comparison."
+    },
+    {
+     "type": "h2",
+     "text": "Two things the transport gets right"
+    },
+    {
+     "type": "p",
+     "text": "The hub is typed. Clients are declared as an interface rather than magic strings, so renaming a message breaks the build instead of production:"
+    },
+    {
+     "type": "code",
+     "lang": "csharp",
+     "code": "public interface IStockAlertClient\n{\n    /// <summary>Raised only when a movement leaves a product at or below its threshold.</summary>\n    Task LowStockAlert(LowStockAlert alert);\n\n    /// <summary>Raised for every committed movement, so open screens can refresh their data.</summary>\n    Task StockChanged(StockChangedNotification notification);\n}"
+    },
+    {
+     "type": "p",
+     "text": "And delivery failures cannot fail the request. The stock movement is already committed by the time the alert is published, so the publish is wrapped and a failure is logged rather than thrown — the interface says so explicitly, and the caller catches anyway. Losing an alert is bad; rolling back a committed warehouse movement because a websocket was unhappy is worse."
+    },
+    {
+     "type": "quote",
+     "text": "Notifying about a state change is a side effect of that change, not part of it. If the notification can fail the write, it is wired in the wrong direction."
+    }
+   ]
+  }
+ ]
+}

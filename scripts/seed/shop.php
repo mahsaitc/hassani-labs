@@ -1,7 +1,7 @@
 <?php
 /**
  * Store: license attribute, categories, products (tiers, downloads,
- * galleries), reviews and coupons.
+ * galleries) and coupons. Sample products are drafts; no reviews are invented.
  *
  * @package Quantivista\Scripts
  */
@@ -110,7 +110,7 @@ foreach ( $qv_categories as $qv_slug => $qv_cat ) {
 		"cat-{$qv_slug}",
 		"category-{$qv_slug}.jpg",
 		fn() => call_user_func( $qv_cat['mock'], 1440, 900, $qv_cat['name'], $qv_pal[0], $qv_pal[1], $qv_slug ),
-		"{$qv_cat['name']} products by Quantivista"
+		"{$qv_cat['name']} by Hassani Labs"
 	);
 	$qv_cat_ids[ $qv_slug ] = qvs_term(
 		$qv_cat['name'],
@@ -165,9 +165,9 @@ function qvs_download_package( $slug, $name, $version ) {
 	if ( ! file_exists( $file ) && class_exists( 'ZipArchive' ) ) {
 		$zip = new ZipArchive();
 		$zip->open( $file, ZipArchive::CREATE | ZipArchive::OVERWRITE );
-		$zip->addFromString( "{$slug}/README.md", "# {$name} {$version}\n\nThank you for purchasing {$name} from Quantivista.\n\n1. Read INSTALL.md for server requirements.\n2. Activate using the license key from My Account → Licenses.\n3. Documentation: https://docs.quantivista.com/{$slug}\n\n_This is a placeholder package generated for the demo store._\n" );
+		$zip->addFromString( "{$slug}/README.md", "# {$name} {$version}\n\nThank you for purchasing {$name} from Hassani Labs.\n\n1. Read INSTALL.md for server requirements.\n2. Activate using the license key from My Account → Licenses.\n3. Documentation: see the docs folder.\n\n_This is a placeholder package generated for the demo store._\n" );
 		$zip->addFromString( "{$slug}/INSTALL.md", "## Installation\n\n```bash\ncp .env.example .env\ncomposer install --no-dev\nphp artisan migrate --seed\n```\n" );
-		$zip->addFromString( "{$slug}/LICENSE.txt", "Quantivista Software License Agreement — see https://quantivista.com/policies/software-license-agreement/\n" );
+		$zip->addFromString( "{$slug}/LICENSE.txt", "Hassani Labs Software License Agreement — see /policies/software-license-agreement/ on the website.\n" );
 		$zip->addFromString( "{$slug}/CHANGELOG.md", "## {$version}\n- Performance improvements\n- Security hardening\n- Updated dependencies\n" );
 		$zip->close();
 	}
@@ -446,25 +446,6 @@ $qv_products = array(
 	),
 );
 
-$qv_reviewers = array( 'Daniel Brooks', 'Priya Raman', 'Lucas Meyer', 'Hannah Kim', 'Omar Haddad', 'Sofia Rossi', 'Ethan Clarke', 'Mei Tanaka', 'Jonas Weber', 'Amara Okafor', 'Chloe Martin', 'Ravi Patel' );
-$qv_review_texts = array(
-	'software' => array(
-		array( 5, 'Setup took less than an hour with Docker. The documentation is genuinely good and support answered my question the same day.' ),
-		array( 5, 'We replaced two SaaS subscriptions with this. Clean code, sensible architecture and it just works.' ),
-		array( 4, 'Very solid product. A couple of integrations I needed were missing, but the API made it easy to build them myself.' ),
-		array( 5, 'The update from the last major version was painless. Great to see a vendor that actually maintains their software.' ),
-	),
-	'mobile'   => array(
-		array( 5, 'Saved us months. We had our branded version in TestFlight within two weeks.' ),
-		array( 5, 'Code quality is far above other templates I have bought. State management is clean and well documented.' ),
-		array( 4, 'Great kit. Took a bit of time to configure the backend on our own cloud but support walked us through it.' ),
-	),
-	'service'  => array(
-		array( 5, 'The team was proactive, communicated clearly and delivered ahead of schedule. Conversion rate doubled after launch.' ),
-		array( 5, 'Fantastic design work and a very smooth process. Weekly demos kept everyone aligned.' ),
-		array( 4, 'High-quality result. We needed one extra revision round which they handled without fuss.' ),
-	),
-);
 
 $qv_product_ids = array();
 foreach ( $qv_products as $qv_index => $qv_p ) {
@@ -496,7 +477,8 @@ foreach ( $qv_products as $qv_index => $qv_p ) {
 		array(
 			'name'               => $qv_p['name'],
 			'slug'               => $qv_p['slug'],
-			'status'             => 'publish',
+			// Sample catalog: kept as drafts to edit and publish, never shown as real products.
+			'status'             => 'draft',
 			'catalog_visibility' => 'visible',
 			'featured'           => ! empty( $qv_p['featured'] ),
 			'description'        => $qv_desc,
@@ -588,28 +570,9 @@ foreach ( $qv_products as $qv_index => $qv_p ) {
 		update_post_meta( $qv_product_id, '_' . $qv_key, 'field_' . $qv_key );
 	}
 
-	// Reviews (once).
-	if ( ! get_comments( array( 'post_id' => $qv_product_id, 'meta_key' => QVS_KEY, 'count' => true ) ) ) { // phpcs:ignore WordPress.DB.SlowDBQuery
-		$qv_pool = $qv_review_texts[ $qv_is_svc ? 'service' : ( in_array( 'mobile-apps', $qv_p['cats'], true ) ? 'mobile' : 'software' ) ];
-		$qv_n    = 2 + ( $qv_index % 3 );
-		for ( $qv_r = 0; $qv_r < $qv_n; $qv_r++ ) {
-			$qv_review = $qv_pool[ ( $qv_index + $qv_r ) % count( $qv_pool ) ];
-			$qv_author = $qv_reviewers[ ( $qv_index * 3 + $qv_r ) % count( $qv_reviewers ) ];
-			$qv_cid    = wp_insert_comment(
-				array(
-					'comment_post_ID'      => $qv_product_id,
-					'comment_author'       => $qv_author,
-					'comment_author_email' => sanitize_title( $qv_author ) . '@example.com',
-					'comment_content'      => $qv_review[1],
-					'comment_type'         => 'review',
-					'comment_approved'     => 1,
-					'comment_date'         => gmdate( 'Y-m-d H:i:s', strtotime( '-' . ( 5 + $qv_r * 17 + $qv_index ) . ' days' ) ),
-				)
-			);
-			update_comment_meta( $qv_cid, 'rating', $qv_review[0] );
-			update_comment_meta( $qv_cid, 'verified', 1 );
-			update_comment_meta( $qv_cid, QVS_KEY, "review-{$qv_p['slug']}-{$qv_r}" );
-		}
+	// No invented reviews: remove the ones earlier demo seeds created.
+	foreach ( get_comments( array( 'post_id' => $qv_product_id, 'meta_key' => QVS_KEY, 'fields' => 'ids' ) ) as $qv_cid ) { // phpcs:ignore WordPress.DB.SlowDBQuery
+		wp_delete_comment( $qv_cid, true );
 	}
 	WC_Comments::clear_transients( $qv_product_id );
 

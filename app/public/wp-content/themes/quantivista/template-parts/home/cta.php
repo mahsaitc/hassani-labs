@@ -32,7 +32,9 @@ $qv_email = qv_mod( 'contact_email' );
 					<?php if ( $qv_phone ) : ?>
 						<li><?php qv_the_icon( 'phone' ); ?><a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $qv_phone ) ); ?>"><?php echo esc_html( $qv_phone ); ?></a></li>
 					<?php endif; ?>
-					<li><?php qv_the_icon( 'clock' ); ?><span><?php echo esc_html( qv_mod( 'contact_hours' ) ); ?></span></li>
+					<?php if ( qv_mod( 'contact_hours' ) ) : ?>
+						<li><?php qv_the_icon( 'clock' ); ?><span><?php echo esc_html( qv_mod( 'contact_hours' ) ); ?></span></li>
+					<?php endif; ?>
 					<li><?php qv_the_icon( 'map-pin' ); ?><span><?php echo esc_html( qv_mod( 'contact_address' ) ); ?></span></li>
 				</ul>
 			</div>

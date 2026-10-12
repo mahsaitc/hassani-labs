@@ -1,7 +1,7 @@
 <?php
 /**
- * Pages, policies, hero slides, testimonials, team, milestones, contact
- * form, navigation menus and widgets.
+ * Pages, policies, hero slides, contact form, navigation menus and
+ * widgets.
  *
  * @package Quantivista\Scripts
  */
@@ -9,6 +9,8 @@
 defined( 'ABSPATH' ) || exit;
 
 $qv_theme_uri = get_template_directory_uri();
+$qv_email     = function_exists( 'qv_mod' ) && qv_mod( 'contact_email' ) ? qv_mod( 'contact_email' ) : get_option( 'admin_email' );
+$qv_host      = wp_parse_url( home_url(), PHP_URL_HOST );
 
 /* ------------------------------------------------------------------------
  * Contact Form 7
@@ -26,17 +28,17 @@ if ( class_exists( 'WPCF7_ContactForm' ) ) {
 				<p><label>Work email *[email* your-email autocomplete:email placeholder "jane@company.com"]</label></p>
 				<p><label>Company[text your-company autocomplete:organization placeholder "Company Inc."]</label></p>
 				<p><label>Budget[select your-budget include_blank "Under $5k" "$5k – $15k" "$15k – $50k" "$50k+"]</label></p>
-				<p class="full"><label>What do you need? *[select* your-service include_blank "A software product" "Custom features or integrations" "A mobile app" "Website design" "Something else"]</label></p>
+				<p class="full"><label>What do you need? *[select* your-service include_blank "Clinic software" "A custom web application" "A website" "Changes to a product I bought" "Something else"]</label></p>
 				<p class="full"><label>Project details *[textarea* your-message placeholder "Goals, timeline, links to references…"]</label></p>
-				<p class="full">[acceptance your-consent] I agree that Quantivista may process my details to respond to this inquiry, as described in the Privacy Policy. [/acceptance]</p>
+				<p class="full">[acceptance your-consent] I agree that Hassani Labs may process my details to respond to this inquiry, as described in the Privacy Policy. [/acceptance]</p>
 				<p class="full">[submit class:btn class:btn--accent class:btn--lg "Send message"]</p>
 				</div>'
 			),
 			'mail'     => array(
 				'active'             => true,
-				'subject'            => '[Quantivista] New inquiry from [your-name]',
-				'sender'             => 'Quantivista Website <wordpress@quantivista.com>',
-				'recipient'          => 'hello@quantivista.com',
+				'subject'            => '[Hassani Labs] New inquiry from [your-name]',
+				'sender'             => "Hassani Labs Website <wordpress@{$qv_host}>",
+				'recipient'          => $qv_email,
 				'body'               => "Name: [your-name]\nEmail: [your-email]\nCompany: [your-company]\nBudget: [your-budget]\nService: [your-service]\n\n[your-message]\n\n--\nSent from the contact form on [_site_url]",
 				'additional_headers' => 'Reply-To: [your-email]',
 				'attachments'        => '',
@@ -45,18 +47,18 @@ if ( class_exists( 'WPCF7_ContactForm' ) ) {
 			),
 			'mail_2'   => array(
 				'active'             => true,
-				'subject'            => 'We received your message — Quantivista',
-				'sender'             => 'Quantivista <hello@quantivista.com>',
+				'subject'            => 'I received your message — Hassani Labs',
+				'sender'             => "Hassani Labs <wordpress@{$qv_host}>",
 				'recipient'          => '[your-email]',
-				'body'               => "Hi [your-name],\n\nThanks for reaching out! A member of our team will reply within one business day.\n\nYour message:\n[your-message]\n\n— The Quantivista team\n[_site_url]",
-				'additional_headers' => 'Reply-To: hello@quantivista.com',
+				'body'               => "Hi [your-name],\n\nThanks for reaching out. I read every message myself and will reply within two business days.\n\nYour message:\n[your-message]\n\nMahsa Hassani\nHassani Labs\n[_site_url]",
+				'additional_headers' => "Reply-To: {$qv_email}",
 				'attachments'        => '',
 				'use_html'           => false,
 				'exclude_blank'      => true,
 			),
 			'messages' => array_merge(
 				wpcf7_messages() ? array_map( fn( $m ) => $m['default'], wpcf7_messages() ) : array(),
-				array( 'mail_sent_ok' => 'Thanks! Your message has been sent — we\'ll be in touch within one business day.' )
+				array( 'mail_sent_ok' => 'Thanks! Your message has been sent. I will reply within two business days.' )
 			),
 		)
 	);
@@ -101,26 +103,24 @@ function qvs_page( $key, $title, $slug, $content, array $args = array(), array $
 
 $qv_home = qvs_page( 'page-home', 'Home', 'home', '' );
 
-$qv_story_image = qvs_image( 'about-story', 'about-story.jpg', fn() => qvimg_mock_dashboard( 1400, 1000, 'Quantivista', '22D3EE', '5B6CFF', 'about-story' ), 'Quantivista product dashboard on a large display' );
-
 $qv_about = qvs_page(
 	'page-about',
-	'About Us',
+	'About',
 	'about',
-	'<p>Quantivista started in 2014 as a two-person studio in San Francisco, building web platforms for startups that needed senior engineering without the overhead of a large agency. Client by client, we noticed the same problems appearing again and again — CRMs that didn\'t fit, brittle automations, analytics that nobody trusted.</p>
-	<p>So we started turning our best internal tools into products. Today more than 10,000 teams run Quantivista software, and our studio still designs and builds websites and apps for companies from seed stage to the Fortune 500.</p>
-	<p>We are a remote-first team of 42 engineers, designers and strategists across North America and Europe, united by one belief: great software should be fast, accessible and a pleasure to use.</p>',
+	'<p>I am Mahsa Hassani. I trained and worked as a physician in General Medicine for more than twenty years, and I am also a computer engineer specialising in software design (Shiraz University). Hassani Labs is where those two halves meet: software I design, build and support myself.</p>
+	<p>Medicine trains you to reason from symptoms to cause under incomplete information, to distrust the first plausible explanation, and to write notes precise enough that a stranger can act on them safely. I bring the same habits to software: clear boundaries, tests that prove the important rules, and documentation a new developer can follow.</p>
+	<p>Day to day that means ASP.NET Core and C# on the back end, React and TypeScript on the front end, SQLite or PostgreSQL for data, and containers for anything that has to run the same way twice. My first commercial product is software for acupuncture clinics, built from my own clinic\'s needs.</p>',
 	array(
 		'template'     => 'page-templates/about.php',
-		'post_excerpt' => 'We design, build and sell software that helps ambitious teams move faster — and we\'ve been doing it for more than a decade.',
+		'post_excerpt' => 'Physician and computer engineer. I design, build and support software for clinics and growing businesses.',
 		'menu_order'   => 1,
 	),
 	array(
-		'qv_story_title' => 'From client projects to products used by 10,000+ teams',
-		'qv_story_image' => $qv_story_image,
-		'qv_mission'     => 'To give growing companies enterprise-grade software and websites without enterprise complexity — honest pricing, clean code and a team that genuinely cares about outcomes.',
-		'qv_vision'      => 'A world where every team, regardless of size, can build on reliable, accessible and privacy-respecting technology that they truly own.',
-		'qv_values'      => "Craft over shortcuts | We sweat the details users never notice — until they're missing.\nOwnership | Customers own their data and their code. So do we: no black boxes.\nClarity | Fixed scopes, transparent roadmaps and plain-language communication.\nInclusion | Accessible products, a diverse team and a respectful culture.",
+		'qv_story_title' => 'Two disciplines, one habit of mind',
+		'qv_story_image' => '',
+		'qv_mission'     => 'To build software that clinics and small businesses can trust with their daily work: clear, secure, documented, and supported by the person who wrote it.',
+		'qv_vision'      => 'Tools that respect the people who use them and the data they hold, in Persian and in English.',
+		'qv_values'      => "Honesty | No invented numbers, no fake reviews. What the software does is what the page says.\nCare with data | Patient and customer data stays on the client's own server, encrypted where it matters and backed up.\nClarity | Fixed scopes, plain-language communication and written handover notes.\nOwnership | You own your data and your domain. I stay available for updates and support.",
 	)
 );
 
@@ -130,7 +130,7 @@ $qv_blog = qvs_page(
 	'blog',
 	'',
 	array(
-		'post_excerpt' => 'Engineering deep-dives, product updates and practical guides on software, mobile and web design from the Quantivista team.',
+		'post_excerpt' => 'Notes on software design, testing and building software for clinics, by Mahsa Hassani.',
 		'menu_order'   => 3,
 	)
 );
@@ -139,15 +139,15 @@ $qv_contact = qvs_page(
 	'page-contact',
 	'Contact',
 	'contact',
-	'<p>Whether you have a question about a product, need a custom integration or want a quote for a new website, we\'d love to hear from you. Share a few details and the right specialist will get back to you.</p>',
+	'<p>Whether you have a question about the clinic software, need a custom web application or want a website, write to me with a few details. I read and answer every message myself.</p>',
 	array(
 		'template'     => 'page-templates/contact.php',
-		'post_excerpt' => 'Tell us about your project or ask us anything. Real humans reply within one business day.',
+		'post_excerpt' => 'Tell me about your project or ask me anything. I reply within two business days.',
 		'menu_order'   => 5,
 	),
 	array(
 		'qv_form_shortcode' => $qv_form_shortcode,
-		'qv_faq'            => "How quickly will you reply? | Within one business day — usually within a few hours during Pacific business hours.\nCan you customize a product for us? | Yes. Most customers start with a product license and add custom features, integrations or branding through our studio team.\nDo you work with companies outside the US? | Absolutely. About half of our clients are in Europe, Canada and Australia, and we schedule calls across time zones.\nWhat does a website project cost? | Our packages start at \$1,490 for a landing page and \$3,900 for a full business website. Larger builds are scoped with a fixed-price proposal.\nIs there a money-back guarantee? | Software purchases include a 14-day money-back guarantee. Service packages are billed by milestone so you only pay for approved work.",
+		'qv_faq'            => "How quickly will you reply? | Within two business days, usually sooner.\nDo you work with clients outside Iran? | Yes. I work remotely in English and Persian and schedule calls across time zones.\nCan the clinic software be changed for my clinic? | Yes. Name, logo and colours are set from the admin panel; larger changes are quoted separately.\nHow is a custom project priced? | After a short call I send a written scope with a fixed price and milestones, so you only pay for approved work.",
 	)
 );
 
@@ -155,7 +155,7 @@ $qv_policies = qvs_page(
 	'page-policies',
 	'Policies',
 	'policies',
-	'<p>Transparency matters to us. These documents explain how we handle your data, your purchases and the software you license from Quantivista. If anything is unclear, contact <a href="mailto:legal@quantivista.com">legal@quantivista.com</a>.</p>',
+	'<p>Transparency matters to us. These documents explain how we handle your data, your purchases and the software you license from Hassani Labs. If anything is unclear, contact <a href="mailto:' . esc_attr( $qv_email ) . '">' . esc_html( $qv_email ) . '</a>.</p>',
 	array(
 		'template'     => 'page-templates/policies.php',
 		'post_excerpt' => 'Terms, privacy, refunds and licensing — in plain language.',
@@ -163,14 +163,14 @@ $qv_policies = qvs_page(
 	)
 );
 
-$qv_disclaimer = '<p class="callout"><strong>Note:</strong> This document is placeholder content for the Quantivista demo site. Have it reviewed by qualified legal counsel before publishing.</p>';
+$qv_disclaimer = '<p class="callout"><strong>Note:</strong> This document is a draft template. Have it reviewed by qualified legal counsel, and complete the business details, before publishing.</p>';
 
 $qv_terms = qvs_page(
 	'page-terms',
 	'Terms & Conditions',
 	'terms-and-conditions',
 	$qv_disclaimer . '
-	<p>These Terms &amp; Conditions ("Terms") govern your use of quantivista.com and any purchase of software products or services from Quantivista, Inc. ("Quantivista", "we", "us"). By creating an account or placing an order you agree to these Terms.</p>
+	<p>These Terms &amp; Conditions ("Terms") govern your use of this website and any purchase of software products or services from Hassani Labs ("Hassani Labs", "we", "us"). By creating an account or placing an order you agree to these Terms.</p>
 	<h2>1. Accounts</h2>
 	<p>You must create an account and verify your email address before completing a purchase. You are responsible for keeping your credentials confidential and for all activity under your account. You must be at least 18 years old or have the consent of a legal guardian.</p>
 	<h2>2. Products and licenses</h2>
@@ -178,7 +178,7 @@ $qv_terms = qvs_page(
 	<h2>3. Service packages</h2>
 	<p>Website design and development packages are delivered according to the scope, timeline and revision rounds described on the product page. Kickoff is scheduled after payment is received. Additional work outside the agreed scope is quoted separately.</p>
 	<h2>4. Pricing and payment</h2>
-	<ul><li>Prices are shown in US dollars and exclude applicable taxes unless stated.</li><li>Orders paid by bank transfer or invoice are activated once payment clears.</li><li>We may change prices at any time; changes never affect orders already placed.</li></ul>
+	<ul><li>Prices are shown in the currency of the page (US dollars on English pages, toman on Persian pages) and exclude applicable taxes unless stated.</li><li>Orders paid by bank transfer or invoice are activated once payment clears.</li><li>We may change prices at any time; changes never affect orders already placed.</li></ul>
 	<h2>5. Delivery</h2>
 	<p>Download links and license keys are available in <strong>My Account</strong> immediately after payment confirmation and are also sent by email.</p>
 	<h2>6. Refunds</h2>
@@ -186,11 +186,11 @@ $qv_terms = qvs_page(
 	<h2>7. Acceptable use</h2>
 	<p>You may not use our products or website to break the law, infringe intellectual property, distribute malware or attempt to gain unauthorized access to systems.</p>
 	<h2>8. Limitation of liability</h2>
-	<p>To the maximum extent permitted by law, Quantivista is not liable for indirect, incidental or consequential damages. Our total liability for any claim is limited to the amount you paid for the product or service giving rise to the claim.</p>
+	<p>To the maximum extent permitted by law, Hassani Labs is not liable for indirect, incidental or consequential damages. Our total liability for any claim is limited to the amount you paid for the product or service giving rise to the claim.</p>
 	<h2>9. Governing law</h2>
-	<p>These Terms are governed by the laws of the State of California, USA, without regard to conflict-of-law principles.</p>
+	<p>These Terms are governed by the laws of [country of registration, to be completed].</p>
 	<h2>10. Contact</h2>
-	<p>Questions about these Terms? Email <a href="mailto:legal@quantivista.com">legal@quantivista.com</a> or write to Quantivista, Inc., 548 Market Street, Suite 300, San Francisco, CA 94104.</p>',
+	<p>Questions about these Terms? Email <a href="mailto:' . esc_attr( $qv_email ) . '">' . esc_html( $qv_email ) . '</a>.</p>',
 	array(
 		'post_parent'  => $qv_policies,
 		'template'     => 'page-templates/policy.php',
@@ -204,7 +204,7 @@ $qv_privacy = qvs_page(
 	'Privacy Policy',
 	'privacy-policy',
 	$qv_disclaimer . '
-	<p>This Privacy Policy explains what personal data Quantivista, Inc. collects, why we collect it and the choices you have. We follow the principles of the GDPR and the CCPA/CPRA regardless of where you live.</p>
+	<p>This Privacy Policy explains what personal data Hassani Labs collects, why we collect it and the choices you have. We follow the principles of the GDPR and the CCPA/CPRA regardless of where you live.</p>
 	<h2>Data we collect</h2>
 	<ul><li><strong>Account data:</strong> name, email address, password (hashed) and billing details.</li><li><strong>Order data:</strong> products purchased, license keys, invoices and payment status. We do not store full card numbers.</li><li><strong>Communications:</strong> messages you send via our contact form, email or support portal.</li><li><strong>Usage data:</strong> anonymized, cookieless analytics about page views and performance.</li></ul>
 	<h2>How we use data</h2>
@@ -218,9 +218,9 @@ $qv_privacy = qvs_page(
 	<h2>Retention</h2>
 	<p>Account data is kept while your account is active. Order records are retained for seven years for tax purposes. Contact form messages are deleted after 24 months.</p>
 	<h2>Your rights</h2>
-	<p>You can access, correct, export or delete your data, and object to or restrict processing. Use <strong>My Account → Account Settings</strong> or email <a href="mailto:privacy@quantivista.com">privacy@quantivista.com</a>. You may also lodge a complaint with your local supervisory authority.</p>
+	<p>You can access, correct, export or delete your data, and object to or restrict processing. Use <strong>My Account → Account Settings</strong> or email <a href="mailto:' . esc_attr( $qv_email ) . '">' . esc_html( $qv_email ) . '</a>. You may also lodge a complaint with your local supervisory authority.</p>
 	<h2>Contact</h2>
-	<p>Data controller: Quantivista, Inc., 548 Market Street, Suite 300, San Francisco, CA 94104 — <a href="mailto:privacy@quantivista.com">privacy@quantivista.com</a>.</p>',
+	<p>Data controller: Hassani Labs (Mahsa Hassani), <a href="mailto:' . esc_attr( $qv_email ) . '">' . esc_html( $qv_email ) . '</a>.</p>',
 	array(
 		'post_parent'  => $qv_policies,
 		'template'     => 'page-templates/policy.php',
@@ -246,7 +246,7 @@ $qv_refund = qvs_page(
 	<h2>Upgrades</h2>
 	<p>You can upgrade a license tier at any time by paying the difference. Downgrades are not refundable.</p>
 	<h2>How to request a refund</h2>
-	<p>Email <a href="mailto:billing@quantivista.com">billing@quantivista.com</a> from the address on your account with your order number, or reply to your order confirmation email.</p>
+	<p>Email <a href="mailto:' . esc_attr( $qv_email ) . '">' . esc_html( $qv_email ) . '</a> from the address on your account with your order number, or reply to your order confirmation email.</p>
 	<h2>Returns</h2>
 	<p>As all our products are digital or services, there are no physical returns.</p>',
 	array(
@@ -264,9 +264,9 @@ $qv_license = qvs_page(
 	'Software License Agreement',
 	'software-license-agreement',
 	$qv_disclaimer . '
-	<p>This Software License Agreement ("Agreement") is between you and Quantivista, Inc. and applies to all software products purchased from quantivista.com.</p>
+	<p>This Software License Agreement ("Agreement") is between you and Hassani Labs and applies to all software products purchased from this website.</p>
 	<h2>1. Grant of license</h2>
-	<p>Subject to payment, Quantivista grants you a perpetual, non-exclusive, non-transferable license to install and use the software according to your license tier:</p>
+	<p>Subject to payment, Hassani Labs grants you a perpetual, non-exclusive, non-transferable license to install and use the software according to your license tier:</p>
 	<table><thead><tr><th>Tier</th><th>Production installs</th><th>Updates &amp; support</th><th>White-label</th></tr></thead><tbody><tr><td>Standard</td><td>1 site or app</td><td>12 months</td><td>No</td></tr><tr><td>Professional</td><td>Up to 5</td><td>12 months, priority</td><td>No</td></tr><tr><td>Unlimited</td><td>Unlimited</td><td>12 months, 24/7</td><td>Yes</td></tr></tbody></table>
 	<p>Development, staging and testing environments do not count toward your limit.</p>
 	<h2>2. Source code</h2>
@@ -284,7 +284,7 @@ $qv_license = qvs_page(
 	array(
 		'post_parent'  => $qv_policies,
 		'template'     => 'page-templates/policy.php',
-		'post_excerpt' => 'How you may use Quantivista software under the Standard, Professional and Unlimited tiers.',
+		'post_excerpt' => 'How you may use Hassani Labs software under the Standard, Professional and Unlimited tiers.',
 		'menu_order'   => 4,
 	)
 );
@@ -331,39 +331,39 @@ update_option( 'qv_wishlist_page_id', $qv_wishlist );
  * --------------------------------------------------------------------- */
 $qv_slides = array(
 	array(
-		'title' => 'Software that moves your business forward',
+		'title' => 'Software built by a physician who writes code',
 		'meta'  => array(
-			'qv_slide_eyebrow'     => 'FlowPilot 3.0 is here',
-			'qv_slide_subheadline' => 'Production-ready web software, mobile app kits and conversion-focused websites — engineered by one senior team.',
+			'qv_slide_eyebrow'     => 'Hassani Labs',
+			'qv_slide_subheadline' => 'Clinic software, web applications and websites, designed, built and supported by Mahsa Hassani.',
 			'qv_slide_video'       => $qv_theme_uri . '/assets/video/hero-loop.mp4',
-			'qv_slide_cta_label'   => 'Explore Products',
-			'qv_slide_cta_url'     => '/shop/',
-			'qv_slide_cta2_label'  => 'Get a Quote',
+			'qv_slide_cta_label'   => 'See my work',
+			'qv_slide_cta_url'     => '/work/',
+			'qv_slide_cta2_label'  => 'Get in touch',
 			'qv_slide_cta2_url'    => '/contact/',
 		),
 	),
 	array(
-		'title' => 'Launch your mobile app in weeks, not months',
-		'image' => fn() => qvimg_mock_phones( 1920, 1080, 'Mobile app kits', 'A78BFA', '22D3EE', 'slide-2' ),
+		'title' => 'Software for acupuncture clinics',
+		'image' => fn() => qvimg_mock_dashboard( 1920, 1080, 'Clinic software', '22D3EE', '5B6CFF', 'slide-1' ),
 		'meta'  => array(
-			'qv_slide_eyebrow'     => 'Mobile app kits',
-			'qv_slide_subheadline' => 'Flutter, React Native and native iOS/Android kits with backend, admin panel and store-ready assets included.',
-			'qv_slide_cta_label'   => 'Browse app kits',
-			'qv_slide_cta_url'     => '/product-category/mobile-apps/',
-			'qv_slide_cta2_label'  => 'Talk to an engineer',
-			'qv_slide_cta2_url'    => '/contact/',
+			'qv_slide_eyebrow'     => 'Product',
+			'qv_slide_subheadline' => 'Website, online booking and electronic patient records, installed on your clinic\'s own host.',
+			'qv_slide_cta_label'   => 'Learn more',
+			'qv_slide_cta_url'     => '/clinic-software/',
+			'qv_slide_cta2_label'  => 'نسخه فارسی',
+			'qv_slide_cta2_url'    => '/clinic-software-fa/',
 		),
 	),
 	array(
-		'title' => 'Websites designed to convert — at a fixed price',
-		'image' => fn() => qvimg_mock_landing( 1920, 1080, 'Design studio', '2DD4BF', '5B6CFF', 'slide-3' ),
+		'title' => 'A custom web application, from scope to support',
+		'image' => fn() => qvimg_mock_landing( 1920, 1080, 'Custom software', '2DD4BF', '5B6CFF', 'slide-2' ),
 		'meta'  => array(
-			'qv_slide_eyebrow'     => 'Design studio',
-			'qv_slide_subheadline' => 'Strategy, UX, UI and a lightning-fast build. Landing pages from $1,490 and business websites from $3,900.',
-			'qv_slide_cta_label'   => 'Get a Quote',
+			'qv_slide_eyebrow'     => 'Services',
+			'qv_slide_subheadline' => 'ASP.NET Core and React, with tests, documentation and a fixed-price scope.',
+			'qv_slide_cta_label'   => 'Get a quote',
 			'qv_slide_cta_url'     => '/contact/',
-			'qv_slide_cta2_label'  => 'See packages',
-			'qv_slide_cta2_url'    => '/product-category/website-design/',
+			'qv_slide_cta2_label'  => 'See my work',
+			'qv_slide_cta2_url'    => '/work/',
 		),
 	),
 );
@@ -375,67 +375,16 @@ foreach ( $qv_slides as $qv_i => $qv_slide ) {
 }
 
 /* ------------------------------------------------------------------------
- * Testimonials
+ * Remove demo testimonials and team from earlier seeds (milestones come
+ * from the portfolio section). Add real testimonials in the admin.
  * --------------------------------------------------------------------- */
-$qv_testimonials = array(
-	array( 'Rachel Nguyen', 'VP of Sales', 'Brightline Logistics', 5, 'We moved 40 reps from spreadsheets to Nexus CRM in a single week. Forecast accuracy went from guesswork to within 5% — and our data stays on our own servers.' ),
-	array( 'Marcus Feld', 'Head of Operations', 'Cobalt Finance', 5, 'FlowPilot replaced three different automation subscriptions. The audit logs alone made our compliance team fans for life.' ),
-	array( 'Aisha Rahman', 'Founder', 'Northwind Labs', 5, 'Quantivista designed and built our new website in six weeks. Demo requests doubled in the first month and the site scores 98 on Lighthouse.' ),
-	array( 'Tom Eriksen', 'CTO', 'Helix Health', 5, 'The PulseFit kit gave us a polished, accessible app foundation. We shipped to both stores in five weeks instead of six months.' ),
-	array( 'Laura Chen', 'Product Manager', 'Lumen Retail', 4, 'Quanta Analytics finally gave us funnels we trust — without cookie banners. Support answered every question within hours.' ),
-	array( 'Diego Alvarez', 'E-commerce Director', 'Orbital Outfitters', 5, 'Our store rebuild went live on time and on budget. CartPulse recovered $38k in abandoned carts in the first quarter.' ),
-);
-foreach ( $qv_testimonials as $qv_i => $qv_t ) {
-	qvs_upsert_post(
-		"testimonial-{$qv_i}",
-		array( 'post_type' => 'qv_testimonial', 'post_title' => $qv_t[0], 'post_content' => $qv_t[4], 'menu_order' => $qv_i ),
-		array( 'qv_role' => $qv_t[1], 'qv_company' => $qv_t[2], 'qv_rating' => $qv_t[3] )
-	);
-}
-
-/* ------------------------------------------------------------------------
- * Team
- * --------------------------------------------------------------------- */
-$qv_team = array(
-	array( 'Elena Marsh', 'Co-founder & CEO', '22D3EE', '5B6CFF' ),
-	array( 'Samuel Ortiz', 'Co-founder & CTO', 'A78BFA', 'F472B6' ),
-	array( 'Nadia Karimi', 'Head of Design', '2DD4BF', '3B82F6' ),
-	array( 'James Whitaker', 'Lead Backend Engineer', 'FBBF24', 'F97316' ),
-	array( 'Yuki Sato', 'Mobile Engineering Lead', '34D399', '22D3EE' ),
-	array( 'Olivia Bennett', 'Product Manager', 'F472B6', 'A78BFA' ),
-	array( 'Kwame Mensah', 'Customer Success Lead', '60A5FA', '818CF8' ),
-	array( 'Isabella Conti', 'Senior UX Researcher', '5B6CFF', '22D3EE' ),
-);
-foreach ( $qv_team as $qv_i => $qv_m ) {
-	$qv_initials = implode( '', array_map( fn( $w ) => $w[0], explode( ' ', $qv_m[0] ) ) );
-	$qv_mid      = qvs_upsert_post(
-		"team-{$qv_i}",
-		array( 'post_type' => 'qv_team', 'post_title' => $qv_m[0], 'menu_order' => $qv_i ),
-		array(
-			'qv_role'     => $qv_m[1],
-			'qv_linkedin' => 'https://www.linkedin.com/in/' . sanitize_title( $qv_m[0] ),
-		)
-	);
-	set_post_thumbnail( $qv_mid, qvs_image( "team-{$qv_i}", 'team-' . sanitize_title( $qv_m[0] ) . '.jpg', fn() => qvimg_avatar( 800, $qv_initials, $qv_m[2], $qv_m[3] ), "Portrait of {$qv_m[0]}" ) );
-}
-
-/* ------------------------------------------------------------------------
- * Milestones
- * --------------------------------------------------------------------- */
-$qv_milestones = array(
-	array( '2014', 'Quantivista is founded', 'Elena and Samuel start a two-person web studio in San Francisco, building platforms for early-stage startups.' ),
-	array( '2016', 'First enterprise client', 'A Fortune 500 logistics company trusts us with its customer portal — our team grows to 12.' ),
-	array( '2018', 'Our first product: TaskForge', 'We package our internal job scheduler as a product. 1,000 customers in the first year.' ),
-	array( '2020', 'Remote-first and 100+ studio clients', 'We go fully remote, hire across two continents and launch Nexus CRM.' ),
-	array( '2023', 'Mobile app kits', 'PulseFit and Courier bring our product approach to iOS and Android.' ),
-	array( '2026', '10,000 teams and FlowPilot 3.0', 'Our products now power more than 10,000 teams in 70 countries.' ),
-);
-foreach ( $qv_milestones as $qv_i => $qv_ms ) {
-	qvs_upsert_post(
-		"milestone-{$qv_i}",
-		array( 'post_type' => 'qv_milestone', 'post_title' => $qv_ms[1], 'post_content' => $qv_ms[2], 'menu_order' => $qv_i ),
-		array( 'qv_year' => $qv_ms[0] )
-	);
+foreach ( array( 'qv_testimonial' => 'testimonial-', 'qv_team' => 'team-' ) as $qv_type => $qv_prefix ) {
+	for ( $qv_i = 0; $qv_i < 12; $qv_i++ ) {
+		$qv_old = qvs_find_by_key( $qv_prefix . $qv_i, $qv_type );
+		if ( $qv_old ) {
+			wp_delete_post( $qv_old, true );
+		}
+	}
 }
 
 /* ------------------------------------------------------------------------
@@ -470,42 +419,29 @@ $qv_page_item = fn( $id, $title = '' ) => array(
 	'menu-item-object-id' => $id,
 	'menu-item-title'     => $title ? $title : get_the_title( $id ),
 );
-$qv_cat_item  = function ( $slug, $desc = '' ) {
-	$term = get_term_by( 'slug', $slug, 'product_cat' );
-	return array(
-		'menu-item-type'        => 'taxonomy',
-		'menu-item-object'      => 'product_cat',
-		'menu-item-object-id'   => $term ? $term->term_id : 0,
-		'menu-item-title'       => $term ? $term->name : $slug,
-		'menu-item-description' => $desc,
-	);
-};
 
 // Primary.
 $qv_primary = qvs_menu( 'Primary' );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_home ) );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_about ) );
+qvs_menu_item(
+	$qv_primary,
+	array(
+		'menu-item-type'   => 'post_type_archive',
+		'menu-item-object' => 'qv_project',
+		'menu-item-title'  => 'Work',
+	)
+);
 $qv_products_item = qvs_menu_item(
 	$qv_primary,
 	array(
-		'menu-item-type'    => 'custom',
-		'menu-item-title'   => 'Products',
-		'menu-item-url'     => function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ),
-		'menu-item-classes' => 'mega-menu',
+		'menu-item-type'  => 'custom',
+		'menu-item-title' => 'Products',
+		'menu-item-url'   => function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ),
 	)
 );
-$qv_mega = array(
-	'web-software'   => array( 'CRM, automation & analytics platforms', array( 'crm-tools', 'automation-tools', 'analytics-bi', 'ecommerce-tools' ) ),
-	'mobile-apps'    => array( 'iOS & Android app kits with full source', array( 'business-productivity', 'health-fitness', 'app-starter-kits' ) ),
-	'website-design' => array( 'Fixed-price design & build packages', array( 'landing-pages', 'corporate-websites', 'ecommerce-stores' ) ),
-);
-foreach ( $qv_mega as $qv_slug => $qv_col ) {
-	$qv_col_id = qvs_menu_item( $qv_primary, $qv_cat_item( $qv_slug, $qv_col[0] ), $qv_products_item );
-	foreach ( $qv_col[1] as $qv_child ) {
-		qvs_menu_item( $qv_primary, $qv_cat_item( $qv_child ), $qv_col_id );
-	}
-}
-qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_en, 'Clinic Software' ) );
+qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_en, 'Acupuncture Clinic Software' ), $qv_products_item );
+qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_fa, 'نرم‌افزار کلینیک (فارسی)' ), $qv_products_item );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_blog ) );
 $qv_policies_item = qvs_menu_item( $qv_primary, $qv_page_item( $qv_policies ) );
 foreach ( array( $qv_terms, $qv_privacy, $qv_refund, $qv_license ) as $qv_pid ) {
@@ -524,9 +460,6 @@ if ( function_exists( 'wc_get_page_id' ) ) {
 qvs_menu_item( $qv_footer_quick, $qv_page_item( $qv_wishlist ) );
 
 $qv_footer_products = qvs_menu( 'Footer — Products' );
-foreach ( array( 'web-software', 'mobile-apps', 'website-design' ) as $qv_slug ) {
-	qvs_menu_item( $qv_footer_products, $qv_cat_item( $qv_slug ) );
-}
 qvs_menu_item( $qv_footer_products, $qv_page_item( $qv_clinic_en, 'Acupuncture Clinic Software' ) );
 qvs_menu_item( $qv_footer_products, $qv_page_item( $qv_clinic_fa, 'نرم‌افزار کلینیک (فارسی)' ) );
 qvs_menu_item(
@@ -560,7 +493,7 @@ $qv_blocks = array(
 	2 => array( 'content' => '<!-- wp:search {"label":"Search articles","buttonText":"Search","placeholder":"Search articles…"} /-->' ),
 	3 => array( 'content' => "<!-- wp:heading {\"level\":2,\"className\":\"widget__title\"} -->\n<h2 class=\"wp-block-heading widget__title\">Categories</h2>\n<!-- /wp:heading -->\n<!-- wp:categories {\"showPostCounts\":true} /-->" ),
 	4 => array( 'content' => "<!-- wp:heading {\"level\":2,\"className\":\"widget__title\"} -->\n<h2 class=\"wp-block-heading widget__title\">Popular tags</h2>\n<!-- /wp:heading -->\n<!-- wp:tag-cloud {\"smallestFontSize\":\"0.8rem\",\"largestFontSize\":\"0.8rem\"} /-->" ),
-	5 => array( 'content' => "<!-- wp:html -->\n<div class=\"sidebar-cta\"><p class=\"eyebrow\">Custom build</p><h2 class=\"widget__title\">Need something tailored?</h2><p>We extend any product with custom features, integrations and branding.</p><a class=\"btn btn--primary btn--sm\" href=\"/contact/\">Talk to our team</a></div>\n<!-- /wp:html -->" ),
+	5 => array( 'content' => "<!-- wp:html -->\n<div class=\"sidebar-cta\"><p class=\"eyebrow\">Custom build</p><h2 class=\"widget__title\">Need something tailored?</h2><p>I extend any product with custom features, integrations and branding.</p><a class=\"btn btn--primary btn--sm\" href=\"/contact/\">Get in touch</a></div>\n<!-- /wp:html -->" ),
 	'_multiwidget' => 1,
 );
 update_option( 'widget_block', $qv_blocks );
@@ -575,4 +508,4 @@ update_option(
 	)
 );
 
-WP_CLI::log( "    pages, slides, testimonials, team, milestones, menus, widgets seeded (form: {$qv_form_shortcode})" );
+WP_CLI::log( "    pages, slides, menus, widgets seeded (form: {$qv_form_shortcode})" );

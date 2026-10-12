@@ -1,23 +1,15 @@
 <?php
 /**
- * Trust bar: key stats + client logos.
+ * Trust bar: key stats + client logos (only when real ones are added).
  *
  * @package Quantivista
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$qv_logos = apply_filters(
-	'qv_client_logos',
-	array(
-		array( 'Northwind Labs', '<circle cx="12" cy="12" r="9"/><path d="M12 3v18"/>' ),
-		array( 'Helix Health', '<path d="M12 2 21 7v10l-9 5-9-5V7z"/>' ),
-		array( 'Orbital', '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>' ),
-		array( 'Cobalt Finance', '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 12h16"/>' ),
-		array( 'Lumen Retail', '<path d="M12 3 21 20H3z"/>' ),
-		array( 'Vertexa', '<path d="M3 5l9 15 9-15"/>' ),
-	)
-);
+// Client logos: none until real clients agree to be listed. Add them with
+// the qv_client_logos filter as array( name, SVG inner markup ).
+$qv_logos = apply_filters( 'qv_client_logos', array() );
 ?>
 <section class="trust" aria-label="<?php esc_attr_e( 'Company highlights', 'quantivista' ); ?>">
 	<div class="container">
@@ -30,6 +22,7 @@ $qv_logos = apply_filters(
 			<?php endfor; ?>
 		</ul>
 
+		<?php if ( $qv_logos ) : ?>
 		<div class="logos" data-reveal>
 			<p class="logos__label"><?php esc_html_e( 'Trusted by product teams at', 'quantivista' ); ?></p>
 			<?php foreach ( $qv_logos as $qv_logo ) : ?>
@@ -39,5 +32,6 @@ $qv_logos = apply_filters(
 				</span>
 			<?php endforeach; ?>
 		</div>
+		<?php endif; ?>
 	</div>
 </section>

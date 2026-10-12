@@ -197,7 +197,7 @@ function qv_social_links( $class = '' ) {
 			esc_url( $url ),
 			qv_icon( $key, array( 'size' => 18 ) ),
 			/* translators: %s: network name */
-			esc_html( sprintf( __( 'Quantivista on %s', 'quantivista' ), $label ) )
+			esc_html( sprintf( __( 'Hassani Labs on %s', 'quantivista' ), $label ) )
 		);
 	}
 	if ( $items ) {

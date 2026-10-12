@@ -27,7 +27,7 @@ if ( ! $qv_items ) {
 			qv_section_head(
 				array(
 					'eyebrow' => __( 'Testimonials', 'quantivista' ),
-					'title'   => __( 'Teams that ship with Quantivista', 'quantivista' ),
+					'title'   => __( 'What clients say', 'quantivista' ),
 					'id'      => 'testimonials-title',
 					'align'   => 'left',
 				)

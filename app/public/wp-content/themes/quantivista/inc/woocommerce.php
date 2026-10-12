@@ -227,7 +227,7 @@ function qv_single_meta() {
 	$id      = $product->get_id();
 	$service = 'service' === qv_product_delivery( $product );
 	$rows    = array(
-		__( 'Delivery', 'quantivista' )     => $service ? __( 'Delivered by our team', 'quantivista' ) : __( 'Instant download + license key', 'quantivista' ),
+		__( 'Delivery', 'quantivista' )     => $service ? __( 'Delivered by Hassani Labs', 'quantivista' ) : __( 'Instant download + license key', 'quantivista' ),
 		__( 'Version', 'quantivista' )      => qv_field( 'qv_version', $id ),
 		__( 'Last updated', 'quantivista' ) => qv_field( 'qv_last_updated', $id ),
 		__( 'SKU', 'quantivista' )          => $product->get_sku(),

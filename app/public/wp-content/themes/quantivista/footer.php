@@ -79,7 +79,7 @@ $qv_messages   = array(
 		<?php endif; ?>
 
 		<div class="footer-bottom">
-			<p>&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>, Inc. <?php esc_html_e( 'All rights reserved.', 'quantivista' ); ?></p>
+			<p>&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'quantivista' ); ?></p>
 			<p class="footer-bottom__contact">
 				<a href="mailto:<?php echo esc_attr( antispambot( qv_mod( 'contact_email' ) ) ); ?>"><?php echo esc_html( antispambot( qv_mod( 'contact_email' ) ) ); ?></a>
 				<span aria-hidden="true">&middot;</span>

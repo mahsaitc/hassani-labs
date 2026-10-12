@@ -40,6 +40,7 @@ while ( have_posts() ) :
 							<a class="info-card__value" href="mailto:<?php echo esc_attr( antispambot( $qv_email ) ); ?>"><?php echo esc_html( antispambot( $qv_email ) ); ?></a>
 						</span>
 					</li>
+					<?php if ( $qv_phone ) : ?>
 					<li class="info-card">
 						<span class="info-card__icon"><?php qv_the_icon( 'phone' ); ?></span>
 						<span>
@@ -47,6 +48,7 @@ while ( have_posts() ) :
 							<a class="info-card__value" href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $qv_phone ) ); ?>"><?php echo esc_html( $qv_phone ); ?></a>
 						</span>
 					</li>
+					<?php endif; ?>
 					<li class="info-card">
 						<span class="info-card__icon"><?php qv_the_icon( 'map-pin' ); ?></span>
 						<span>
@@ -54,6 +56,7 @@ while ( have_posts() ) :
 							<span class="info-card__value"><?php echo esc_html( qv_mod( 'contact_address' ) ); ?></span>
 						</span>
 					</li>
+					<?php if ( qv_mod( 'contact_hours' ) ) : ?>
 					<li class="info-card">
 						<span class="info-card__icon"><?php qv_the_icon( 'clock' ); ?></span>
 						<span>
@@ -61,6 +64,7 @@ while ( have_posts() ) :
 							<span class="info-card__value"><?php echo esc_html( qv_mod( 'contact_hours' ) ); ?></span>
 						</span>
 					</li>
+					<?php endif; ?>
 				</ul>
 				<?php qv_social_links(); ?>
 			</div>

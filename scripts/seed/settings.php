@@ -9,9 +9,9 @@ defined( 'ABSPATH' ) || exit;
 
 /* ---------- WordPress ---------- */
 $qv_options = array(
-	'blogname'               => 'Quantivista',
-	'blogdescription'        => 'Software products & web design studio',
-	'timezone_string'        => 'America/Los_Angeles',
+	'blogname'               => 'Hassani Labs',
+	'blogdescription'        => 'Software for clinics and growing businesses, by Mahsa Hassani',
+	'timezone_string'        => 'Asia/Tehran',
 	'date_format'            => 'F j, Y',
 	'time_format'            => 'g:i a',
 	'start_of_week'          => 1,
@@ -31,11 +31,12 @@ foreach ( $qv_options as $qv_key => $qv_value ) {
 
 /* ---------- WooCommerce: store ---------- */
 $qv_wc = array(
-	'woocommerce_store_address'                       => '548 Market Street',
-	'woocommerce_store_address_2'                     => 'Suite 300',
-	'woocommerce_store_city'                          => 'San Francisco',
-	'woocommerce_store_postcode'                      => '94104',
-	'woocommerce_default_country'                     => 'US:CA',
+	// Store address: fill in WooCommerce > Settings once the business is registered.
+	'woocommerce_store_address'                       => '',
+	'woocommerce_store_address_2'                     => '',
+	'woocommerce_store_city'                          => '',
+	'woocommerce_store_postcode'                      => '',
+	'woocommerce_default_country'                     => 'IR',
 	'woocommerce_currency'                            => 'USD',
 	'woocommerce_currency_pos'                        => 'left',
 	'woocommerce_price_thousand_sep'                  => ',',
@@ -84,13 +85,13 @@ $qv_wc = array(
 	'woocommerce_allow_tracking'                      => 'no',
 	'woocommerce_analytics_enabled'                   => 'yes',
 	// Emails.
-	'woocommerce_email_from_name'                     => 'Quantivista',
-	'woocommerce_email_from_address'                  => 'hello@quantivista.com',
+	'woocommerce_email_from_name'                     => 'Hassani Labs',
+	'woocommerce_email_from_address'                  => get_option( 'admin_email' ),
 	'woocommerce_email_base_color'                    => '#3A54E8',
 	'woocommerce_email_background_color'              => '#F5F7FC',
 	'woocommerce_email_body_background_color'         => '#FFFFFF',
 	'woocommerce_email_text_color'                    => '#0B1026',
-	'woocommerce_email_footer_text'                   => '{site_title} — Software products & web design studio · 548 Market Street, San Francisco',
+	'woocommerce_email_footer_text'                   => '{site_title} — Software for clinics and growing businesses',
 );
 foreach ( $qv_wc as $qv_key => $qv_value ) {
 	update_option( $qv_key, $qv_value );
@@ -111,12 +112,13 @@ update_option(
 	'woocommerce_bacs_accounts',
 	array(
 		array(
-			'account_name'   => 'Quantivista Inc.',
-			'account_number' => '000123456789',
-			'bank_name'      => 'Example Bank (placeholder)',
-			'sort_code'      => '121000358',
+			// Placeholder: enter the real account in WooCommerce > Settings > Payments.
+			'account_name'   => 'Hassani Labs',
+			'account_number' => '',
+			'bank_name'      => '',
+			'sort_code'      => '',
 			'iban'           => '',
-			'bic'            => 'EXAMUS33',
+			'bic'            => '',
 		),
 	)
 );
@@ -164,22 +166,22 @@ if ( defined( 'WPSEO_VERSION' ) ) {
 		'wpseo_titles',
 		array(
 			'company_or_person'  => 'company',
-			'company_name'       => 'Quantivista',
-			'website_name'       => 'Quantivista',
+			'company_name'       => 'Hassani Labs',
+			'website_name'       => 'Hassani Labs',
 			'breadcrumbs-enable' => true,
 			'breadcrumbs-sep'    => '/',
 			'breadcrumbs-home'   => 'Home',
 			'separator'          => 'sc-pipe',
-			'title-home-wpseo'   => '%%sitename%% %%sep%% Web Software, Mobile Apps & Website Design',
-			'metadesc-home-wpseo' => 'Quantivista builds and sells production-ready web software, mobile app kits and conversion-focused website design services for growing teams.',
+			'title-home-wpseo'   => '%%sitename%% %%sep%% Clinic Software, Web Applications & Websites',
+			'metadesc-home-wpseo' => 'Hassani Labs is the studio of Mahsa Hassani, physician and software engineer: acupuncture clinic software, custom ASP.NET Core and React applications, and websites.',
 		)
 	);
 	qvs_update_option_merge( 'wpseo', array( 'enable_xml_sitemap' => true, 'show_onboarding_notice' => false ) );
 	qvs_update_option_merge(
 		'wpseo_social',
 		array(
-			'twitter_site'  => 'quantivista',
-			'other_social_urls' => array( 'https://www.linkedin.com/company/quantivista', 'https://github.com/quantivista' ),
+			'twitter_site'  => '',
+			'other_social_urls' => array( 'https://www.linkedin.com/in/mahsahassani', 'https://github.com/mahsaitc' ),
 		)
 	);
 }

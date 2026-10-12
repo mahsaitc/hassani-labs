@@ -12,7 +12,7 @@ $qv_is_index = ! empty( $args['is_index'] );
 if ( $qv_is_index ) {
 	$qv_blog_page = (int) get_option( 'page_for_posts' );
 	$qv_title     = $qv_blog_page ? get_the_title( $qv_blog_page ) : __( 'Blog', 'quantivista' );
-	$qv_lead      = $qv_blog_page && has_excerpt( $qv_blog_page ) ? get_the_excerpt( $qv_blog_page ) : __( 'Engineering notes, product updates and practical guides from the Quantivista team.', 'quantivista' );
+	$qv_lead      = $qv_blog_page && has_excerpt( $qv_blog_page ) ? get_the_excerpt( $qv_blog_page ) : __( 'Notes on software design, testing and building software for clinics.', 'quantivista' );
 	$qv_eyebrow   = __( 'Insights', 'quantivista' );
 } else {
 	$qv_title   = get_the_archive_title();

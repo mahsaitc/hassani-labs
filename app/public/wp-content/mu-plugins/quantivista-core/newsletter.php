@@ -74,7 +74,7 @@ function qvc_newsletter_subscribe() {
 	update_post_meta( $subscriber_id, 'qv_source', esc_url_raw( $back ) );
 
 	$confirm = add_query_arg( array( 'qv_nl_confirm' => $token, 'sid' => $subscriber_id ), home_url( '/' ) );
-	$body    = '<p>' . esc_html__( 'Please confirm your subscription to the Quantivista newsletter:', 'quantivista' ) . '</p>'
+	$body    = '<p>' . esc_html__( 'Please confirm your subscription to the Hassani Labs newsletter:', 'quantivista' ) . '</p>'
 		. '<p><a href="' . esc_url( $confirm ) . '">' . esc_html__( 'Yes, subscribe me', 'quantivista' ) . '</a></p>'
 		. '<p style="font-size:13px;">' . esc_html__( 'If you did not request this, just ignore this email.', 'quantivista' ) . '</p>';
 

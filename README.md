@@ -1,7 +1,11 @@
-# Quantivista
+# Hassani Labs
 
-Corporate website and software store for **Quantivista** — web software, mobile apps and website design services.
-WordPress + WooCommerce with a custom theme.
+Website of **Hassani Labs**, the studio of Mahsa Hassani (physician and computer engineer): who I am, my work
+(case studies, skills, timeline, blog) and a store for my products and services, starting with the acupuncture
+clinic software. WordPress + WooCommerce with a custom theme.
+
+Started from the Quantivista site; the portfolio content comes from mahsahassani.dev. Code names (theme folder
+`quantivista`, `qv_` prefixes, text domain) are kept on purpose; only what visitors see was renamed.
 
 > Work in progress — full setup notes are added as milestones land.
 
@@ -29,3 +33,20 @@ Sales pages for the acupuncture clinic software (sold and installed per clinic):
 - `/clinic-software/` (English, template "Clinic Software (English)"): plans are the hidden service products `QV-CLINIC-BASIC`, `QV-CLINIC-PRO` and `QV-CLINIC-RENEW`, bought through the normal store checkout. Set their prices in Products; until then the page shows "Price on request".
 
 Code: `mu-plugins/quantivista-core/clinic-orders.php`, `themes/quantivista/inc/clinic.php`, `template-parts/clinic/`, `assets/css/clinic-software.css`. The Persian font is Vazirmatn (SIL OFL 1.1).
+
+## Portfolio
+
+- Projects are the `qv_project` post type at `/work/` (case study pages at `/work/<slug>/`), with a
+  Technology taxonomy and fields for tagline, year, repository link, demo link, stack and metrics.
+- Content source: `scripts/seed/data/portfolio.json` (projects, timeline, skills, blog posts). Edit it and re-run
+  `wp eval-file scripts/seed.php portfolio blog`, or edit the posts in the admin afterwards.
+- Founder name, role and intro on the homepage: Appearance > Customize > Hassani Labs Options.
+
+## Before launch
+
+- Sample store products (FlowPilot, Nexus CRM and the others) are seeded as **drafts**. Delete them or replace
+  them with real products; only the clinic software products are real.
+- Policy pages are draft templates: complete the business details and governing law, and have them reviewed.
+- Bank details for the bank-transfer payment method are empty: fill them in WooCommerce > Settings > Payments.
+- Testimonials and client logos are empty on purpose. Add real ones only, with the client's permission.
+- Add a photo on the About page (featured image) and a résumé link (`qv_resume_url` field) if wanted.

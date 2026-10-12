@@ -24,6 +24,7 @@ $qv_includes = array(
 	'nav-walker',
 	'customizer',
 	'clinic',
+	'work',
 );
 
 if ( class_exists( 'WooCommerce' ) ) {

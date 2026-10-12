@@ -29,7 +29,7 @@ $qv_blog_url = get_option( 'page_for_posts' ) ? get_permalink( get_option( 'page
 			qv_section_head(
 				array(
 					'eyebrow' => __( 'From the blog', 'quantivista' ),
-					'title'   => __( 'Insights from our engineering & design teams', 'quantivista' ),
+					'title'   => __( 'Notes from the workbench', 'quantivista' ),
 					'id'      => 'blog-title',
 					'align'   => 'left',
 				)

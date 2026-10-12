@@ -33,7 +33,7 @@ if ( ! $qv_products ) {
 			qv_section_head(
 				array(
 					'eyebrow' => __( 'Featured products', 'quantivista' ),
-					'title'   => __( 'Ship faster with battle-tested software', 'quantivista' ),
+					'title'   => __( 'Software you can buy today', 'quantivista' ),
 					'id'      => 'featured-title',
 					'align'   => 'left',
 				)

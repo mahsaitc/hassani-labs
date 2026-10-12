@@ -44,10 +44,10 @@ function qvc_send_verification_email( $user_id ) {
 
 	$url     = qvc_account_url( array( 'qv_verify' => $token, 'uid' => $user_id ) );
 	$name    = $user->first_name ? $user->first_name : $user->display_name;
-	$subject = __( 'Verify your Quantivista account', 'quantivista' );
+	$subject = __( 'Verify your Hassani Labs account', 'quantivista' );
 	$heading = __( 'Confirm your email address', 'quantivista' );
 	$body    = '<p>' . sprintf( /* translators: %s: name */ esc_html__( 'Hi %s,', 'quantivista' ), esc_html( $name ) ) . '</p>'
-		. '<p>' . esc_html__( 'Thanks for creating a Quantivista account. Please confirm your email address to activate it and start shopping.', 'quantivista' ) . '</p>'
+		. '<p>' . esc_html__( 'Thanks for creating a Hassani Labs account. Please confirm your email address to activate it and start shopping.', 'quantivista' ) . '</p>'
 		. '<p style="margin:28px 0;"><a href="' . esc_url( $url ) . '" style="display:inline-block;padding:12px 22px;border-radius:10px;background:#070B24;color:#ffffff;font-weight:600;text-decoration:none;">' . esc_html__( 'Verify my email', 'quantivista' ) . '</a></p>'
 		. '<p style="font-size:13px;">' . esc_html__( 'This link expires in 48 hours. If you did not create an account, you can safely ignore this email.', 'quantivista' ) . '</p>';
 
