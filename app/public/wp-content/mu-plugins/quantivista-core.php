@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Quantivista Core
- * Description: Site functionality for Quantivista — content types, custom fields, store extensions (license keys, wishlist, checkout rules), account email verification, Store Manager role, newsletter and security hardening.
+ * Description: Site functionality for Quantivista — content types, custom fields, store extensions (license keys, wishlist, checkout rules), account email verification, Store Manager role, newsletter, clinic software orders and security hardening.
  * Version:     1.0.0
  * Author:      Quantivista
  * License:     GPL-2.0-or-later
@@ -23,6 +23,7 @@ require_once QVC_DIR . '/security.php';
 require_once QVC_DIR . '/roles.php';
 require_once QVC_DIR . '/accounts.php';
 require_once QVC_DIR . '/newsletter.php';
+require_once QVC_DIR . '/clinic-orders.php';
 
 // Store modules depend on WooCommerce, which loads after mu-plugins.
 add_action(

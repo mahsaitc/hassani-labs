@@ -23,6 +23,7 @@ $qv_includes = array(
 	'template-tags',
 	'nav-walker',
 	'customizer',
+	'clinic',
 );
 
 if ( class_exists( 'WooCommerce' ) ) {

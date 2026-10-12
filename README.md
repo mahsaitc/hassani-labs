@@ -20,3 +20,12 @@ scripts/                                    provisioning & seed scripts
 ```
 
 WordPress core, third-party plugins, uploads and `wp-config.php` are not tracked — see `.gitignore`.
+
+## Clinic software pages
+
+Sales pages for the acupuncture clinic software (sold and installed per clinic):
+
+- `/clinic-software-fa/` (Persian, template "Clinic Software (Persian)"): plans and an order form. Orders are saved under **Clinic Orders** in the dashboard and paid through Zarinpal in toman, independent of the store currency. Set the merchant ID, test mode, plan prices, demo link and notification email at **Clinic Orders → Settings**. A plan without a price, or no merchant ID, takes the order as a request without payment.
+- `/clinic-software/` (English, template "Clinic Software (English)"): plans are the hidden service products `QV-CLINIC-BASIC`, `QV-CLINIC-PRO` and `QV-CLINIC-RENEW`, bought through the normal store checkout. Set their prices in Products; until then the page shows "Price on request".
+
+Code: `mu-plugins/quantivista-core/clinic-orders.php`, `themes/quantivista/inc/clinic.php`, `template-parts/clinic/`, `assets/css/clinic-software.css`. The Persian font is Vazirmatn (SIL OFL 1.1).

@@ -297,6 +297,28 @@ $qv_wishlist = qvs_page(
 	array( 'post_excerpt' => 'Products you saved for later.' )
 );
 
+$qv_clinic_fa = qvs_page(
+	'page-clinic-software-fa',
+	'نرم‌افزار کلینیک طب سوزنی',
+	'clinic-software-fa',
+	'',
+	array(
+		'template'     => 'page-templates/clinic-software.php',
+		'post_excerpt' => 'سایت، نوبت‌دهی آنلاین و پرونده الکترونیک بیمار برای کلینیک‌های طب سوزنی، نصب‌شده روی هاست خود کلینیک.',
+	)
+);
+
+$qv_clinic_en = qvs_page(
+	'page-clinic-software',
+	'Acupuncture Clinic Software',
+	'clinic-software',
+	'',
+	array(
+		'template'     => 'page-templates/clinic-software-en.php',
+		'post_excerpt' => 'Website, online booking and electronic patient records for acupuncture clinics, installed on the clinic\'s own host.',
+	)
+);
+
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $qv_home );
 update_option( 'page_for_posts', $qv_blog );
@@ -483,6 +505,7 @@ foreach ( $qv_mega as $qv_slug => $qv_col ) {
 		qvs_menu_item( $qv_primary, $qv_cat_item( $qv_child ), $qv_col_id );
 	}
 }
+qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_en, 'Clinic Software' ) );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_blog ) );
 $qv_policies_item = qvs_menu_item( $qv_primary, $qv_page_item( $qv_policies ) );
 foreach ( array( $qv_terms, $qv_privacy, $qv_refund, $qv_license ) as $qv_pid ) {
@@ -504,6 +527,8 @@ $qv_footer_products = qvs_menu( 'Footer — Products' );
 foreach ( array( 'web-software', 'mobile-apps', 'website-design' ) as $qv_slug ) {
 	qvs_menu_item( $qv_footer_products, $qv_cat_item( $qv_slug ) );
 }
+qvs_menu_item( $qv_footer_products, $qv_page_item( $qv_clinic_en, 'Acupuncture Clinic Software' ) );
+qvs_menu_item( $qv_footer_products, $qv_page_item( $qv_clinic_fa, 'نرم‌افزار کلینیک (فارسی)' ) );
 qvs_menu_item(
 	$qv_footer_products,
 	array(

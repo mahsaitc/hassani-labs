@@ -648,5 +648,39 @@ foreach ( $qv_coupons as $qv_code => $qv_c ) {
 	$qv_coupon->save();
 }
 
+/* ------------------------------------------------------------------------
+ * Clinic software plans for the English "Clinic Software" page. Service
+ * products, hidden from the catalogue; prices are left empty for the owner
+ * to set in Products (until then the page shows "Price on request").
+ * --------------------------------------------------------------------- */
+$qv_clinic_plans = array(
+	'QV-CLINIC-BASIC' => array( 'Acupuncture Clinic Software — Basic setup', 'clinic-software-basic', 'Installed on your own host and domain, with SSL, nightly backups, your branding and one year of updates and support.' ),
+	'QV-CLINIC-PRO'   => array( 'Acupuncture Clinic Software — Professional', 'clinic-software-professional', 'Everything in Basic setup, plus your services, doctors and working hours entered, payment gateway and email connected, and online staff training.' ),
+	'QV-CLINIC-RENEW' => array( 'Acupuncture Clinic Software — Yearly renewal', 'clinic-software-renewal', 'Another year of updates, support and backup and security checks.' ),
+);
+foreach ( $qv_clinic_plans as $qv_sku => $qv_plan ) {
+	$qv_existing = wc_get_product_id_by_sku( $qv_sku );
+	$qv_product  = new WC_Product_Simple( $qv_existing ? $qv_existing : 0 );
+	$qv_product->set_props(
+		array(
+			'name'               => $qv_plan[0],
+			'slug'               => $qv_plan[1],
+			'status'             => 'publish',
+			'catalog_visibility' => 'hidden',
+			'short_description'  => $qv_plan[2],
+			'description'        => '<p>' . $qv_plan[2] . '</p><p>After checkout, we contact you within one business day to plan the installation. Please write your clinic name, domain and type of host in the project brief.</p>',
+			'sku'                => $qv_sku,
+			'virtual'            => true,
+			'downloadable'       => false,
+			'sold_individually'  => true,
+			'reviews_allowed'    => false,
+		)
+	);
+	$qv_id = $qv_product->save();
+	update_post_meta( $qv_id, 'qv_delivery', 'service' );
+	update_post_meta( $qv_id, QVS_KEY, 'product-' . $qv_plan[1] );
+}
+WP_CLI::log( '    clinic software plans: ' . implode( ', ', array_keys( $qv_clinic_plans ) ) );
+
 update_option( 'qv_seed_product_ids', $qv_product_ids );
 WP_CLI::log( '    coupons: ' . implode( ', ', array_keys( $qv_coupons ) ) );
