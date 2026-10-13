@@ -37,6 +37,7 @@ foreach ( $qv_data['projects'] as $qv_i => $qv_p ) {
 			'qv_tagline'    => $qv_p['tagline'],
 			'qv_year'       => $qv_p['year'],
 			'qv_repo'       => $qv_p['repo'],
+			'qv_demo'       => $qv_p['demo'] ?? '',
 			'qv_poster'     => $qv_p['poster'],
 			'qv_poster_alt' => $qv_p['alt'],
 			'qv_stack'      => implode( "\n", $qv_p['stack'] ),

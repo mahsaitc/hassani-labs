@@ -199,6 +199,158 @@
  ],
  "projects": [
   {
+   "slug": "kohanex",
+   "repoName": "kohanex-case-study",
+   "name": "KOHANEX",
+   "tagline": "Bilingual B2B sourcing website for a client",
+   "summary": "A bilingual English and Persian corporate website for KOHANEX, a B2B sourcing company that connects international buyers with verified Iranian suppliers. A freelance client project delivered end to end: build, localization, SEO, security and handover.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "WordPress",
+    "WPML",
+    "Elementor",
+    "PHP"
+   ],
+   "stack": [
+    "WordPress + Astra",
+    "Elementor",
+    "WPML + String Translation (EN/FA, RTL)",
+    "Contact Form 7",
+    "Custom PHP mu-plugin",
+    "Yoast SEO"
+   ],
+   "repo": "",
+   "demo": "https://kohanex.com",
+   "architecture": {
+    "overview": "WordPress with the Astra theme and Elementor, localized with WPML into English and Persian (right to left). Site-specific logic lives in a custom mu-plugin rather than in the theme. The production code belongs to the client; the repository is a documentation-only case study.",
+    "layers": [
+     {
+      "name": "Bilingual content",
+      "detail": "Full English and Persian versions with WPML, RTL layout, a client-approved terminology list used in both languages, and a separate Persian inquiry form."
+     },
+     {
+      "name": "Inquiry forms",
+      "detail": "Contact Form 7 with custom mail tags and honeypot spam protection."
+     },
+     {
+      "name": "SEO",
+      "detail": "Yoast setup, structured data and sitemaps submitted for both languages."
+     },
+     {
+      "name": "Security",
+      "detail": "Login-attempt limiting, a review of admin accounts and SSL."
+     }
+    ]
+   },
+   "poster": "kohanex.svg",
+   "alt": "KOHANEX website in English and Persian"
+  },
+  {
+   "slug": "drsajjadi",
+   "repoName": "drsajjadi",
+   "name": "Dr. Sajjadi Psychiatry",
+   "tagline": "Persian website and patient portal for a psychiatry practice",
+   "summary": "A Persian (RTL) platform for a psychiatry practice: a scroll-controlled video hero, online appointments, an SEO-ready blog, self-assessment questionnaires, a patient portal with secure upload of medical documents, and an admin panel.",
+   "year": "2026",
+   "featured": true,
+   "tech": [
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "Prisma",
+    "Tailwind CSS",
+    "Docker"
+   ],
+   "stack": [
+    "Next.js (App Router) + TypeScript",
+    "Tailwind CSS (RTL) + Vazirmatn",
+    "GSAP ScrollTrigger + Framer Motion",
+    "PostgreSQL + Prisma ORM",
+    "Auth.js v5 (JWT sessions, roles)",
+    "Docker Compose + Nginx on a VPS"
+   ],
+   "repo": "https://github.com/mahsaitc/drsajjadi",
+   "architecture": {
+    "overview": "One Next.js App Router application split into route groups for the public site, sign-in, the patient portal and the admin panel, with Server Actions for bookings, articles and documents. PostgreSQL through Prisma; deployed with Docker Compose behind Nginx.",
+    "layers": [
+     {
+      "name": "Public site",
+      "detail": "Home, about, services, treatment methods, blog, FAQ, gallery, testimonials and self-assessment tests."
+     },
+     {
+      "name": "Patient portal",
+      "detail": "Dashboard, appointments, profile and medical documents."
+     },
+     {
+      "name": "Admin panel",
+      "detail": "Content, appointments and patients, behind role-based access."
+     },
+     {
+      "name": "Medical document security",
+      "detail": "Files stored outside the public folder under random names, checked by size, type and file signature, downloadable only by their owner or an admin, with every access written to an audit log."
+     }
+    ]
+   },
+   "outcome": {
+    "heading": "SEO",
+    "body": "Persian metadata with Open Graph on every page, sitemap and robots files, and Schema.org data for Physician, MedicalWebPage, FAQPage and BreadcrumbList."
+   },
+   "poster": "drsajjadi.svg",
+   "alt": "Dr. Sajjadi website with a video hero and appointment calendar"
+  },
+  {
+   "slug": "medadvice",
+   "repoName": "MedAdvice",
+   "name": "MedAdvice",
+   "tagline": "Online medical advice, doctor directory and health shop",
+   "summary": "An ASP.NET Core MVC platform where patients ask doctors for medical advice, browse doctors by specialty, read a health blog and buy products through a cart. Started in 2022 and later modernised to .NET 8 with security fixes and automated tests.",
+   "year": "2022",
+   "featured": true,
+   "tech": [
+    "ASP.NET Core",
+    "EF Core",
+    "SQL Server",
+    "Identity"
+   ],
+   "stack": [
+    "ASP.NET Core MVC (.NET 8)",
+    "EF Core + SQL Server",
+    "ASP.NET Core Identity",
+    "SMS web service (SOAP)",
+    "HtmlSanitizer",
+    "xUnit unit and integration tests"
+   ],
+   "repo": "https://github.com/mahsaitc/MedAdvice",
+   "architecture": {
+    "overview": "An ASP.NET Core MVC application organised in areas for the admin panel, customers and identity, with EF Core on SQL Server. Accounts use ASP.NET Core Identity with captcha on sign-in and password reset by SMS.",
+    "layers": [
+     {
+      "name": "Admin area",
+      "detail": "Doctors and specialties, advice, blog, products and homepage content."
+     },
+     {
+      "name": "Customer area",
+      "detail": "Product categories, search, product pages and the shopping cart."
+     },
+     {
+      "name": "Content safety",
+      "detail": "Rich text is sanitized when it is saved and when it is shown; a one-time tool cleaned older content."
+     },
+     {
+      "name": "Images",
+      "detail": "Moved from database blobs to file storage with a migration script; 34 specialty categories with icons."
+     }
+    ]
+   },
+   "outcome": {
+    "heading": "Tests",
+    "body": "Unit tests for the cart, uploads, security and users, and integration tests on SQL Server for anti-forgery, routing and authorization, migrations and image serving."
+   },
+   "poster": "medadvice.svg",
+   "alt": "MedAdvice doctor cards and advice questions"
+  },
+  {
    "slug": "rxclinic",
    "repoName": "clinic-appointment-api",
    "name": "RxClinic",
