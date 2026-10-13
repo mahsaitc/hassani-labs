@@ -17,7 +17,7 @@ $qv_archive  = get_post_type_archive_link( 'qv_project' );
 ?>
 <section class="section" aria-labelledby="founder-title">
 	<div class="container founder-strip" data-reveal>
-		<span class="founder-strip__avatar" aria-hidden="true"><?php echo esc_html( qv_mod( 'founder_initials' ) ); ?></span>
+		<img class="founder-strip__photo" src="<?php echo esc_url( QV_URI . '/assets/img/founder-avatar.webp?v=' . qv_asset_version( 'assets/img/founder-avatar.webp' ) ); ?>" alt="<?php echo esc_attr( qv_mod( 'founder_name' ) ); ?>" width="160" height="160" loading="lazy">
 		<div>
 			<p class="eyebrow"><?php esc_html_e( 'Founder', 'quantivista' ); ?></p>
 			<h2 id="founder-title"><?php echo esc_html( qv_mod( 'founder_name' ) ); ?></h2>
