@@ -337,6 +337,12 @@ $qv_fa_terms = qvs_fa(
 	)
 );
 
+// The Products pages exist in both languages too.
+list( $qv_products_en, $qv_products_fa ) = qvs_catalog_pages();
+if ( $qv_products_en && $qv_products_fa ) {
+	$GLOBALS['qvs_fa_pairs'][ $qv_products_en ] = (int) $qv_products_fa;
+}
+
 // The clinic software pages already exist in both languages: link them.
 $qv_clinic_en = $qv_page( 'page-clinic-software' );
 $qv_clinic_fa = $qv_page( 'page-clinic-software-fa' );
@@ -469,10 +475,7 @@ $qv_fa_primary = qvs_menu( 'Primary (فارسی)' );
 qvs_menu_item( $qv_fa_primary, $qv_fa_item( $qv_fa_home ) );
 qvs_menu_item( $qv_fa_primary, $qv_fa_item( $qv_fa_about ) );
 qvs_menu_item( $qv_fa_primary, $qv_work_item );
-if ( $qv_clinic_fa ) {
-	$qv_fa_products = qvs_menu_item( $qv_fa_primary, $qv_fa_item( $qv_clinic_fa, 'محصولات' ) );
-	qvs_menu_item( $qv_fa_primary, $qv_fa_item( $qv_clinic_fa, 'نرم‌افزار کلینیک طب سوزنی' ), $qv_fa_products );
-}
+qvs_catalog_menu( $qv_fa_primary, 'fa', $qv_products_fa );
 qvs_menu_item( $qv_fa_primary, $qv_fa_item( $qv_fa_blog ) );
 $qv_fa_policies_item = qvs_menu_item( $qv_fa_primary, $qv_fa_item( $qv_fa_policies ) );
 foreach ( array( $qv_fa_terms, $qv_fa_privacy, $qv_fa_refund, $qv_fa_license ) as $qv_pid ) {

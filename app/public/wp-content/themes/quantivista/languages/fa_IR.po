@@ -1351,3 +1351,25 @@ msgstr "از شناخت نیازهای واقعی تا ساخت راهکارها
 
 msgid "More than two decades in medicine taught me to recognise real problems and understand users' needs up close. Software engineering lets me turn that understanding into practical, precise and scalable digital solutions, from specialised software to systems that make complex processes simpler."
 msgstr "بیش از دو دهه تجربه پزشکی، به من آموخته است که چگونه مسائل واقعی را بشناسم و نیازهای کاربران را از نزدیک درک کنم. دانش مهندسی نرم‌افزار به من امکان می‌دهد این شناخت را به راهکارهای دیجیتال کاربردی، دقیق و قابل توسعه تبدیل کنم؛ از نرم‌افزارهای تخصصی گرفته تا سیستم‌هایی که فرایندهای پیچیده را ساده‌تر می‌کنند."
+
+msgid "Learn more"
+msgstr "اطلاعات بیشتر"
+
+msgid "Coming soon"
+msgstr "به‌زودی"
+
+msgid "Order custom software"
+msgstr "سفارش نرم‌افزار اختصاصی"
+
+msgid "Browse %d product"
+msgid_plural "Browse %d products"
+msgstr[0] "مشاهده %d محصول"
+
+msgid "Need software that is not listed here?"
+msgstr "نرم‌افزار مورد نیازتان در این فهرست نیست؟"
+
+msgid "Tell me what you need. I design and build custom software, apps and websites for your field."
+msgstr "نیازتان را برایم بنویسید؛ نرم‌افزار، اپلیکیشن یا وب‌سایت اختصاصی حوزه کاری شما را طراحی و پیاده‌سازی می‌کنم."
+
+msgid "Products in this category are on their way. Need one now? I can build custom software for you."
+msgstr "محصولات این دسته به‌زودی اضافه می‌شوند. همین حالا نیاز دارید؟ نرم‌افزار اختصاصی شما را می‌سازم."

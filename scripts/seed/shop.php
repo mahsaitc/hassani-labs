@@ -47,7 +47,7 @@ foreach ( $qv_tiers as $qv_slug => $qv_tier ) {
 /* ------------------------------------------------------------------------
  * Categories
  * --------------------------------------------------------------------- */
-// Theme blues, navy and cyan only (v2 keys regenerate older warm-coloured images).
+// Product image colours: theme blues, navy and cyan only.
 $qv_palettes = array(
 	'cyan'   => array( '22D3EE', '5B6CFF' ),
 	'violet' => array( '818CF8', '5B6CFF' ),
@@ -58,96 +58,8 @@ $qv_palettes = array(
 	'pink'   => array( '8B9BFF', '22D3EE' ),
 );
 
-$qv_categories = array(
-	'web-software'   => array(
-		'name'     => 'Web Software',
-		'desc'     => 'Self-hosted and cloud-ready web applications — CRM, automation, analytics and commerce tools with source code, documentation and updates.',
-		'tagline'  => 'CRM, automation & analytics platforms',
-		'icon'     => 'code',
-		'mock'     => 'qvimg_mock_dashboard',
-		'palette'  => 'cyan',
-		'order'    => 0,
-		'children' => array(
-			'crm-tools'        => array( 'CRM Tools', 'Pipelines, contact management and lead capture.', 'users', 'qvimg_mock_kanban', 'blue' ),
-			'automation-tools' => array( 'Automation Tools', 'Workflows, schedulers and integrations that remove busywork.', 'zap', 'qvimg_mock_flow', 'violet' ),
-			'analytics-bi'     => array( 'Analytics & BI', 'Dashboards, funnels and reporting for data-driven teams.', 'trending', 'qvimg_mock_dashboard', 'teal' ),
-			'ecommerce-tools'  => array( 'E-commerce Tools', 'Conversion and retention boosters for online stores.', 'bag', 'qvimg_mock_flow', 'amber' ),
-		),
-	),
-	'mobile-apps'    => array(
-		'name'     => 'Mobile Apps',
-		'desc'     => 'Production-ready iOS and Android app kits in Flutter, React Native and native Swift/Kotlin — with backend, admin panel and store-ready assets.',
-		'tagline'  => 'iOS & Android app kits with full source',
-		'icon'     => 'smartphone',
-		'mock'     => 'qvimg_mock_phones',
-		'palette'  => 'violet',
-		'order'    => 1,
-		'children' => array(
-			'business-productivity' => array( 'Business & Productivity', 'Scheduling, invoicing and team apps.', 'layers', 'qvimg_mock_phones', 'blue' ),
-			'health-fitness'        => array( 'Health & Fitness', 'Workout, nutrition and wellness app templates.', 'target', 'qvimg_mock_phones', 'green' ),
-			'app-starter-kits'      => array( 'App Starter Kits', 'Multi-app templates for marketplaces and delivery.', 'rocket', 'qvimg_mock_phones', 'amber' ),
-		),
-	),
-	'website-design' => array(
-		'name'     => 'Website Design',
-		'desc'     => 'Fixed-price website design and development packages — strategy, UX, UI and a fast, SEO-ready build delivered by our in-house team.',
-		'tagline'  => 'Fixed-price design & build packages',
-		'icon'     => 'layout',
-		'mock'     => 'qvimg_mock_landing',
-		'palette'  => 'teal',
-		'order'    => 2,
-		'children' => array(
-			'landing-pages'      => array( 'Landing Pages', 'Campaign and product launch pages built to convert.', 'target', 'qvimg_mock_landing', 'pink' ),
-			'corporate-websites' => array( 'Corporate Websites', 'Multi-page company sites on a CMS your team can edit.', 'globe', 'qvimg_mock_pages', 'cyan' ),
-			'ecommerce-stores'   => array( 'E-commerce Stores', 'WooCommerce and Shopify stores, designed end to end.', 'bag', 'qvimg_mock_landing', 'amber' ),
-		),
-	),
-);
-
-$qv_cat_ids = array();
-foreach ( $qv_categories as $qv_slug => $qv_cat ) {
-	$qv_pal   = $qv_palettes[ $qv_cat['palette'] ];
-	$qv_thumb = qvs_image(
-		"cat-{$qv_slug}-v2",
-		"category-{$qv_slug}-v2.jpg",
-		fn() => call_user_func( $qv_cat['mock'], 1440, 900, $qv_cat['name'], $qv_pal[0], $qv_pal[1], $qv_slug ),
-		"{$qv_cat['name']} by Hassani Labs"
-	);
-	$qv_cat_ids[ $qv_slug ] = qvs_term(
-		$qv_cat['name'],
-		'product_cat',
-		$qv_slug,
-		array( 'description' => $qv_cat['desc'], 'parent' => 0 ),
-		array(
-			'thumbnail_id'   => $qv_thumb,
-			'order'          => $qv_cat['order'],
-			'qv_cat_icon'    => $qv_cat['icon'],
-			'qv_cat_tagline' => $qv_cat['tagline'],
-		)
-	);
-
-	$qv_i = 0;
-	foreach ( $qv_cat['children'] as $qv_child_slug => $qv_child ) {
-		$qv_cpal   = $qv_palettes[ $qv_child[4] ];
-		$qv_cthumb = qvs_image(
-			"cat-{$qv_child_slug}-v2",
-			"category-{$qv_child_slug}-v2.jpg",
-			fn() => call_user_func( $qv_child[3], 1440, 900, $qv_child[0], $qv_cpal[0], $qv_cpal[1], $qv_child_slug ),
-			"{$qv_child[0]} — {$qv_cat['name']}"
-		);
-		$qv_cat_ids[ $qv_child_slug ] = qvs_term(
-			$qv_child[0],
-			'product_cat',
-			$qv_child_slug,
-			array( 'description' => $qv_child[1], 'parent' => $qv_cat_ids[ $qv_slug ] ),
-			array(
-				'thumbnail_id' => $qv_cthumb,
-				'order'        => $qv_i++,
-				'qv_cat_icon'  => $qv_child[2],
-			)
-		);
-	}
-}
+// Categories by platform and by field: data/catalog.php (helpers.php).
+$qv_cat_ids = qvs_catalog_terms();
 
 // Keep "Uncategorized" out of the way.
 $qv_uncat = get_term_by( 'slug', 'uncategorized', 'product_cat' );
@@ -193,7 +105,7 @@ $qv_products = array(
 		'sku'       => 'QV-NEXUS',
 		'name'      => 'Nexus CRM',
 		'slug'      => 'nexus-crm',
-		'cats'      => array( 'web-software', 'crm-tools' ),
+		'cats'      => array( 'web-apps', 'business-accounting' ),
 		'type'      => 'variable',
 		'tiers'     => array( 'standard' => 149, 'professional' => 299, 'unlimited' => 599 ),
 		'featured'  => true,
@@ -213,7 +125,7 @@ $qv_products = array(
 		'sku'       => 'QV-LEADLOOP',
 		'name'      => 'LeadLoop',
 		'slug'      => 'leadloop',
-		'cats'      => array( 'web-software', 'crm-tools' ),
+		'cats'      => array( 'web-apps', 'business-accounting' ),
 		'type'      => 'simple',
 		'price'     => 79,
 		'palette'   => 'pink',
@@ -231,7 +143,7 @@ $qv_products = array(
 		'sku'       => 'QV-FLOWPILOT',
 		'name'      => 'FlowPilot',
 		'slug'      => 'flowpilot',
-		'cats'      => array( 'web-software', 'automation-tools' ),
+		'cats'      => array( 'web-apps', 'ai-automation' ),
 		'type'      => 'variable',
 		'tiers'     => array( 'standard' => 199, 'professional' => 399, 'unlimited' => 799 ),
 		'featured'  => true,
@@ -251,7 +163,7 @@ $qv_products = array(
 		'sku'       => 'QV-TASKFORGE',
 		'name'      => 'TaskForge',
 		'slug'      => 'taskforge',
-		'cats'      => array( 'web-software', 'automation-tools' ),
+		'cats'      => array( 'web-apps', 'ai-automation' ),
 		'type'      => 'simple',
 		'price'     => 59,
 		'sale'      => 49,
@@ -270,7 +182,7 @@ $qv_products = array(
 		'sku'       => 'QV-QUANTA',
 		'name'      => 'Quanta Analytics',
 		'slug'      => 'quanta-analytics',
-		'cats'      => array( 'web-software', 'analytics-bi' ),
+		'cats'      => array( 'web-apps', 'business-accounting' ),
 		'type'      => 'variable',
 		'tiers'     => array( 'standard' => 129, 'professional' => 259, 'unlimited' => 519 ),
 		'featured'  => true,
@@ -290,7 +202,7 @@ $qv_products = array(
 		'sku'       => 'QV-CARTPULSE',
 		'name'      => 'CartPulse',
 		'slug'      => 'cartpulse',
-		'cats'      => array( 'web-software', 'ecommerce-tools' ),
+		'cats'      => array( 'web-apps', 'ecommerce' ),
 		'type'      => 'simple',
 		'price'     => 89,
 		'palette'   => 'green',
@@ -308,7 +220,7 @@ $qv_products = array(
 		'sku'       => 'QV-PULSEFIT',
 		'name'      => 'PulseFit — Fitness App Kit',
 		'slug'      => 'pulsefit-fitness-app-kit',
-		'cats'      => array( 'mobile-apps', 'health-fitness' ),
+		'cats'      => array( 'mobile-apps', 'medical-healthcare' ),
 		'type'      => 'variable',
 		'tiers'     => array( 'standard' => 249, 'professional' => 499, 'unlimited' => 999 ),
 		'featured'  => true,
@@ -328,7 +240,7 @@ $qv_products = array(
 		'sku'       => 'QV-SHIFTMATE',
 		'name'      => 'ShiftMate — Team Scheduling App',
 		'slug'      => 'shiftmate-team-scheduling-app',
-		'cats'      => array( 'mobile-apps', 'business-productivity' ),
+		'cats'      => array( 'mobile-apps', 'business-accounting' ),
 		'type'      => 'simple',
 		'price'     => 179,
 		'palette'   => 'blue',
@@ -346,7 +258,7 @@ $qv_products = array(
 		'sku'       => 'QV-COURIER',
 		'name'      => 'Courier — Delivery App Starter Kit',
 		'slug'      => 'courier-delivery-app-starter-kit',
-		'cats'      => array( 'mobile-apps', 'app-starter-kits' ),
+		'cats'      => array( 'mobile-apps', 'ecommerce' ),
 		'type'      => 'variable',
 		'tiers'     => array( 'standard' => 299, 'professional' => 599, 'unlimited' => 1199 ),
 		'palette'   => 'amber',
@@ -365,7 +277,7 @@ $qv_products = array(
 		'sku'       => 'QV-POCKETINV',
 		'name'      => 'Pocket Invoice',
 		'slug'      => 'pocket-invoice',
-		'cats'      => array( 'mobile-apps', 'business-productivity' ),
+		'cats'      => array( 'mobile-apps', 'business-accounting' ),
 		'type'      => 'simple',
 		'price'     => 69,
 		'sale'      => 59,
@@ -384,7 +296,7 @@ $qv_products = array(
 		'sku'       => 'QV-SVC-LANDING',
 		'name'      => 'Launch Landing Page',
 		'slug'      => 'launch-landing-page',
-		'cats'      => array( 'website-design', 'landing-pages' ),
+		'cats'      => array( 'websites' ),
 		'type'      => 'service',
 		'price'     => 1490,
 		'palette'   => 'pink',
@@ -400,7 +312,7 @@ $qv_products = array(
 		'sku'       => 'QV-SVC-BUSINESS',
 		'name'      => 'Business Website Package',
 		'slug'      => 'business-website-package',
-		'cats'      => array( 'website-design', 'corporate-websites' ),
+		'cats'      => array( 'websites', 'business-accounting' ),
 		'type'      => 'service',
 		'price'     => 3900,
 		'featured'  => true,
@@ -417,7 +329,7 @@ $qv_products = array(
 		'sku'       => 'QV-SVC-STORE',
 		'name'      => 'E-commerce Store Build',
 		'slug'      => 'ecommerce-store-build',
-		'cats'      => array( 'website-design', 'ecommerce-stores' ),
+		'cats'      => array( 'websites', 'ecommerce' ),
 		'type'      => 'service',
 		'price'     => 7500,
 		'palette'   => 'amber',
@@ -433,7 +345,7 @@ $qv_products = array(
 		'sku'       => 'QV-SVC-CARE',
 		'name'      => 'Website Care Plan — 6 Months',
 		'slug'      => 'website-care-plan-6-months',
-		'cats'      => array( 'website-design', 'corporate-websites' ),
+		'cats'      => array( 'websites', 'business-accounting' ),
 		'type'      => 'service',
 		'price'     => 1190,
 		'palette'   => 'green',
@@ -485,7 +397,7 @@ foreach ( $qv_products as $qv_index => $qv_p ) {
 			'description'        => $qv_desc,
 			'short_description'  => $qv_p['short'],
 			'sku'                => $qv_p['sku'],
-			'category_ids'       => array_map( fn( $s ) => $qv_cat_ids[ $s ], $qv_p['cats'] ),
+			'category_ids'       => qvs_catalog_ids( $qv_cat_ids, $qv_p['cats'] ),
 			'image_id'           => $qv_images[0],
 			'gallery_image_ids'  => array_slice( $qv_images, 1 ),
 			'reviews_allowed'    => true,
@@ -634,6 +546,7 @@ foreach ( $qv_clinic_plans as $qv_sku => $qv_plan ) {
 			'short_description'  => $qv_plan[2],
 			'description'        => '<p>' . $qv_plan[2] . '</p><p>After checkout, we contact you within one business day to plan the installation. Please write your clinic name, domain and type of host in the project brief.</p>',
 			'sku'                => $qv_sku,
+			'category_ids'       => qvs_catalog_ids( $qv_cat_ids, array( 'medical-healthcare', 'web-apps' ) ),
 			'virtual'            => true,
 			'downloadable'       => false,
 			'sold_individually'  => true,

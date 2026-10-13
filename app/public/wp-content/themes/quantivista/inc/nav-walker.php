@@ -4,7 +4,8 @@
  *
  * Usage in the menu editor: add the CSS class "mega-menu" to a top-level
  * item. Its children become columns; grandchildren become column links.
- * Menu item descriptions are shown under column headings.
+ * Menu item descriptions are shown under column headings. A CSS class
+ * "qv-icon-<name>" on any item puts that icon (inc/icons.php) before its label.
  *
  * @package Quantivista
  */
@@ -79,6 +80,12 @@ class QV_Nav_Walker extends Walker_Nav_Menu {
 
 		$item_output  = $args->before ?? '';
 		$item_output .= '<a' . $attr_html . '>';
+		foreach ( $classes as $class ) {
+			if ( str_starts_with( (string) $class, 'qv-icon-' ) ) {
+				$item_output .= qv_icon( substr( $class, 8 ), array( 'size' => 16 ) );
+				break;
+			}
+		}
 		$item_output .= '<span class="menu-link__label">' . $title . '</span>';
 		if ( $this->in_mega && 1 === $depth && ! empty( $item->description ) ) {
 			$item_output .= '<span class="menu-link__desc">' . esc_html( $item->description ) . '</span>';
@@ -103,7 +110,7 @@ class QV_Nav_Walker extends Walker_Nav_Menu {
 	 * Promo card at the end of the mega panel.
 	 */
 	private function mega_promo() {
-		$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
+		$shop_url = function_exists( 'qv_products_page_url' ) ? qv_products_page_url() : home_url( '/' );
 		return '<aside class="mega-promo">'
 			. '<p class="eyebrow">' . esc_html__( 'New release', 'quantivista' ) . '</p>'
 			. '<p class="mega-promo__title">' . esc_html( qv_mod( 'mega_promo_title' ) ) . '</p>'

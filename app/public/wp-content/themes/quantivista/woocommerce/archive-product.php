@@ -113,6 +113,23 @@ $qv_chips = ( is_shop() || $qv_term ) ? get_terms(
 				?>
 			</div>
 
+			<?php $qv_pages = $qv_term ? qv_cat_pages( $qv_term ) : array(); ?>
+			<?php if ( $qv_pages ) : ?>
+				<ul class="cat-pages">
+					<?php foreach ( $qv_pages as $qv_page ) : ?>
+						<li>
+							<a class="cat-pages__link" href="<?php echo esc_url( get_permalink( $qv_page ) ); ?>">
+								<span class="cat-pages__title"><?php echo esc_html( get_the_title( $qv_page ) ); ?></span>
+								<?php if ( has_excerpt( $qv_page ) ) : ?>
+									<span class="cat-pages__text"><?php echo esc_html( get_the_excerpt( $qv_page ) ); ?></span>
+								<?php endif; ?>
+								<span class="link-arrow"><?php esc_html_e( 'Learn more', 'quantivista' ); ?> <?php qv_the_icon( 'arrow-right', array( 'size' => 16 ) ); ?></span>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+
 			<?php
 			if ( woocommerce_product_loop() ) {
 				/**
@@ -145,6 +162,17 @@ $qv_chips = ( is_shop() || $qv_term ) ? get_terms(
 				 * @hooked woocommerce_pagination - 10
 				 */
 				do_action( 'woocommerce_after_shop_loop' );
+			} elseif ( $qv_pages ) {
+				// The category's products are the pages listed above.
+			} elseif ( $qv_term && ! is_search() && ! qv_cat_product_count( $qv_term ) ) {
+				?>
+				<div class="empty-state">
+					<?php qv_the_icon( 'rocket', array( 'size' => 28 ) ); ?>
+					<h2 class="catalog-cta__title"><?php esc_html_e( 'Coming soon', 'quantivista' ); ?></h2>
+					<p><?php esc_html_e( 'Products in this category are on their way. Need one now? I can build custom software for you.', 'quantivista' ); ?></p>
+					<a class="btn btn--primary" href="<?php echo esc_url( qv_localize_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Order custom software', 'quantivista' ); ?></a>
+				</div>
+				<?php
 			} else {
 				/**
 				 * Hook: woocommerce_no_products_found.

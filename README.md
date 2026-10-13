@@ -48,6 +48,21 @@ The Contact page (both languages) uses a built-in form (`mu-plugins/quantivista-
 plugin is needed. Each message is saved under **Messages** in the dashboard and emailed to the contact email set in
 the Customizer (Hassani Labs Options > Contact & Footer). Social profiles and the map location are set there too.
 
+## Product categories and the Products menu
+
+- Categories are in two groups, **Software by platform** (mobile apps, Windows/desktop, web applications, websites,
+  WordPress plugins and themes, bots) and **Software by field** (medical, engineering, legal, education, business and
+  accounting, e-commerce, AI and automation, restaurants, real estate). List, Persian names, icons and descriptions:
+  `scripts/seed/data/catalog.php`.
+- The **Products** page (`/products/`, Persian `/fa/products-fa/`, template "Products Catalogue") shows every category as
+  a card. A category with no products yet says "Coming soon" and links to the contact page for custom software.
+- The main menu's **Products** item opens a mega menu with both groups. In English a category opens its store page;
+  in Persian (the store is English only) it opens its card on the Persian Products page.
+- Each category's Persian name and description, icon, and "Product pages" (pages shown as its products, e.g.
+  `clinic-software` under Medical and Web applications) can be edited in Products > Categories.
+- To add the categories, pages and menu to a site that is already set up, without touching anything else:
+  `wp eval-file scripts/seed.php catalog`.
+
 ## Languages (English and Persian)
 
 - [Polylang](https://wordpress.org/plugins/polylang/) (free): English at the site root, Persian under `/fa/`.

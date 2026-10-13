@@ -178,3 +178,226 @@ function qvs_blocks_html( array $blocks ) {
 	}
 	return $html;
 }
+
+/* ------------------------------------------------------------------------
+ * Product catalogue (data/catalog.php): categories, Products pages, menus
+ * --------------------------------------------------------------------- */
+
+/**
+ * Create or update the product categories; returns slug => term id.
+ * Removes the sample categories of the original Quantivista store.
+ */
+function qvs_catalog_terms() {
+	foreach ( array( 'web-software', 'crm-tools', 'automation-tools', 'analytics-bi', 'ecommerce-tools', 'business-productivity', 'health-fitness', 'app-starter-kits', 'website-design', 'landing-pages', 'corporate-websites', 'ecommerce-stores' ) as $slug ) {
+		$old = get_term_by( 'slug', $slug, 'product_cat' );
+		if ( $old ) {
+			wp_delete_term( $old->term_id, 'product_cat' );
+		}
+	}
+
+	$ids   = array();
+	$order = 0;
+	foreach ( require __DIR__ . '/data/catalog.php' as $group_slug => $group ) {
+		$ids[ $group_slug ] = qvs_term(
+			$group['name'],
+			'product_cat',
+			$group_slug,
+			array( 'description' => $group['desc'], 'parent' => 0 ),
+			array(
+				'order'       => $order++,
+				'qv_cat_icon' => $group['icon'],
+				'qv_name_fa'  => $group['name_fa'],
+				'qv_desc_fa'  => $group['desc_fa'],
+			)
+		);
+		$i = 0;
+		foreach ( $group['cats'] as $slug => $cat ) {
+			$ids[ $slug ] = qvs_term(
+				$cat[0],
+				'product_cat',
+				$slug,
+				array( 'description' => $cat[3], 'parent' => $ids[ $group_slug ] ),
+				array(
+					'order'        => $i++,
+					'qv_cat_icon'  => $cat[2],
+					'qv_name_fa'   => $cat[1],
+					'qv_desc_fa'   => $cat[4],
+					'qv_cat_pages' => $cat[5] ?? '',
+				)
+			);
+		}
+	}
+	return $ids;
+}
+
+/**
+ * Category ids for a product: the given categories plus their groups.
+ */
+function qvs_catalog_ids( array $ids, array $slugs ) {
+	$out = array();
+	foreach ( $slugs as $slug ) {
+		if ( empty( $ids[ $slug ] ) ) {
+			continue;
+		}
+		$out[] = $ids[ $slug ];
+		$term  = get_term( $ids[ $slug ], 'product_cat' );
+		if ( $term && $term->parent ) {
+			$out[] = (int) $term->parent;
+		}
+	}
+	return array_values( array_unique( $out ) );
+}
+
+/**
+ * The "Products" catalogue pages: English /products/ and Persian
+ * /fa/products-fa/ (linked when Polylang has Persian). Returns array( en, fa ).
+ */
+function qvs_catalog_pages() {
+	$en = qvs_upsert_post(
+		'page-products',
+		array(
+			'post_type'    => 'page',
+			'post_title'   => 'Products',
+			'post_name'    => 'products',
+			'post_content' => '',
+			'post_excerpt' => 'Software and websites by platform and by field. Pick a category, or ask me for custom software.',
+			'menu_order'   => 2,
+		)
+	);
+	$fa = qvs_upsert_post(
+		'page-products-fa',
+		array(
+			'post_type'    => 'page',
+			'post_title'   => 'محصولات',
+			'post_name'    => 'products-fa',
+			'post_content' => '',
+			'post_excerpt' => 'نرم‌افزار و وب‌سایت بر اساس پلتفرم و حوزه کاری. دسته مورد نظرتان را انتخاب کنید یا نرم‌افزار اختصاصی سفارش دهید.',
+			'menu_order'   => 2,
+		)
+	);
+	foreach ( array( $en, $fa ) as $id ) {
+		update_post_meta( $id, '_wp_page_template', 'page-templates/products.php' );
+	}
+	if ( $en && $fa && function_exists( 'pll_set_post_language' ) && in_array( 'fa', (array) pll_languages_list(), true ) ) {
+		pll_set_post_language( $en, 'en' );
+		pll_set_post_language( $fa, 'fa' );
+		pll_save_post_translations( array( 'en' => $en, 'fa' => $fa ) );
+	}
+	return array( $en, $fa );
+}
+
+/**
+ * Append the "Products" mega menu (groups as columns, categories under
+ * them) to a menu. English links go to the store categories, Persian links
+ * to the category cards on the Persian Products page ("#…" links with the
+ * class qv-catalog-link, completed by the theme in the current language).
+ */
+function qvs_catalog_menu( $menu_id, $lang, $page_id ) {
+	$fa  = 'fa' === $lang;
+	$top = qvs_menu_item(
+		$menu_id,
+		array(
+			'menu-item-type'      => $page_id ? 'post_type' : 'custom',
+			'menu-item-object'    => $page_id ? 'page' : 'custom',
+			'menu-item-object-id' => (int) $page_id,
+			'menu-item-url'       => $page_id ? '' : home_url( '/shop/' ),
+			'menu-item-title'     => $fa ? 'محصولات' : 'Products',
+			'menu-item-classes'   => 'mega-menu mega-menu--catalog',
+		)
+	);
+	foreach ( require __DIR__ . '/data/catalog.php' as $group_slug => $group ) {
+		$col = qvs_menu_item(
+			$menu_id,
+			array(
+				'menu-item-type'        => 'custom',
+				'menu-item-url'         => '#' . $group_slug,
+				'menu-item-classes'     => 'qv-catalog-link',
+				'menu-item-title'       => $fa ? $group['name_fa'] : $group['name'],
+				'menu-item-description' => $fa ? $group['desc_fa'] : $group['desc'],
+			),
+			$top
+		);
+		foreach ( $group['cats'] as $slug => $cat ) {
+			$term = get_term_by( 'slug', $slug, 'product_cat' );
+			$item = array(
+				'menu-item-title'   => $fa ? $cat[1] : $cat[0],
+				'menu-item-classes' => 'qv-icon-' . $cat[2],
+			);
+			if ( $fa || ! $term ) {
+				$item = array_merge(
+					$item,
+					array(
+						'menu-item-type'    => 'custom',
+						'menu-item-url'     => '#cat-' . $slug,
+						'menu-item-classes' => 'qv-icon-' . $cat[2] . ' qv-catalog-link',
+					)
+				);
+			} else {
+				$item += array(
+					'menu-item-type'      => 'taxonomy',
+					'menu-item-object'    => 'product_cat',
+					'menu-item-object-id' => $term->term_id,
+				);
+			}
+			qvs_menu_item( $menu_id, $item, $col );
+		}
+	}
+	return $top;
+}
+
+/**
+ * Replace the "Products" item (and everything under it) of an existing menu
+ * with the catalogue mega menu, keeping its place in the menu.
+ */
+function qvs_catalog_replace_menu( $menu_id, $lang, $page_id ) {
+	$items    = (array) wp_get_nav_menu_items( $menu_id );
+	$children = array();
+	foreach ( $items as $item ) {
+		$children[ (int) $item->menu_item_parent ][] = (int) $item->ID;
+	}
+	$before = array();
+	$after  = array();
+	$found  = false;
+	foreach ( $items as $item ) {
+		if ( (int) $item->menu_item_parent ) {
+			continue;
+		}
+		if ( ! $found && in_array( $item->title, array( 'Products', 'محصولات' ), true ) ) {
+			$found = true;
+			$drop  = array( (int) $item->ID );
+			while ( $drop ) {
+				$id = array_pop( $drop );
+				array_push( $drop, ...( $children[ $id ] ?? array() ) );
+				wp_delete_post( $id, true );
+			}
+			continue;
+		}
+		$found ? ( $after[] = $item ) : ( $before[] = $item );
+	}
+
+	// New items get rising ids in tree order.
+	$top   = qvs_catalog_menu( $menu_id, $lang, $page_id );
+	$added = array_map( 'intval', wp_list_pluck( (array) wp_get_nav_menu_items( $menu_id ), 'ID' ) );
+	$added = array_filter( $added, fn( $id ) => $id >= $top );
+	sort( $added );
+
+	// Re-number: items before, the new Products tree, items after (each with its sub-items).
+	$tree = function ( $item ) use ( &$tree, $children ) {
+		$out = array( (int) $item->ID );
+		foreach ( $children[ (int) $item->ID ] ?? array() as $child ) {
+			$out = array_merge( $out, $tree( (object) array( 'ID' => $child ) ) );
+		}
+		return $out;
+	};
+	$order = array();
+	foreach ( $before as $item ) {
+		$order = array_merge( $order, $tree( $item ) );
+	}
+	$order = array_merge( $order, $added );
+	foreach ( $after as $item ) {
+		$order = array_merge( $order, $tree( $item ) );
+	}
+	foreach ( $order as $position => $id ) {
+		wp_update_post( array( 'ID' => (int) $id, 'menu_order' => $position + 1 ) );
+	}
+}
