@@ -79,37 +79,6 @@ foreach ( array( 'product-updates', 'design', 'mobile', 'business' ) as $qv_slug
  * Articles
  * --------------------------------------------------------------------- */
 
-/**
- * Article body blocks (p, h2, ul, quote, code) to HTML. Inline **bold**
- * and `code` are kept.
- */
-function qvs_blocks_html( array $blocks ) {
-	$inline = function ( $text ) {
-		$text = esc_html( $text );
-		$text = preg_replace( '/\*\*(.+?)\*\*/', '<strong>$1</strong>', $text );
-		return preg_replace( '/`([^`]+)`/', '<code>$1</code>', $text );
-	};
-	$html = '';
-	foreach ( $blocks as $b ) {
-		switch ( $b['type'] ) {
-			case 'h2':
-				$html .= '<h2>' . $inline( $b['text'] ) . "</h2>\n";
-				break;
-			case 'ul':
-				$html .= '<ul>' . implode( '', array_map( fn( $i ) => '<li>' . $inline( $i ) . '</li>', $b['items'] ) ) . "</ul>\n";
-				break;
-			case 'quote':
-				$html .= '<blockquote><p>' . $inline( $b['text'] ) . "</p></blockquote>\n";
-				break;
-			case 'code':
-				$html .= '<pre><code class="language-' . esc_attr( $b['lang'] ?? 'text' ) . '">' . esc_html( $b['code'] ) . "</code></pre>\n";
-				break;
-			default:
-				$html .= '<p>' . $inline( $b['text'] ) . "</p>\n";
-		}
-	}
-	return $html;
-}
 
 $qv_palettes = array( array( '22D3EE', '5B6CFF' ), array( 'A78BFA', '22D3EE' ), array( '2DD4BF', '3B82F6' ) );
 foreach ( $qv_data['posts'] as $qv_i => $qv_p ) {

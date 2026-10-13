@@ -32,7 +32,7 @@ add_action(
 add_action(
 	'wp_head',
 	function () {
-		if ( is_page_template( 'page-templates/clinic-software.php' ) ) {
+		if ( is_page_template( 'page-templates/clinic-software.php' ) && ! is_rtl() ) {
 			printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( QV_URI . '/assets/fonts/vazirmatn-variable.woff2' ) );
 		}
 	},
@@ -65,7 +65,7 @@ function qv_clinic_plan_cards( $lang ) {
 	foreach ( $t['plans'] as $key => $plan ) {
 		$product = function_exists( 'wc_get_product_id_by_sku' ) ? wc_get_product( wc_get_product_id_by_sku( QV_CLINIC_SKUS[ $key ] ) ) : null;
 		$buyable = $product && $product->is_purchasable() && '' !== $product->get_price();
-		$contact = get_page_by_path( 'contact' );
+		$contact = qv_page_by_path( 'contact' );
 		$cards[ $key ] = array_merge(
 			$plan,
 			array(

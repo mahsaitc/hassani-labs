@@ -2817,3 +2817,95 @@ input[type="radio"] {
 .work-facts > * + .work-facts__title,
 .work-facts > * + .work-card__tags,
 .work-facts > * + .btn { margin-top: 20px; }
+
+/* ==========================================================================
+   Persian (fa): Vazirmatn and RTL details. main-rtl.css is generated from
+   this file with rtlcss (scripts/build-rtl.sh); edit main.css only.
+   ========================================================================== */
+@font-face {
+	font-family: "Vazirmatn";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/vazirmatn-variable.woff2") format("woff2");
+}
+
+html[lang^="fa"] {
+	--font: "Vazirmatn", "Inter", ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
+}
+
+html[lang^="fa"] body { line-height: 1.9; }
+
+html[lang^="fa"] h1,
+html[lang^="fa"] h2,
+html[lang^="fa"] h3,
+html[lang^="fa"] h4,
+html[lang^="fa"] .eyebrow,
+html[lang^="fa"] .work-facts__title {
+	letter-spacing: 0;
+	line-height: 1.5;
+	text-transform: none;
+}
+
+html[lang^="fa"] input,
+html[lang^="fa"] select,
+html[lang^="fa"] textarea,
+html[lang^="fa"] button { font-family: var(--font); }
+
+/* Code, emails and URLs stay left-to-right inside Persian text. */
+html[dir="rtl"] pre,
+html[dir="rtl"] code,
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="url"],
+html[dir="rtl"] input[type="tel"] { /*rtl:ignore*/ direction: ltr; /*rtl:ignore*/ text-align: left; }
+
+html[dir="rtl"] .icon--arrow-right,
+html[dir="rtl"] .icon--arrow-left,
+html[dir="rtl"] .icon--chevron-right,
+html[dir="rtl"] .icon--chevron-left { transform: scaleX(-1); }
+
+/* Language switcher */
+.lang-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.lang-switch a {
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: var(--r-sm);
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: inherit;
+	opacity: 0.75;
+}
+
+.lang-switch a:hover,
+.lang-switch .is-current a { opacity: 1; background: rgba(255, 255, 255, 0.1); }
+
+/* Header switcher from tablet up; inside the mobile menu below that. */
+.lang-switch--header { display: none; }
+.lang-switch--mobile { padding-top: 20px; }
+
+@media (min-width: 640px) {
+	.lang-switch--header { display: inline-flex; }
+}
+
+@media (min-width: 1080px) {
+	.lang-switch--mobile { display: none; }
+}
+
+/* Latin-only text keeps Latin digits (Vazirmatn draws Persian digits). */
+html[lang^="fa"] a[href^="mailto:"],
+html[lang^="fa"] code,
+html[lang^="fa"] pre,
+html[lang^="fa"] input[type="email"],
+html[lang^="fa"] input[type="url"],
+html[lang^="fa"] .work-metrics strong,
+html[lang^="fa"] .work-facts .check-list,
+html[lang^="fa"] .chip { font-family: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif; }

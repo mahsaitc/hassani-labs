@@ -20,9 +20,9 @@ foreach ( get_posts( array( 'post_type' => 'qv_slide', 'posts_per_page' => 5, 'o
 		'video'      => qv_field( 'qv_slide_video', $qv_post->ID ),
 		'image_id'   => get_post_thumbnail_id( $qv_post ),
 		'cta_label'  => qv_field( 'qv_slide_cta_label', $qv_post->ID ),
-		'cta_url'    => qv_field( 'qv_slide_cta_url', $qv_post->ID ),
+		'cta_url'    => qv_localize_url( qv_field( 'qv_slide_cta_url', $qv_post->ID ) ),
 		'cta2_label' => qv_field( 'qv_slide_cta2_label', $qv_post->ID ),
-		'cta2_url'   => qv_field( 'qv_slide_cta2_url', $qv_post->ID ),
+		'cta2_url'   => qv_localize_url( qv_field( 'qv_slide_cta2_url', $qv_post->ID ) ),
 	);
 }
 

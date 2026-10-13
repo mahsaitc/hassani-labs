@@ -78,7 +78,7 @@ function qv_site_logo( $context = 'header' ) {
 	}
 	printf(
 		'<a class="site-logo" href="%1$s" rel="home">%2$s<span class="site-logo__text">%3$s</span></a>',
-		esc_url( home_url( '/' ) ),
+		esc_url( qv_home_url() ),
 		qv_logo_mark( 'qv-mark-' . $context ), // phpcs:ignore WordPress.Security.EscapeOutput
 		esc_html( get_bloginfo( 'name' ) )
 	);
@@ -135,7 +135,7 @@ function qv_breadcrumbs() {
 		);
 		return;
 	}
-	echo '<nav class="breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumb', 'quantivista' ) . '"><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'quantivista' ) . '</a><span class="breadcrumbs__sep" aria-hidden="true">/</span><span>' . esc_html( wp_get_document_title() ) . '</span></nav>';
+	echo '<nav class="breadcrumbs" aria-label="' . esc_attr__( 'Breadcrumb', 'quantivista' ) . '"><a href="' . esc_url( qv_home_url() ) . '">' . esc_html__( 'Home', 'quantivista' ) . '</a><span class="breadcrumbs__sep" aria-hidden="true">/</span><span>' . esc_html( wp_get_document_title() ) . '</span></nav>';
 }
 
 /**

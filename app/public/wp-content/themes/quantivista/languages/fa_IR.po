@@ -1,0 +1,1185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Hassani Labs theme\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: quantivista\n"
+
+msgid "Hassani Labs"
+msgstr "Hassani Labs"
+
+msgid "Custom, performance-focused theme for Hassani Labs: founder portfolio, software products, WooCommerce store and services."
+msgstr "قالب اختصاصی و سریع برای Hassani Labs: نمونه‌کارهای بنیان‌گذار، محصولات نرم‌افزاری، فروشگاه ووکامرس و خدمات."
+
+msgid "Mahsa Hassani"
+msgstr "مهسا حسنی"
+
+msgid "https://www.linkedin.com/in/mahsahassani"
+msgstr "https://www.linkedin.com/in/mahsahassani"
+
+msgid "This page drifted out of orbit"
+msgstr "این صفحه پیدا نشد"
+
+msgid "The link may be broken or the page may have moved. Try a search or head back to safer ground."
+msgstr "ممکن است پیوند خراب باشد یا صفحه جابه‌جا شده باشد. جست‌وجو کنید یا به صفحه اصلی برگردید."
+
+msgid "Back to home"
+msgstr "بازگشت به صفحه اصلی"
+
+msgid "Browse products"
+msgstr "دیدن محصولات"
+
+msgid "Work"
+msgstr "نمونه‌کارها"
+
+msgid "Selected work"
+msgstr "نمونه‌کارهای منتخب"
+
+msgid "Case studies from production-minded projects: what was built, how it is structured, and what it proves."
+msgstr "پروژه‌هایی که برای کار واقعی ساخته شده‌اند: چه چیزی ساخته شد، ساختارش چیست و چه چیزی را ثابت می‌کند."
+
+msgid "No projects yet."
+msgstr "هنوز پروژه‌ای ثبت نشده است."
+
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s دیدگاه"
+
+msgid "Comments are closed."
+msgstr "دیدگاه‌ها بسته شده‌اند."
+
+msgid "Join the discussion"
+msgstr "دیدگاه خود را بنویسید"
+
+msgid "Your email address will not be published. Comments are moderated."
+msgstr "نشانی ایمیل شما منتشر نمی‌شود. دیدگاه‌ها پس از بررسی نمایش داده می‌شوند."
+
+msgid "Thanks! Please check your inbox to confirm your subscription."
+msgstr "ممنون! لطفاً ایمیل خود را باز کنید و عضویت را تأیید کنید."
+
+msgid "You are already subscribed — thank you!"
+msgstr "شما قبلاً عضو شده‌اید، ممنون!"
+
+msgid "Please enter a valid email address."
+msgstr "لطفاً یک نشانی ایمیل درست وارد کنید."
+
+msgid "Company"
+msgstr "درباره"
+
+msgid "Products"
+msgstr "محصولات"
+
+msgid "Policies"
+msgstr "قوانین"
+
+msgid "Stay in the loop"
+msgstr "از تازه‌ها باخبر شوید"
+
+msgid "Product launches, engineering deep-dives and exclusive discounts. One email a month, no spam."
+msgstr "محصولات تازه، یادداشت‌های فنی و تخفیف‌های ویژه. ماهی یک ایمیل، بدون هرزنامه."
+
+msgid "Leave this field empty"
+msgstr "این فیلد را خالی بگذارید"
+
+msgid "Email address"
+msgstr "نشانی ایمیل"
+
+msgid "you@company.com"
+msgstr "you@company.com"
+
+msgid "Subscribe"
+msgstr "عضویت"
+
+msgid "By subscribing you agree to our %s."
+msgstr "با عضویت، %s را می‌پذیرید."
+
+msgid "Privacy Policy"
+msgstr "حریم خصوصی"
+
+msgid "All rights reserved."
+msgstr "همه حقوق محفوظ است."
+
+msgid "Secure payments"
+msgstr "پرداخت امن"
+
+msgid "Skip to content"
+msgstr "رفتن به محتوا"
+
+msgid "Primary"
+msgstr "اصلی"
+
+msgid "Search"
+msgstr "جست‌وجو"
+
+msgid "My account"
+msgstr "حساب من"
+
+msgid "Log in or register"
+msgstr "ورود یا ثبت‌نام"
+
+msgid "Cart, %d item"
+msgid_plural "Cart, %d items"
+msgstr[0] "سبد خرید، %d مورد"
+
+msgid "Menu"
+msgstr "منو"
+
+msgid "Hassani Labs Options"
+msgstr "تنظیمات Hassani Labs"
+
+msgid "Header"
+msgstr "سربرگ"
+
+msgid "CTA button label"
+msgstr "متن دکمه اصلی"
+
+msgid "CTA button URL"
+msgstr "نشانی دکمه اصلی"
+
+msgid "Mega menu promo title"
+msgstr "عنوان معرفی در منوی محصولات"
+
+msgid "Mega menu promo text"
+msgstr "متن معرفی در منوی محصولات"
+
+msgid "Trust Bar Stats"
+msgstr "آمار نوار اعتماد"
+
+msgid "Final CTA Section"
+msgstr "بخش دعوت پایانی"
+
+msgid "Title"
+msgstr "عنوان"
+
+msgid "Text"
+msgstr "متن"
+
+msgid "Button label"
+msgstr "متن دکمه"
+
+msgid "Button URL"
+msgstr "نشانی دکمه"
+
+msgid "Contact & Footer"
+msgstr "تماس و پانویس"
+
+msgid "Footer about text"
+msgstr "متن درباره در پانویس"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Phone"
+msgstr "تلفن"
+
+msgid "Address"
+msgstr "نشانی"
+
+msgid "Office hours"
+msgstr "ساعات کاری"
+
+msgid "Social Profiles"
+msgstr "شبکه‌های اجتماعی"
+
+msgid "Stat %d value"
+msgstr "مقدار آمار %d"
+
+msgid "Stat %d label"
+msgstr "عنوان آمار %d"
+
+msgid "Saved to wishlist"
+msgstr "به علاقه‌مندی‌ها اضافه شد"
+
+msgid "Removed from wishlist"
+msgstr "از علاقه‌مندی‌ها حذف شد"
+
+msgid "Link copied"
+msgstr "پیوند کپی شد"
+
+msgid "Show %s submenu"
+msgstr "نمایش زیرمنوی %s"
+
+msgid "New release"
+msgstr "محصول تازه"
+
+msgid "Browse all products"
+msgstr "دیدن همه محصولات"
+
+msgid "Primary Menu"
+msgstr "منوی اصلی"
+
+msgid "Footer — Quick Links"
+msgstr "پانویس: پیوندهای سریع"
+
+msgid "Footer — Products"
+msgstr "پانویس: محصولات"
+
+msgid "Footer — Policies"
+msgstr "پانویس: قوانین"
+
+msgid "Blog Sidebar"
+msgstr "ستون کناری بلاگ"
+
+msgid "Shown next to the blog index and archives."
+msgstr "کنار فهرست مقاله‌ها و بایگانی‌ها نمایش داده می‌شود."
+
+msgid "Shop Sidebar"
+msgstr "ستون کناری فروشگاه"
+
+msgid "Shown below the product filters on shop and category pages."
+msgstr "زیر فیلترهای محصول در فروشگاه و دسته‌ها نمایش داده می‌شود."
+
+msgid "Footer — Extra"
+msgstr "پانویس: ردیف اضافه"
+
+msgid "Optional row above the footer bottom bar."
+msgstr "ردیف اختیاری بالای نوار پایین پانویس."
+
+msgid "%d min read"
+msgid_plural "%d min read"
+msgstr[0] "%d دقیقه مطالعه"
+
+msgid "Breadcrumb"
+msgstr "مسیر صفحه"
+
+msgid "Home"
+msgstr "خانه"
+
+msgid "Share on X"
+msgstr "اشتراک در X"
+
+msgid "Share on LinkedIn"
+msgstr "اشتراک در لینکدین"
+
+msgid "Share on Facebook"
+msgstr "اشتراک در فیسبوک"
+
+msgid "Share by email"
+msgstr "ارسال با ایمیل"
+
+msgid "Share"
+msgstr "اشتراک‌گذاری"
+
+msgid "Copy link"
+msgstr "کپی پیوند"
+
+msgid "Hassani Labs on %s"
+msgstr "Hassani Labs در %s"
+
+msgid "Rated %s out of 5"
+msgstr "امتیاز %s از ۵"
+
+msgid "Previous page"
+msgstr "صفحه قبل"
+
+msgid "Next page"
+msgstr "صفحه بعد"
+
+msgid "Service"
+msgstr "خدمت"
+
+msgid "Download"
+msgstr "دانلودی"
+
+msgid "Choose license"
+msgstr "انتخاب مجوز"
+
+msgid "Order package"
+msgstr "سفارش بسته"
+
+msgid "Add to cart"
+msgstr "افزودن به سبد"
+
+msgid "Order this package"
+msgstr "سفارش این بسته"
+
+msgid "From"
+msgstr "از"
+
+msgid "Sale"
+msgstr "تخفیف"
+
+msgid "Live demo"
+msgstr "نسخه نمایشی"
+
+msgid "(opens in a new tab)"
+msgstr "(در زبانه تازه باز می‌شود)"
+
+msgid "Secure checkout"
+msgstr "پرداخت امن"
+
+msgid "Milestone-based delivery"
+msgstr "تحویل مرحله‌به‌مرحله"
+
+msgid "14-day money-back"
+msgstr "۱۴ روز ضمانت بازگشت پول"
+
+msgid "Dedicated project manager"
+msgstr "مدیر پروژه اختصاصی"
+
+msgid "12 months support"
+msgstr "۱۲ ماه پشتیبانی"
+
+msgid "Delivery"
+msgstr "تحویل"
+
+msgid "Delivered by Hassani Labs"
+msgstr "تحویل توسط Hassani Labs"
+
+msgid "Instant download + license key"
+msgstr "دانلود فوری + کلید مجوز"
+
+msgid "Version"
+msgstr "نسخه"
+
+msgid "Last updated"
+msgstr "آخرین به‌روزرسانی"
+
+msgid "SKU"
+msgstr "شناسه محصول"
+
+msgid "Category"
+msgstr "دسته"
+
+msgid "Overview"
+msgstr "معرفی"
+
+msgid "Features"
+msgstr "امکانات"
+
+msgid "What's Included"
+msgstr "چه چیزهایی شامل است"
+
+msgid "Requirements"
+msgstr "پیش‌نیازها"
+
+msgid "Choose a license"
+msgstr "یک مجوز انتخاب کنید"
+
+msgid "Most popular"
+msgstr "پرطرفدار"
+
+msgid "About Us"
+msgstr "درباره ما"
+
+msgid "About Hassani Labs"
+msgstr "درباره Hassani Labs"
+
+msgid "Résumé (PDF)"
+msgstr "رزومه (PDF)"
+
+msgid "What drives us"
+msgstr "آنچه مرا پیش می‌برد"
+
+msgid "Mission, vision & values"
+msgstr "مأموریت، چشم‌انداز و ارزش‌ها"
+
+msgid "Our mission"
+msgstr "مأموریت"
+
+msgid "Our vision"
+msgstr "چشم‌انداز"
+
+msgid "Skills"
+msgstr "مهارت‌ها"
+
+msgid "What I work with"
+msgstr "ابزارهایی که با آن‌ها کار می‌کنم"
+
+msgid "Path so far"
+msgstr "مسیری که آمده‌ام"
+
+msgid "From medicine to software"
+msgstr "از پزشکی تا نرم‌افزار"
+
+msgid "Case studies"
+msgstr "نمونه‌کارها"
+
+msgid "Clinic Software (English)"
+msgstr "نرم‌افزار کلینیک (انگلیسی)"
+
+msgid "Clinic Software (Persian)"
+msgstr "نرم‌افزار کلینیک (فارسی)"
+
+msgid "Contact"
+msgstr "تماس"
+
+msgid "Office"
+msgstr "محل کار"
+
+msgid "Hours"
+msgstr "ساعات"
+
+msgid "Tell me about your project"
+msgstr "درباره پروژه‌تان بنویسید"
+
+msgid "I reply within two business days. Fields marked * are required."
+msgstr "ظرف دو روز کاری پاسخ می‌دهم. پر کردن فیلدهای ستاره‌دار لازم است."
+
+msgid "The contact form is being set up. Meanwhile, email me at"
+msgstr "فرم تماس در حال راه‌اندازی است. تا آن زمان به این نشانی ایمیل بزنید:"
+
+msgid "FAQ"
+msgstr "پرسش‌های پرتکرار"
+
+msgid "Questions we hear a lot"
+msgstr "پرسش‌هایی که زیاد می‌شنوم"
+
+msgid "Policies Index"
+msgstr "فهرست قوانین"
+
+msgid "Legal"
+msgstr "قوانین"
+
+msgid "Policy Page"
+msgstr "صفحه قانون"
+
+msgid "Last updated:"
+msgstr "آخرین به‌روزرسانی:"
+
+msgid "Results for &ldquo;%s&rdquo;"
+msgstr "نتیجه‌های «%s»"
+
+msgid "Articles & pages"
+msgstr "مقاله‌ها و صفحه‌ها"
+
+msgid "No matches found"
+msgstr "چیزی پیدا نشد"
+
+msgid "Try a broader keyword such as “CRM”, “automation” or “mobile”."
+msgstr "یک واژه کلی‌تر را امتحان کنید، مثلاً «کلینیک» یا «وب»."
+
+msgid "No articles matched your search."
+msgstr "هیچ مقاله‌ای با جست‌وجوی شما جور نبود."
+
+msgid "Search products and articles"
+msgstr "جست‌وجوی محصولات و مقاله‌ها"
+
+msgid "Search products, articles…"
+msgstr "جست‌وجوی محصولات، مقاله‌ها…"
+
+msgid "Case study"
+msgstr "نمونه‌کار"
+
+msgid "Stack"
+msgstr "فناوری‌ها"
+
+msgid "Source code"
+msgstr "کد منبع"
+
+msgid "All work"
+msgstr "همه نمونه‌کارها"
+
+msgid "Share this article"
+msgstr "اشتراک‌گذاری این مقاله"
+
+msgid "Pages:"
+msgstr "صفحه‌ها:"
+
+msgid "Tags"
+msgstr "برچسب‌ها"
+
+msgid "Previous article"
+msgstr "مقاله قبلی"
+
+msgid "Next article"
+msgstr "مقاله بعدی"
+
+msgid "Keep reading"
+msgstr "ادامه مطالعه"
+
+msgid "Related articles"
+msgstr "مقاله‌های مرتبط"
+
+msgid "About the author"
+msgstr "درباره نویسنده"
+
+msgid "Written by"
+msgstr "نوشته"
+
+msgid "More articles by %s"
+msgstr "مقاله‌های دیگر %s"
+
+msgid "Blog"
+msgstr "بلاگ"
+
+msgid "Notes on software design, testing and building software for clinics."
+msgstr "یادداشت‌هایی درباره طراحی نرم‌افزار، تست و ساخت نرم‌افزار برای کلینیک‌ها."
+
+msgid "Insights"
+msgstr "نوشته‌ها"
+
+msgid "Tag"
+msgstr "برچسب"
+
+msgid "Author"
+msgstr "نویسنده"
+
+msgid "Archive"
+msgstr "بایگانی"
+
+msgid "Blog categories"
+msgstr "دسته‌های بلاگ"
+
+msgid "All"
+msgstr "همه"
+
+msgid "Nothing published here yet"
+msgstr "هنوز چیزی منتشر نشده است"
+
+msgid "Check back soon, or search for something specific."
+msgstr "بعداً سر بزنید یا موضوع مشخصی را جست‌وجو کنید."
+
+msgid "Blog sidebar"
+msgstr "ستون کناری بلاگ"
+
+msgid "From the blog"
+msgstr "از بلاگ"
+
+msgid "Notes from the workbench"
+msgstr "یادداشت‌های کارگاه"
+
+msgid "View all articles"
+msgstr "همه مقاله‌ها"
+
+msgid "What we build"
+msgstr "آنچه می‌سازم"
+
+msgid "Software and services for every stage of growth"
+msgstr "نرم‌افزار و خدمات برای هر مرحله از رشد"
+
+msgid "Buy a proven product and launch this week, or partner with our studio for a website designed around your customers."
+msgstr "یک محصول آماده بخرید و همین هفته شروع کنید، یا یک وب‌سایت سفارشی متناسب با مشتری‌هایتان بخواهید."
+
+msgid "%d product"
+msgid_plural "%d products"
+msgstr[0] "%d محصول"
+
+msgid "Explore"
+msgstr "دیدن"
+
+msgid "Free consultation"
+msgstr "مشاوره رایگان"
+
+msgid "Featured products"
+msgstr "محصولات ویژه"
+
+msgid "Software you can buy today"
+msgstr "نرم‌افزارهایی که همین امروز می‌توانید بخرید"
+
+msgid "View all"
+msgstr "دیدن همه"
+
+msgid "Previous products"
+msgstr "محصولات قبلی"
+
+msgid "Next products"
+msgstr "محصولات بعدی"
+
+msgid "Highlights"
+msgstr "ویژگی‌های اصلی"
+
+msgid "%1$d of %2$d"
+msgstr "%1$d از %2$d"
+
+msgid "New"
+msgstr "تازه"
+
+msgid "Show slide %1$d: %2$s"
+msgstr "نمایش اسلاید %1$d: %2$s"
+
+msgid "Pause slideshow"
+msgstr "توقف نمایش اسلایدها"
+
+msgid "Previous slide"
+msgstr "اسلاید قبلی"
+
+msgid "Next slide"
+msgstr "اسلاید بعدی"
+
+msgid "Testimonials"
+msgstr "نظر مشتریان"
+
+msgid "What clients say"
+msgstr "مشتری‌ها چه می‌گویند"
+
+msgid "Previous testimonials"
+msgstr "نظرهای قبلی"
+
+msgid "Next testimonials"
+msgstr "نظرهای بعدی"
+
+msgid "Company highlights"
+msgstr "نکته‌های کلیدی"
+
+msgid "Trusted by product teams at"
+msgstr "مورد اعتماد تیم‌های"
+
+msgid "Tested code"
+msgstr "کد تست‌شده"
+
+msgid "Typed, tested and documented. The rules that matter, like no double bookings, are proven by automated tests."
+msgstr "با نوع‌دهی، تست و مستندات. قانون‌های مهم، مثل جلوگیری از نوبت تکراری، با تست خودکار اثبات می‌شوند."
+
+msgid "Secure by default"
+msgstr "امن از ابتدا"
+
+msgid "Two-factor login for staff, encrypted sensitive fields, rate limits and encrypted backups."
+msgstr "ورود دومرحله‌ای برای کارکنان، رمزگذاری داده‌های حساس، محدودیت تلاش ورود و پشتیبان رمزگذاری‌شده."
+
+msgid "Talk to the author"
+msgstr "گفت‌وگو با خود سازنده"
+
+msgid "Support comes from the person who wrote the code, in English or Persian."
+msgstr "پشتیبانی را همان کسی می‌دهد که کد را نوشته است، به فارسی یا انگلیسی."
+
+msgid "Clear setup"
+msgstr "راه‌اندازی روشن"
+
+msgid "Install packages, step-by-step guides and a written handover checklist for every installation."
+msgstr "بسته نصب، راهنمای قدم‌به‌قدم و چک‌لیست تحویل مکتوب برای هر نصب."
+
+msgid "Designed and built by me, not outsourced"
+msgstr "طراحی و ساخت توسط خودم، بدون برون‌سپاری"
+
+msgid "A written scope and a fixed price before work starts"
+msgstr "محدوده کار مکتوب و قیمت ثابت پیش از شروع"
+
+msgid "Your data and your domain stay yours"
+msgstr "داده‌ها و دامنه شما متعلق به خودتان می‌ماند"
+
+msgid "Accessibility and performance checked on every page"
+msgstr "دسترس‌پذیری و سرعت در همه صفحه‌ها بررسی می‌شود"
+
+msgid "Medical software shaped by real clinical work"
+msgstr "نرم‌افزار پزشکی برآمده از کار بالینی واقعی"
+
+msgid "Why Hassani Labs"
+msgstr "چرا Hassani Labs"
+
+msgid "A physician who builds software"
+msgstr "پزشکی که نرم‌افزار می‌سازد"
+
+msgid "Twenty years in medicine taught me what clinics actually need. Software engineering lets me build it properly."
+msgstr "بیست سال پزشکی به من آموخت کلینیک‌ها واقعاً به چه نیاز دارند. مهندسی نرم‌افزار به من امکان می‌دهد آن را درست بسازم."
+
+msgid "How I work"
+msgstr "روش کار من"
+
+msgid "One person for your software and your website"
+msgstr "یک نفر برای نرم‌افزار و وب‌سایت شما"
+
+msgid "Start with a product, extend it with custom features, and launch it on a website built by the same person. Fewer handoffs, clearer results."
+msgstr "با یک محصول شروع کنید، امکانات سفارشی به آن اضافه کنید و آن را روی وب‌سایتی که همان شخص ساخته راه بیندازید. واسطه کمتر، نتیجه روشن‌تر."
+
+msgid "About me"
+msgstr "درباره من"
+
+msgid "Founder"
+msgstr "بنیان‌گذار"
+
+msgid "More about me"
+msgstr "بیشتر درباره من"
+
+msgid "Featured"
+msgstr "ویژه"
+
+msgid "All products"
+msgstr "همه محصولات"
+
+msgid "Price"
+msgstr "قیمت"
+
+msgid "Min"
+msgstr "کمترین"
+
+msgid "Max"
+msgstr "بیشترین"
+
+msgid "Under $100"
+msgstr "زیر ۱۰۰ دلار"
+
+msgid "$100–$500"
+msgstr "۱۰۰ تا ۵۰۰ دلار"
+
+msgid "$500+"
+msgstr "بیش از ۵۰۰ دلار"
+
+msgid "Rating"
+msgstr "امتیاز"
+
+msgid "Any rating"
+msgstr "هر امتیازی"
+
+msgid "5 only"
+msgstr "فقط ۵"
+
+msgid "%s & up"
+msgstr "%s و بالاتر"
+
+msgid "Software download"
+msgstr "نرم‌افزار دانلودی"
+
+msgid "Service package"
+msgstr "بسته خدمات"
+
+msgid "Apply filters"
+msgstr "اعمال فیلترها"
+
+msgid "Reset all"
+msgstr "پاک کردن همه"
+
+msgid "Clinic software, web applications and website packages — built, documented and supported by Hassani Labs."
+msgstr "نرم‌افزار کلینیک، نرم‌افزار تحت وب و بسته‌های وب‌سایت؛ ساخته، مستند و پشتیبانی‌شده توسط Hassani Labs."
+
+msgid "Store"
+msgstr "فروشگاه"
+
+msgid "Categories"
+msgstr "دسته‌ها"
+
+msgid "Product filters"
+msgstr "فیلتر محصولات"
+
+msgid "Filters"
+msgstr "فیلترها"
+
+msgid "Close filters"
+msgstr "بستن فیلترها"
+
+msgid "Orders"
+msgstr "سفارش‌ها"
+
+msgid "Downloads"
+msgstr "دانلودها"
+
+msgid "License keys"
+msgstr "کلیدهای مجوز"
+
+msgid "Saved items"
+msgstr "موارد ذخیره‌شده"
+
+msgid "Dashboard"
+msgstr "پیشخوان"
+
+msgid "Welcome back, %s"
+msgstr "خوش آمدید، %s"
+
+msgid "Track orders, download your software, copy license keys and manage your billing details — all in one place."
+msgstr "سفارش‌ها را پیگیری کنید، نرم‌افزارتان را دانلود کنید، کلیدهای مجوز را کپی کنید و اطلاعات صورت‌حساب را مدیریت کنید؛ همه در یک‌جا."
+
+msgid "Log out"
+msgstr "خروج"
+
+msgid "My Orders"
+msgstr "سفارش‌های من"
+
+msgid "Order"
+msgstr "سفارش"
+
+msgid "Date"
+msgstr "تاریخ"
+
+msgid "Status"
+msgstr "وضعیت"
+
+msgid "Total"
+msgstr "مجموع"
+
+msgid "Actions"
+msgstr "عملیات"
+
+msgid "View"
+msgstr "مشاهده"
+
+msgid "You haven't placed any orders yet."
+msgstr "هنوز سفارشی ثبت نکرده‌اید."
+
+msgid "My Downloads"
+msgstr "دانلودهای من"
+
+msgid "Software you purchase will be available to download here once payment is confirmed."
+msgstr "نرم‌افزاری که می‌خرید، پس از تأیید پرداخت اینجا برای دانلود آماده می‌شود."
+
+msgid "Quantivista Core"
+msgstr "Quantivista Core"
+
+msgid "Site functionality for Hassani Labs — content types, custom fields, store extensions (license keys, wishlist, checkout rules), account email verification, Store Manager role, newsletter, clinic software orders and security hardening."
+msgstr "امکانات سایت Hassani Labs: نوع‌های محتوا، فیلدهای سفارشی، افزونه‌های فروشگاه، تأیید ایمیل حساب، نقش مدیر فروشگاه، خبرنامه، سفارش نرم‌افزار کلینیک و تقویت امنیت."
+
+msgid "Verify your Hassani Labs account"
+msgstr "حساب Hassani Labs خود را تأیید کنید"
+
+msgid "Confirm your email address"
+msgstr "نشانی ایمیل خود را تأیید کنید"
+
+msgid "Hi %s,"
+msgstr "سلام %s،"
+
+msgid "Thanks for creating a Hassani Labs account. Please confirm your email address to activate it and start shopping."
+msgstr "ممنون که در Hassani Labs حساب ساختید. لطفاً نشانی ایمیل خود را تأیید کنید تا حساب فعال شود و بتوانید خرید کنید."
+
+msgid "Verify my email"
+msgstr "تأیید ایمیل"
+
+msgid "This link expires in 48 hours. If you did not create an account, you can safely ignore this email."
+msgstr "این پیوند ۴۸ ساعت اعتبار دارد. اگر شما حساب نساخته‌اید، این ایمیل را نادیده بگیرید."
+
+msgid "<strong>Please verify your email address first.</strong> Check your inbox for the verification link, or <a href=\"%s\">send it again</a>."
+msgstr "<strong>لطفاً اول نشانی ایمیل خود را تأیید کنید.</strong> پیوند تأیید را در صندوق ایمیل پیدا کنید، یا <a href=\"%s\">دوباره بفرستید</a>."
+
+msgid "Almost there! We sent a verification link to your email address. Please confirm it, then log in."
+msgstr "تقریباً تمام است! پیوند تأیید را به ایمیل شما فرستادیم. آن را تأیید کنید و بعد وارد شوید."
+
+msgid "Your email address is verified. You can now log in."
+msgstr "ایمیل شما تأیید شد. اکنون می‌توانید وارد شوید."
+
+msgid "That verification link is invalid or has expired. Try logging in to request a new one."
+msgstr "این پیوند تأیید نامعتبر است یا منقضی شده. برای دریافت پیوند تازه وارد شوید."
+
+msgid "If your account still needs verification, a new link is on its way."
+msgstr "اگر حساب شما هنوز تأیید نشده باشد، پیوند تازه‌ای در راه است."
+
+msgid "Please log in or create an account to complete your purchase."
+msgstr "برای تکمیل خرید، لطفاً وارد شوید یا حساب بسازید."
+
+msgid "Account verification"
+msgstr "تأیید حساب"
+
+msgid "Email verified"
+msgstr "ایمیل تأییدشده"
+
+msgid "This customer has confirmed their email address"
+msgstr "این مشتری نشانی ایمیل خود را تأیید کرده است"
+
+msgid "Pending"
+msgstr "در انتظار"
+
+msgid "Verified"
+msgstr "تأییدشده"
+
+msgid "Clinic Orders"
+msgstr "سفارش‌های کلینیک"
+
+msgid "Clinic Order"
+msgstr "سفارش کلینیک"
+
+msgid "Search orders"
+msgstr "جست‌وجوی سفارش‌ها"
+
+msgid "Request (no payment)"
+msgstr "درخواست (بدون پرداخت)"
+
+msgid "Awaiting payment"
+msgstr "در انتظار پرداخت"
+
+msgid "Paid"
+msgstr "پرداخت‌شده"
+
+msgid "Payment failed"
+msgstr "پرداخت ناموفق"
+
+msgid "Clinic"
+msgstr "کلینیک"
+
+msgid "Plan"
+msgstr "پلن"
+
+msgid "Mobile"
+msgstr "موبایل"
+
+msgid "Amount"
+msgstr "مبلغ"
+
+msgid "Ref:"
+msgstr "کد پیگیری:"
+
+msgid "Order details"
+msgstr "جزئیات سفارش"
+
+msgid "Doctor / contact"
+msgstr "پزشک / رابط"
+
+msgid "City"
+msgstr "شهر"
+
+msgid "Domain"
+msgstr "دامنه"
+
+msgid "Hosting"
+msgstr "هاست"
+
+msgid "Zarinpal ref"
+msgstr "کد پیگیری زرین‌پال"
+
+msgid "Paid with card"
+msgstr "پرداخت با کارت"
+
+msgid "Notes"
+msgstr "یادداشت‌ها"
+
+msgid "Clinic Orders Settings"
+msgstr "تنظیمات سفارش‌های کلینیک"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Zarinpal merchant ID"
+msgstr "مرچنت کد زرین‌پال"
+
+msgid "36 characters, from your Zarinpal panel. Empty = orders are taken as requests without payment."
+msgstr "۳۶ نویسه، از پنل زرین‌پال. خالی باشد سفارش‌ها بدون پرداخت و به‌صورت درخواست ثبت می‌شوند."
+
+msgid "Test mode"
+msgstr "حالت آزمایشی"
+
+msgid "Use the Zarinpal sandbox (no real money). Untick after testing."
+msgstr "استفاده از سندباکس زرین‌پال (بدون پول واقعی). پس از آزمایش تیک را بردارید."
+
+msgid "Price: basic setup (toman)"
+msgstr "قیمت: راه‌اندازی پایه (تومان)"
+
+msgid "Empty = \"price on request\"."
+msgstr "خالی = «قیمت با تماس»."
+
+msgid "Price: professional (toman)"
+msgstr "قیمت: حرفه‌ای (تومان)"
+
+msgid "Price: yearly renewal (toman)"
+msgstr "قیمت: تمدید سالانه (تومان)"
+
+msgid "Demo site link"
+msgstr "پیوند سایت نمایشی"
+
+msgid "A clinic installation with Demo__Enabled=true."
+msgstr "یک نصب کلینیک با Demo__Enabled=true."
+
+msgid "Send new orders to"
+msgstr "ارسال سفارش‌های تازه به"
+
+msgid "%d license key generated."
+msgid_plural "%d license keys generated."
+msgstr[0] "%d کلید مجوز ساخته شد."
+
+msgid "License key"
+msgstr "کلید مجوز"
+
+msgid "Licenses"
+msgstr "مجوزها"
+
+msgid "You don't have any license keys yet. Keys appear here as soon as a software order is paid. <a href=\"%s\">Browse products</a>"
+msgstr "هنوز کلید مجوزی ندارید. کلیدها بلافاصله پس از پرداخت سفارش نرم‌افزار اینجا نمایش داده می‌شوند. <a href=\"%s\">دیدن محصولات</a>"
+
+msgid "Use these keys to activate your software. Each key is valid for the license tier you purchased."
+msgstr "با این کلیدها نرم‌افزارتان را فعال کنید. هر کلید برای سطح مجوزی که خریده‌اید معتبر است."
+
+msgid "Product"
+msgstr "محصول"
+
+msgid "License key copied"
+msgstr "کلید مجوز کپی شد"
+
+msgid "Copy"
+msgstr "کپی"
+
+msgid "Please confirm your subscription to the Hassani Labs newsletter:"
+msgstr "لطفاً عضویت خود در خبرنامه Hassani Labs را تأیید کنید:"
+
+msgid "Yes, subscribe me"
+msgstr "بله، عضو شوم"
+
+msgid "If you did not request this, just ignore this email."
+msgstr "اگر شما این درخواست را نداده‌اید، این ایمیل را نادیده بگیرید."
+
+msgid "Confirm your subscription"
+msgstr "عضویت خود را تأیید کنید"
+
+msgid "One more step"
+msgstr "یک قدم دیگر"
+
+msgid "Not allowed."
+msgstr "اجازه ندارید."
+
+msgid "Export confirmed (CSV)"
+msgstr "خروجی عضوهای تأییدشده (CSV)"
+
+msgid "Projects"
+msgstr "پروژه‌ها"
+
+msgid "Project"
+msgstr "پروژه"
+
+msgid "Add project"
+msgstr "افزودن پروژه"
+
+msgid "Edit project"
+msgstr "ویرایش پروژه"
+
+msgid "All projects"
+msgstr "همه پروژه‌ها"
+
+msgid "Technologies"
+msgstr "فناوری‌ها"
+
+msgid "Technology"
+msgstr "فناوری"
+
+msgid "Add New"
+msgstr "افزودن"
+
+msgid "Add New %s"
+msgstr "افزودن %s"
+
+msgid "Edit %s"
+msgstr "ویرایش %s"
+
+msgid "New %s"
+msgstr "%s تازه"
+
+msgid "Search %s"
+msgstr "جست‌وجوی %s"
+
+msgid "No %s found"
+msgstr "%s پیدا نشد"
+
+msgid "Hero Slide"
+msgstr "اسلاید سربرگ"
+
+msgid "Hero Slides"
+msgstr "اسلایدهای سربرگ"
+
+msgid "Testimonial"
+msgstr "نظر مشتری"
+
+msgid "Team Member"
+msgstr "عضو تیم"
+
+msgid "Team Members"
+msgstr "اعضای تیم"
+
+msgid "Milestone"
+msgstr "رویداد"
+
+msgid "Milestones"
+msgstr "رویدادها"
+
+msgid "Subscriber"
+msgstr "عضو خبرنامه"
+
+msgid "Newsletter Subscribers"
+msgstr "عضوهای خبرنامه"
+
+msgctxt "subscriber status"
+msgid "Unconfirmed"
+msgstr "تأییدنشده"
+
+msgid "Unconfirmed <span class=\"count\">(%s)</span>"
+msgid_plural "Unconfirmed <span class=\"count\">(%s)</span>"
+msgstr[0] "تأییدنشده <span class=\"count\">(%s)</span>"
+
+msgid "Site Content"
+msgstr "محتوای سایت"
+
+msgid "Role"
+msgstr "نقش"
+
+msgid "Role / Company"
+msgstr "نقش / شرکت"
+
+msgid "Year"
+msgstr "سال"
+
+msgid "Store Manager"
+msgstr "مدیر فروشگاه"
+
+msgid "Coupons"
+msgstr "کدهای تخفیف"
+
+msgid "Reviews"
+msgstr "نقد و بررسی‌ها"
+
+msgid "Error:"
+msgstr "خطا:"
+
+msgid "The login details you entered are incorrect."
+msgstr "اطلاعات ورود نادرست است."
+
+msgid "Project brief"
+msgstr "شرح پروژه"
+
+msgid "Goals, target launch date, reference websites, existing branding or content…"
+msgstr "هدف‌ها، تاریخ راه‌اندازی، سایت‌های نمونه، هویت بصری یا محتوای موجود…"
+
+msgid "Place secure order"
+msgstr "ثبت امن سفارش"
+
+msgid "Billing Details"
+msgstr "اطلاعات صورت‌حساب"
+
+msgid "Account Settings"
+msgstr "تنظیمات حساب"
+
+msgid "Save to wishlist"
+msgstr "ذخیره در علاقه‌مندی‌ها"
+
+msgid "Your wishlist is empty"
+msgstr "فهرست علاقه‌مندی‌های شما خالی است"
+
+msgid "Tap the heart on any product to save it for later."
+msgstr "روی قلب هر محصول بزنید تا برای بعد ذخیره شود."
+
+msgid "%s saved product"
+msgid_plural "%s saved products"
+msgstr[0] "%s محصول ذخیره‌شده"
+
+msgid "Wishlist"
+msgstr "علاقه‌مندی‌ها"
+
+# Customizer defaults (inc/customizer.php), translated through qv_translate_mod().
+msgid "Get Started"
+msgstr "شروع همکاری"
+
+msgid "Acupuncture Clinic Software"
+msgstr "نرم‌افزار کلینیک طب سوزنی"
+
+msgid "Booking, patient records and acupoint charts for clinics."
+msgstr "نوبت‌دهی، پرونده بیمار و اطلس نقاط طب سوزنی برای کلینیک‌ها."
+
+msgid "Years in medicine"
+msgstr "سال تجربه پزشکی"
+
+msgid "Open-source case studies"
+msgstr "نمونه‌کار متن‌باز"
+
+msgid "Languages: English & Persian"
+msgstr "زبان: فارسی و انگلیسی"
+
+msgid "Founder-led support"
+msgstr "پشتیبانی مستقیم بنیان‌گذار"
+
+msgid "Have a project in mind? Let's build it together."
+msgstr "ایده‌ای برای پروژه دارید؟ بیایید با هم بسازیمش."
+
+msgid "Tell me about your idea. I'll scope it, recommend the right stack and send a fixed-price proposal."
+msgstr "ایده‌تان را برایم بنویسید. محدوده کار را مشخص می‌کنم، فناوری مناسب را پیشنهاد می‌دهم و پیشنهاد قیمت ثابت می‌فرستم."
+
+msgid "Get a Quote"
+msgstr "درخواست قیمت"
+
+msgid "Hassani Labs builds web software, clinic software and websites. Founded by Mahsa Hassani, physician and software engineer."
+msgstr "Hassani Labs نرم‌افزار تحت وب، نرم‌افزار کلینیک و وب‌سایت می‌سازد. بنیان‌گذار: مهسا حسنی، پزشک و مهندس نرم‌افزار."
+
+msgid "Iran · Remote worldwide"
+msgstr "ایران · همکاری از راه دور با همه‌جا"
+
+msgid "Physician (General Medicine) and Computer Engineer — Software Design"
+msgstr "پزشک (پزشکی عمومی) و مهندس کامپیوتر، گرایش طراحی نرم‌افزار"
+
+msgid "I spent two decades in medicine before moving into software. Today I build production systems with ASP.NET Core and React, and the products sold here, including software for acupuncture clinics."
+msgstr "دو دهه در پزشکی کار کردم و بعد به نرم‌افزار آمدم. امروز سیستم‌های واقعی با ASP.NET Core و React می‌سازم، از جمله محصولاتی که اینجا فروخته می‌شوند، مثل نرم‌افزار کلینیک طب سوزنی."
+
+msgid "Language"
+msgstr "زبان"

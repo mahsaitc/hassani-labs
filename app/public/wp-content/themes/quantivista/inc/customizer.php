@@ -51,15 +51,15 @@ function qv_mod_defaults() {
  */
 function qv_mod( $key ) {
 	$defaults = qv_mod_defaults();
-	return get_theme_mod( 'qv_' . $key, $defaults[ $key ] ?? '' );
+	$default  = $defaults[ $key ] ?? '';
+	return qv_translate_mod( $key, get_theme_mod( 'qv_' . $key, $default ), $default );
 }
 
 /**
  * Resolve relative URLs stored in mods (e.g. "/contact/") against home_url.
  */
 function qv_mod_url( $key ) {
-	$url = (string) qv_mod( $key );
-	return str_starts_with( $url, '/' ) ? home_url( $url ) : $url;
+	return qv_localize_url( (string) qv_mod( $key ) );
 }
 
 add_action( 'customize_register', 'qv_customize_register' );

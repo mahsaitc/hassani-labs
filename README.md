@@ -42,6 +42,22 @@ Code: `mu-plugins/quantivista-core/clinic-orders.php`, `themes/quantivista/inc/c
   `wp eval-file scripts/seed.php portfolio blog`, or edit the posts in the admin afterwards.
 - Founder name, role and intro on the homepage: Appearance > Customize > Hassani Labs Options.
 
+## Languages (English and Persian)
+
+- [Polylang](https://wordpress.org/plugins/polylang/) (free): English at the site root, Persian under `/fa/`.
+  The header has an EN / فا switcher that opens the same page in the other language.
+- `wp eval-file scripts/seed.php languages` sets up both languages and creates the Persian version of every page,
+  project, article, timeline entry and hero slide, linked to its English original, plus the Persian menus. Persian
+  portfolio and article texts are in `scripts/seed/data/portfolio.fa.json`; page texts in `scripts/seed/translations.php`.
+  After that, edit translations in the dashboard (each post shows its other-language version in the Languages box).
+- Theme texts (buttons, labels, forms): `themes/quantivista/languages/fa_IR.po`. After editing it, rebuild with
+  `wp i18n make-mo` and `wp i18n make-php` on that file. Customizer texts that you change appear under
+  Languages > Translations.
+- Persian pages load `main-rtl.css` (right-to-left) and the Vazirmatn font. `main-rtl.css` and `woocommerce-rtl.css` are
+  generated: edit `main.css` / `woocommerce.css`, then run `scripts/build-rtl.sh`.
+- The store (WooCommerce) stays English with the foreign gateway; Persian buyers order on `/fa/clinic-software-fa/`
+  with Zarinpal. Translating WooCommerce products needs the paid Polylang for WooCommerce, not used here.
+
 ## Before launch
 
 - Sample store products (FlowPilot, Nexus CRM and the others) are seeded as **drafts**. Delete them or replace

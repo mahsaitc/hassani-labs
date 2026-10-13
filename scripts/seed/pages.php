@@ -390,29 +390,6 @@ foreach ( array( 'qv_testimonial' => 'testimonial-', 'qv_team' => 'team-' ) as $
 /* ------------------------------------------------------------------------
  * Menus
  * --------------------------------------------------------------------- */
-function qvs_menu( $name ) {
-	$menu = wp_get_nav_menu_object( $name );
-	$id   = $menu ? $menu->term_id : wp_create_nav_menu( $name );
-	foreach ( (array) wp_get_nav_menu_items( $id ) as $item ) {
-		wp_delete_post( $item->ID, true );
-	}
-	return $id;
-}
-
-function qvs_menu_item( $menu_id, array $args, $parent = 0 ) {
-	return wp_update_nav_menu_item(
-		$menu_id,
-		0,
-		array_merge(
-			array(
-				'menu-item-status'    => 'publish',
-				'menu-item-parent-id' => $parent,
-			),
-			$args
-		)
-	);
-}
-
 $qv_page_item = fn( $id, $title = '' ) => array(
 	'menu-item-type'      => 'post_type',
 	'menu-item-object'    => 'page',
