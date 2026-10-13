@@ -189,7 +189,17 @@ while ( have_posts() ) :
 	<?php endif; ?>
 
 	<?php
-	get_template_part( 'template-parts/home/cta' );
+	get_template_part(
+		'template-parts/home/cta',
+		null,
+		array(
+			'eyebrow' => __( 'Let\'s work together', 'quantivista' ),
+			'title'   => __( 'Have an idea that should become a product?', 'quantivista' ),
+			'text'    => __( 'Whether you need a website, custom software or a better way to run a work process, we can start by understanding the problem and what you need.', 'quantivista' ),
+			'label'   => __( 'Let\'s talk about your project', 'quantivista' ),
+			'url'     => qv_localize_url( '/contact/' ),
+		)
+	);
 endwhile;
 
 get_footer();

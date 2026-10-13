@@ -11,6 +11,7 @@ get_header();
 
 get_template_part( 'template-parts/home/hero' );
 get_template_part( 'template-parts/home/trust' );
+get_template_part( 'template-parts/home/services' );
 get_template_part( 'template-parts/home/work' );
 
 if ( class_exists( 'WooCommerce' ) ) {

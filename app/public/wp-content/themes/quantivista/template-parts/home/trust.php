@@ -15,8 +15,15 @@ $qv_logos = apply_filters( 'qv_client_logos', array() );
 	<div class="container">
 		<ul class="stats" data-reveal>
 			<?php for ( $qv_i = 1; $qv_i <= 4; $qv_i++ ) : ?>
+				<?php
+				$qv_value = (string) qv_mod( "stat_{$qv_i}_value" );
+				if ( '' === $qv_value ) {
+					continue; // An empty stat in the Customizer is left out.
+				}
+				$qv_number = (bool) preg_match( '/^[\d.,]/', $qv_value );
+				?>
 				<li class="stat">
-					<span class="stat__value" data-count><?php echo esc_html( qv_mod( "stat_{$qv_i}_value" ) ); ?></span>
+					<span class="stat__value<?php echo $qv_number ? '' : ' stat__value--text'; ?>"<?php echo $qv_number ? ' data-count' : ''; ?>><?php echo esc_html( $qv_value ); ?></span>
 					<span class="stat__label"><?php echo esc_html( qv_mod( "stat_{$qv_i}_label" ) ); ?></span>
 				</li>
 			<?php endfor; ?>

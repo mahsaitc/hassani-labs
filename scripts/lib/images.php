@@ -303,7 +303,7 @@ function qvimg_mock_dashboard( $w, $h, $title, $accent, $accent2, $seed ) {
 	$lw = $mw - $chw - $gap;
 	qvimg_rrect( $im, $lx, $cy2, $lw, $chh, 16, QVIMG_CARD );
 	qvimg_text( $im, 16, $lx + 24, $cy2 + 40, QVIMG_WHITE, 'Recent activity', true );
-	$palette = array( $accent, $accent2, 'F59E0B', '34D399', 'F472B6' );
+	$palette = array( $accent, $accent2, '93C5FD', '2DD4BF', 'A5B4FC' );
 	for ( $i = 0; $i < 5; $i++ ) {
 		$ry = $cy2 + 80 + $i * (int) ( ( $chh - 100 ) / 5 );
 		imagefilledellipse( $im, $lx + 44, $ry + 16, 36, 36, qvimg_color( $im, $palette[ $i ] ) );
@@ -329,7 +329,7 @@ function qvimg_mock_kanban( $w, $h, $title, $accent, $accent2, $seed ) {
 	}
 
 	$cols  = array( 'Lead', 'Qualified', 'Proposal', 'Won' );
-	$dots  = array( '94A3B8', $accent, 'F59E0B', '34D399' );
+	$dots  = array( '94A3B8', $accent, '60A5FA', '34D399' );
 	$gap   = 22;
 	$colw  = (int) ( ( $cw - 80 - $gap * 3 ) / 4 );
 	$top   = $y + 130;
