@@ -3012,3 +3012,8 @@ html[lang^="fa"] .service-card__tech li { font-family: "Inter", "Vazirmatn", ui-
 /* Stats that are words rather than numbers. */
 .stat__value--text { font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem); letter-spacing: -0.02em; }
 @media (min-width: 900px) { .stats { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); } }
+
+/* Intro hero image: its glass structure sits on the left, so mirror it in
+   English to keep the text over the dark side (Persian keeps it as is). */
+/*rtl:remove*/
+.hero__slide:first-child .hero__media img{transform:scaleX(-1)}
