@@ -331,10 +331,10 @@ update_option( 'qv_wishlist_page_id', $qv_wishlist );
  * --------------------------------------------------------------------- */
 $qv_slides = array(
 	array(
-		'title' => 'Software built by a physician who writes code',
+		'title' => 'From a real problem to a smart software solution',
 		'meta'  => array(
-			'qv_slide_eyebrow'     => 'Hassani Labs',
-			'qv_slide_subheadline' => 'Clinic software, web applications and websites, designed, built and supported by Mahsa Hassani.',
+			'qv_slide_eyebrow'     => 'Dr. Mahsa Hassani | Physician & Software Developer',
+			'qv_slide_subheadline' => 'Websites, custom software and digital tools, built with an analytical, structured approach that fits your real needs.',
 			'qv_slide_video'       => $qv_theme_uri . '/assets/video/hero-loop.mp4',
 			'qv_slide_cta_label'   => 'See my work',
 			'qv_slide_cta_url'     => '/work/',

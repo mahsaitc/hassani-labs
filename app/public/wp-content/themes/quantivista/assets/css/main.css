@@ -2965,3 +2965,11 @@ html[lang^="fa"] .chip { font-family: "Inter", "Vazirmatn", ui-sans-serif, syste
 .form-alert { margin: 0 0 20px; padding: 14px 18px; border: 1px solid; border-radius: var(--r-md); font-size: 0.95rem; }
 .form-alert--ok { border-color: var(--c-green-600); background: rgba(21, 128, 61, 0.06); color: var(--c-green-600); }
 .form-alert--error { border-color: var(--c-red-600); background: rgba(220, 38, 38, 0.05); color: var(--c-red-600); }
+
+/* ---------- Brand mark (glass cube) ---------- */
+.site-logo .brand-mark { width: 48px; height: 48px; object-fit: contain; flex: none; filter: drop-shadow(0 4px 10px rgba(34, 211, 238, 0.25)); }
+
+/* ---------- Home: contact form ---------- */
+.home-contact__grid { display: grid; gap: clamp(24px, 4vw, 56px); align-items: start; }
+@media (min-width: 960px) { .home-contact__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.home-contact .section-head { margin-bottom: 28px; }

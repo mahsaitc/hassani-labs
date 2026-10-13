@@ -21,5 +21,6 @@ get_template_part( 'template-parts/home/why' );
 get_template_part( 'template-parts/home/blog' );
 get_template_part( 'template-parts/home/testimonials' );
 get_template_part( 'template-parts/home/cta' );
+get_template_part( 'template-parts/home/contact' );
 
 get_footer();

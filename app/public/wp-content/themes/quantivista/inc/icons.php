@@ -114,16 +114,15 @@ function qv_the_icon( $name, $args = array() ) {
 }
 
 /**
- * Brand mark used when no custom logo is set.
+ * Brand mark used when no custom logo is set: the Hassani Labs glass cube.
  *
- * @param string $id Unique gradient id (logo is printed in header and footer).
+ * @param string $id Unused; kept so existing callers keep working.
  */
 function qv_logo_mark( $id = 'qv-mark' ) {
-	$id = sanitize_html_class( $id );
-	return '<svg class="brand-mark" width="36" height="36" viewBox="0 0 40 40" aria-hidden="true" focusable="false">'
-		. '<defs><linearGradient id="' . $id . '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#5B6CFF"/></linearGradient></defs>'
-		. '<rect width="40" height="40" rx="11" fill="url(#' . $id . ')"/>'
-		. '<circle cx="18.5" cy="18.5" r="8.5" fill="none" stroke="#070B24" stroke-width="4"/>'
-		. '<path d="M23.5 23.5 30 30" stroke="#070B24" stroke-width="4" stroke-linecap="round"/>'
-		. '</svg>';
+	unset( $id );
+	return sprintf(
+		'<img class="brand-mark" src="%1$s" srcset="%1$s 1x, %2$s 2x" width="48" height="48" alt="" decoding="async">',
+		esc_url( QV_URI . '/assets/img/logo-mark-96.png' ),
+		esc_url( QV_URI . '/assets/img/logo-mark-192.png' )
+	);
 }

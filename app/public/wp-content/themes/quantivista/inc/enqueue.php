@@ -70,6 +70,11 @@ add_action(
 			esc_url( QV_URI . ( is_rtl() ? '/assets/fonts/vazirmatn-variable.woff2' : '/assets/fonts/inter-var-latin.woff2' ) )
 		);
 		echo '<meta name="theme-color" content="#070B24">' . "\n";
+		if ( ! has_site_icon() ) { // A Site Icon set in the Customizer wins.
+			printf( '<link rel="icon" href="%s" sizes="32x32">' . "\n", esc_url( QV_URI . '/assets/img/favicon-32.png' ) );
+			printf( '<link rel="icon" href="%s" sizes="192x192">' . "\n", esc_url( QV_URI . '/assets/img/logo-mark-192.png' ) );
+			printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( QV_URI . '/assets/img/apple-touch-icon.png' ) );
+		}
 	},
 	1
 );
