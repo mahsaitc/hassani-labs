@@ -57,7 +57,7 @@ while ( have_posts() ) :
 				} elseif ( $qv_image ) {
 					echo wp_get_attachment_image( $qv_image, 'large', false, array( 'sizes' => '(min-width: 960px) 50vw, 100vw' ) );
 				} else {
-					printf( '<img src="%s" alt="" width="1376" height="768">', esc_url( QV_URI . '/assets/img/founder-story.webp?v=' . qv_asset_version( 'assets/img/founder-story.webp' ) ) );
+					printf( '<img src="%s" alt="%s" width="900" height="900">', esc_url( QV_URI . '/assets/img/founder-portrait.webp?v=' . qv_asset_version( 'assets/img/founder-portrait.webp' ) ), esc_attr( qv_mod( 'founder_name' ) ) );
 				}
 				?>
 				<div class="floating-stat">

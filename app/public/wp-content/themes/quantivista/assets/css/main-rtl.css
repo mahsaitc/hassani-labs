@@ -3015,3 +3015,16 @@ html[lang^="fa"] .service-card__tech li { font-family: "Inter", "Vazirmatn", ui-
 
 /* Intro hero image: its glass structure sits on the left, so mirror it in
    English to keep the text over the dark side (Persian keeps it as is). */
+
+/* Founder photo on the home page (replaces the initials circle). */
+.founder-strip__photo {
+	display: block;
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0 0 0 4px var(--c-surface, #fff), 0 0 0 6px var(--c-blue-600, #3A54E8);
+}
+@media (min-width: 720px) {
+	.founder-strip__photo { width: 180px; height: 180px; }
+}
