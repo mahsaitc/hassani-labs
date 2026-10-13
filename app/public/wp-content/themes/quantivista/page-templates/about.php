@@ -32,12 +32,31 @@ while ( have_posts() ) :
 	);
 	?>
 
+	<?php
+	// Split the story into an intro (beside the photo), themed sections shown as
+	// cards (each <h3> starts one) and a closing statement (a paragraph that is
+	// only bold text). Content without <h3> headings renders as one block.
+	$qv_story    = apply_filters( 'the_content', get_the_content() );
+	$qv_sections = array();
+	$qv_closing  = '';
+	if ( preg_match( '#<p>\s*<strong>(.*?)</strong>\s*</p>\s*$#su', $qv_story, $qv_m ) ) {
+		$qv_closing = $qv_m[1];
+		$qv_story   = substr( $qv_story, 0, -strlen( $qv_m[0] ) );
+	}
+	$qv_parts = preg_split( '#<h3[^>]*>#u', $qv_story );
+	$qv_intro = array_shift( $qv_parts );
+	foreach ( $qv_parts as $qv_part ) {
+		$qv_bits       = explode( '</h3>', $qv_part, 2 );
+		$qv_sections[] = array( 'title' => wp_strip_all_tags( $qv_bits[0] ), 'body' => $qv_bits[1] ?? '' );
+	}
+	$qv_icons = array( 'layers', 'shield', 'target', 'rocket', 'cpu', 'award' );
+	?>
 	<section class="section" aria-labelledby="story-title">
-		<div class="container split">
+		<div class="container split story-split">
 			<div data-reveal>
 				<p class="eyebrow"><?php echo esc_html( qv_mod( 'founder_role' ) ); ?></p>
 				<h2 id="story-title"><?php echo esc_html( qv_field( 'qv_story_title', $qv_id ) ? qv_field( 'qv_story_title', $qv_id ) : qv_mod( 'founder_name' ) ); ?></h2>
-				<div class="prose"><?php the_content(); ?></div>
+				<div class="prose"><?php echo $qv_intro; // phpcs:ignore WordPress.Security.EscapeOutput -- filtered post content. ?></div>
 				<div class="btn-row founder-links">
 					<?php if ( qv_mod( 'social_github' ) ) : ?>
 						<a class="btn btn--primary" href="<?php echo esc_url( qv_mod( 'social_github' ) ); ?>" target="_blank" rel="noopener"><?php qv_the_icon( 'github', array( 'size' => 16 ) ); ?> GitHub</a>
@@ -66,6 +85,28 @@ while ( have_posts() ) :
 				</div>
 			</div>
 		</div>
+
+		<?php if ( $qv_sections ) : ?>
+			<div class="container story-cards grid grid--<?php echo count( $qv_sections ) >= 3 ? 3 : count( $qv_sections ); ?>">
+				<?php foreach ( $qv_sections as $qv_i => $qv_section ) : ?>
+					<article class="story-card" data-reveal>
+						<span class="story-card__icon"><?php qv_the_icon( $qv_icons[ $qv_i % count( $qv_icons ) ], array( 'size' => 22 ) ); ?></span>
+						<h3><?php echo esc_html( $qv_section['title'] ); ?></h3>
+						<div class="story-card__body"><?php echo $qv_section['body']; // phpcs:ignore WordPress.Security.EscapeOutput -- filtered post content. ?></div>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ( $qv_closing ) : ?>
+			<div class="container">
+				<blockquote class="story-quote" data-reveal>
+					<?php qv_the_icon( 'quote', array( 'size' => 28 ) ); ?>
+					<p><?php echo wp_kses_post( $qv_closing ); ?></p>
+					<cite><?php echo esc_html( qv_mod( 'founder_name' ) ); ?></cite>
+				</blockquote>
+			</div>
+		<?php endif; ?>
 	</section>
 
 	<section class="section section--muted" aria-labelledby="mission-title">

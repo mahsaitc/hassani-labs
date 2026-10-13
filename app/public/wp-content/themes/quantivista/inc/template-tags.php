@@ -314,3 +314,31 @@ function qv_related_posts_query( $post_id, $count = 3 ) {
 		)
 	);
 }
+
+/**
+ * Let a user use a theme image as avatar instead of Gravatar: set user meta
+ * `qv_local_avatar` to a file name in assets/img (the seed sets the founder's).
+ */
+add_filter(
+	'pre_get_avatar_data',
+	function ( $args, $id_or_email ) {
+		$user_id = 0;
+		if ( is_numeric( $id_or_email ) ) {
+			$user_id = (int) $id_or_email;
+		} elseif ( $id_or_email instanceof WP_User ) {
+			$user_id = $id_or_email->ID;
+		} elseif ( $id_or_email instanceof WP_Post ) {
+			$user_id = (int) $id_or_email->post_author;
+		} elseif ( $id_or_email instanceof WP_Comment ) {
+			$user_id = (int) $id_or_email->user_id;
+		}
+		$file = $user_id ? basename( (string) get_user_meta( $user_id, 'qv_local_avatar', true ) ) : '';
+		if ( $file && file_exists( QV_DIR . '/assets/img/' . $file ) ) {
+			$args['url']          = QV_URI . '/assets/img/' . $file . '?v=' . qv_asset_version( 'assets/img/' . $file );
+			$args['found_avatar'] = true;
+		}
+		return $args;
+	},
+	10,
+	2
+);

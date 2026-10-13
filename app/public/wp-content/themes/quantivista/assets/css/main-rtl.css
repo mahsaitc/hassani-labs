@@ -3028,3 +3028,38 @@ html[lang^="fa"] .service-card__tech li { font-family: "Inter", "Vazirmatn", ui-
 @media (min-width: 720px) {
 	.founder-strip__photo { width: 180px; height: 180px; }
 }
+
+/* About: intro beside the photo, themed sections as cards, closing quote. */
+.story-split { align-items: center; }
+.story-cards { margin-top: clamp(40px, 6vw, 72px); gap: 20px; }
+.story-card {
+	padding: clamp(22px, 2.6vw, 30px);
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-xl);
+	background: linear-gradient(-160deg, rgba(34, 211, 238, 0.05), rgba(91, 108, 255, 0.07));
+}
+.story-card__icon {
+	display: inline-grid;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	margin-bottom: 16px;
+	border-radius: 14px;
+	color: #fff;
+	background: var(--gradient-accent);
+}
+.story-card h3 { margin: 0 0 12px; font-size: 1.18rem; }
+.story-card__body p { margin: 0 0 12px; color: var(--c-muted, #4B5563); line-height: 1.85; }
+.story-card__body p:last-child { margin-bottom: 0; }
+.story-quote {
+	position: relative;
+	margin: clamp(32px, 5vw, 56px) 0 0;
+	padding: clamp(28px, 4vw, 44px) clamp(24px, 5vw, 64px);
+	border-radius: var(--r-xl);
+	color: #fff;
+	text-align: center;
+	background: linear-gradient(-135deg, #070B24, #18225A 60%, #1E3A8A);
+}
+.story-quote svg { color: #22D3EE; opacity: 0.9; }
+.story-quote p { max-width: 46ch; margin: 12px auto; font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 700; line-height: 1.7; }
+.story-quote cite { font-style: normal; color: #A5B4FC; font-size: 0.95rem; }
