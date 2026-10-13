@@ -77,7 +77,9 @@ while ( have_posts() ) :
 				<h2><?php esc_html_e( 'Tell me about your project', 'quantivista' ); ?></h2>
 				<p class="muted"><?php esc_html_e( 'I reply within two business days. Fields marked * are required.', 'quantivista' ); ?></p>
 				<?php
-				if ( $qv_shortcode && shortcode_exists( 'contact-form-7' ) ) {
+				if ( function_exists( 'qvc_contact_form' ) ) {
+					qvc_contact_form();
+				} elseif ( $qv_shortcode && shortcode_exists( 'contact-form-7' ) ) {
 					echo do_shortcode( $qv_shortcode );
 				} else {
 					printf(

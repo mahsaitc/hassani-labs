@@ -15,6 +15,7 @@ $qv_lang = ( $args['lang'] ?? 'fa' ) === 'en' ? 'en' : 'fa';
 $qv_fa   = 'fa' === $qv_lang;
 $qv_t    = qv_clinic_strings( $qv_lang );
 $qv_img  = QV_URI . '/assets/img/clinic/';
+$qv_sfx  = $qv_fa ? '' : '-en'; // Screenshots of the Persian or the English version of the software.
 $qv_demo = function_exists( 'qvc_clinic_settings' ) ? qvc_clinic_settings()['demo_url'] : '';
 $qv_cta  = $qv_fa ? '#order' : '#plans';
 ?>
@@ -40,7 +41,7 @@ $qv_cta  = $qv_fa ? '#order' : '#plans';
 				</ul>
 			</div>
 			<figure class="clinic-hero__shot">
-				<img src="<?php echo esc_url( $qv_img . 'demo-home.webp' ); ?>" width="1200" height="791" alt="<?php echo esc_attr( $qv_t['shots'][0][1] ); ?>" fetchpriority="high">
+				<img src="<?php echo esc_url( $qv_img . 'demo-home' . $qv_sfx . '.webp' ); ?>" width="1200" height="791" alt="<?php echo esc_attr( $qv_t['shots'][0][1] ); ?>" fetchpriority="high">
 			</figure>
 		</div>
 	</section>
@@ -66,7 +67,7 @@ $qv_cta  = $qv_fa ? '#order' : '#plans';
 			<div class="grid grid--3 clinic-shots">
 				<?php foreach ( $qv_t['shots'] as $qv_shot ) : ?>
 					<figure class="clinic-shot" data-reveal>
-						<img src="<?php echo esc_url( $qv_img . $qv_shot[0] . '.webp' ); ?>" width="1200" height="791" alt="<?php echo esc_attr( $qv_shot[1] ); ?>" loading="lazy">
+						<img src="<?php echo esc_url( $qv_img . $qv_shot[0] . $qv_sfx . '.webp' ); ?>" width="1200" height="791" alt="<?php echo esc_attr( $qv_shot[1] ); ?>" loading="lazy">
 						<figcaption><?php echo esc_html( $qv_shot[1] ); ?></figcaption>
 					</figure>
 				<?php endforeach; ?>

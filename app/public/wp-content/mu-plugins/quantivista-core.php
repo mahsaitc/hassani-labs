@@ -24,6 +24,7 @@ require_once QVC_DIR . '/roles.php';
 require_once QVC_DIR . '/accounts.php';
 require_once QVC_DIR . '/newsletter.php';
 require_once QVC_DIR . '/clinic-orders.php';
+require_once QVC_DIR . '/contact.php';
 require_once QVC_DIR . '/portfolio.php';
 
 // Store modules depend on WooCommerce, which loads after mu-plugins.
