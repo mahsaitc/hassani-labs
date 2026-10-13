@@ -80,7 +80,7 @@ foreach ( array( 'product-updates', 'design', 'mobile', 'business' ) as $qv_slug
  * --------------------------------------------------------------------- */
 
 
-$qv_palettes = array( array( '22D3EE', '5B6CFF' ), array( 'A78BFA', '22D3EE' ), array( '2DD4BF', '3B82F6' ) );
+$qv_palettes = array( array( '22D3EE', '5B6CFF' ), array( '818CF8', '22D3EE' ), array( '2DD4BF', '3B82F6' ) );
 foreach ( $qv_data['posts'] as $qv_i => $qv_p ) {
 	$qv_post_id = qvs_upsert_post(
 		'article-' . $qv_p['slug'],
@@ -101,7 +101,7 @@ foreach ( $qv_data['posts'] as $qv_i => $qv_p ) {
 	$qv_pal = $qv_palettes[ $qv_i % count( $qv_palettes ) ];
 	set_post_thumbnail(
 		$qv_post_id,
-		qvs_image( 'cover-' . $qv_p['slug'], 'cover-' . $qv_p['slug'] . '.jpg', fn() => qvimg_cover( 1600, 900, '{ }', $qv_pal[0], $qv_pal[1], $qv_p['slug'] ), $qv_p['title'] )
+		qvs_image( 'cover-' . $qv_p['slug'] . '-v2', 'cover-' . $qv_p['slug'] . '-v2.jpg', fn() => qvimg_cover( 1600, 900, '{ }', $qv_pal[0], $qv_pal[1], $qv_p['slug'] ), $qv_p['title'] )
 	);
 	WP_CLI::log( "    post: {$qv_p['title']} (#{$qv_post_id})" );
 }

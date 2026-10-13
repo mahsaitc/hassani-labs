@@ -1276,3 +1276,66 @@ msgstr "از اینجا پیام‌های زیادی ارسال شده است. �
 
 msgid "I agree that Hassani Labs may use my details to answer this message, as described in the %s."
 msgstr "موافقم که Hassani Labs برای پاسخ به این پیام، طبق صفحه %s از اطلاعات من استفاده کند."
+
+msgid "Years of professional experience in medicine"
+msgstr "تجربه حرفه‌ای در پزشکی"
+
+msgid "Software development"
+msgstr "توسعه نرم‌افزار"
+
+msgid "Designing and building practical solutions"
+msgstr "تمرکز بر طراحی و پیاده‌سازی راهکارهای کاربردی"
+
+msgid "Analytical, interdisciplinary"
+msgstr "نگاه تحلیلی و میان‌رشته‌ای"
+
+msgid "Connecting problem analysis with engineering thinking"
+msgstr "پیوند شناخت مسئله با تفکر مهندسی"
+
+msgid "Founder of Hassani Labs · Software developer with a medical background"
+msgstr "بنیان‌گذار Hassani Labs · توسعه‌دهنده نرم‌افزار با پیشینه پزشکی"
+
+msgid "Website design and development"
+msgstr "طراحی و توسعه وب‌سایت"
+
+msgid "Professional, fast websites that fit your brand, from user-experience design to the technical build, ready to grow with you."
+msgstr "وب‌سایت‌هایی حرفه‌ای، سریع و متناسب با هویت کسب‌وکار شما؛ از طراحی تجربه کاربری تا پیاده‌سازی فنی و آماده‌سازی برای توسعه آینده."
+
+msgid "Custom software development"
+msgstr "توسعه نرم‌افزارهای اختصاصی"
+
+msgid "Software designed and built around your project's actual requirements, with care for business logic, data structure, maintenance and future growth."
+msgstr "طراحی و پیاده‌سازی نرم‌افزار بر اساس نیازهای مشخص پروژه، با توجه به منطق کسب‌وکار، ساختار داده‌ها، نگهداری و قابلیت توسعه."
+
+msgid "Process automation and optimisation"
+msgstr "اتوماسیون و بهینه‌سازی فرایندها"
+
+msgid "Finding repetitive work and designing smart workflows that cut manual effort, bring order to processes and raise productivity."
+msgstr "شناسایی فعالیت‌های تکراری و طراحی جریان‌های کاری هوشمند برای کاهش کار دستی، بهبود نظم فرایندها و افزایش بهره‌وری."
+
+msgid "Digital tools and products"
+msgstr "طراحی ابزارها و محصولات دیجیتال"
+
+msgid "Turning specialist ideas into practical software tools, with the focus on user needs, data design and a sound technical structure."
+msgstr "تبدیل ایده‌های تخصصی به ابزارهای نرم‌افزاری کاربردی؛ با تمرکز بر نیاز کاربر، طراحی داده‌ها و ساختار فنی مناسب."
+
+msgid "From understanding the problem to building the solution"
+msgstr "از شناخت مسئله تا ساخت راهکار"
+
+msgid "Websites, web applications and custom software, chosen and built for what your project actually needs."
+msgstr "وب‌سایت، برنامه تحت وب و نرم‌افزار اختصاصی؛ انتخاب‌شده و ساخته‌شده بر اساس نیاز واقعی پروژه شما."
+
+msgid "Let's work together"
+msgstr "دعوت به همکاری"
+
+msgid "Have an idea that should become a product?"
+msgstr "ایده‌ای دارید که باید به یک محصول تبدیل شود؟"
+
+msgid "Whether you need a website, custom software or a better way to run a work process, we can start by understanding the problem and what you need."
+msgstr "اگر به دنبال طراحی یک وب‌سایت، توسعه یک نرم‌افزار اختصاصی یا بهینه‌سازی یک فرایند کاری هستید، می‌توانیم از شناخت مسئله و بررسی نیازها شروع کنیم."
+
+msgid "Let's talk about your project"
+msgstr "درباره پروژه‌تان صحبت کنیم"
+
+msgid "Services"
+msgstr "خدمات"

@@ -2908,7 +2908,8 @@ html[lang^="fa"] input[type="email"],
 html[lang^="fa"] input[type="url"],
 html[lang^="fa"] .work-metrics strong,
 html[lang^="fa"] .work-facts .check-list,
-html[lang^="fa"] .chip { font-family: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif; }
+html[lang^="fa"] .chip,
+html[lang^="fa"] .service-card__tech li { font-family: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif; }
 
 /* ---------- Contact: social profiles and map ---------- */
 .contact-social__title { margin: 32px 0 14px; font-size: 1.05rem; }
@@ -2973,3 +2974,41 @@ html[lang^="fa"] .chip { font-family: "Inter", "Vazirmatn", ui-sans-serif, syste
 .home-contact__grid { display: grid; gap: clamp(24px, 4vw, 56px); align-items: start; }
 @media (min-width: 960px) { .home-contact__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
 .home-contact .section-head { margin-bottom: 28px; }
+
+/* ---------- Home: services ---------- */
+.service-card {
+	display: flex;
+	flex-direction: column;
+	padding: clamp(22px, 2.6vw, 30px);
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-xl);
+	background: #fff;
+	transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s var(--ease);
+}
+.service-card:hover { border-color: var(--c-line-strong); box-shadow: var(--sh-md); transform: translateY(-3px); }
+.service-card__icon {
+	display: grid;
+	place-items: center;
+	width: 52px;
+	height: 52px;
+	margin-bottom: 18px;
+	border-radius: 14px;
+	background: var(--gradient-accent);
+	color: var(--c-navy-900);
+}
+.service-card__title { margin: 0 0 10px; font-size: 1.12rem; }
+.service-card__text { flex: 1; margin: 0 0 18px; color: var(--c-muted); font-size: 0.96rem; }
+.service-card__tech { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.service-card__tech li {
+	padding: 4px 10px;
+	border-radius: var(--r-pill);
+	background: var(--c-surface-3);
+	color: var(--c-navy-700);
+	font-family: var(--font);
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+
+/* Stats that are words rather than numbers. */
+.stat__value--text { font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem); letter-spacing: -0.02em; }
+@media (min-width: 900px) { .stats { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); } }

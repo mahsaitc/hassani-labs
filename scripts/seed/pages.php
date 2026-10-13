@@ -107,16 +107,25 @@ $qv_about = qvs_page(
 	'page-about',
 	'About',
 	'about',
-	'<p>I am Mahsa Hassani. I trained and worked as a physician in General Medicine for more than twenty years, and I am also a computer engineer specialising in software design (Shiraz University). Hassani Labs is where those two halves meet: software I design, build and support myself.</p>
-	<p>Medicine trains you to reason from symptoms to cause under incomplete information, to distrust the first plausible explanation, and to write notes precise enough that a stranger can act on them safely. I bring the same habits to software: clear boundaries, tests that prove the important rules, and documentation a new developer can follow.</p>
-	<p>Day to day that means ASP.NET Core and C# on the back end, React and TypeScript on the front end, SQLite or PostgreSQL for data, and containers for anything that has to run the same way twice. My first commercial product is software for acupuncture clinics, built from my own clinic\'s needs.</p>',
+	'<p>I am Mahsa Hassani, a physician with more than twenty years of professional experience in medicine and an academic background in software engineering. My work sits where two different worlds meet: understanding people and real-world problems on one side, and designing logical, well-structured solutions on the other.</p>
+	<p>Medicine taught me that before offering any solution you have to understand the problem properly, examine the information carefully and notice the details that are easy to miss at first glance. I take the same approach to software: analyse the need, design the right structure, build it carefully and keep improving it.</p>
+	<h3>From understanding the problem to building the solution</h3>
+	<p>At Hassani Labs I design and build websites, web applications and custom software. I am also interested in practical tools, process automation and using technology to make complex work simpler.</p>
+	<p>I work with C#, ASP.NET Core, Python, JavaScript, TypeScript, React and Next.js, and choose the tools and architecture each project needs. Technology should serve the goal of the project, not the other way round.</p>
+	<h3>Quality beyond appearance</h3>
+	<p>A successful digital product needs more than a good look and a working first version. Maintainable structure, security, user experience, room to grow and a real fit with what users need all matter.</p>
+	<p>That is why I think from day one about how a product will grow, how it will be maintained and how new features can be added, which matters most in custom software and long-term projects.</p>
+	<h3>Why Hassani Labs?</h3>
+	<p>Hassani Labs is where I turn ideas and real needs into software: a place to analyse, design, build and improve products that are meant to be useful in practice.</p>
+	<p>Whether you need a professional website, want to digitise a process or have an idea for custom software, our work together starts with a clear understanding of what you need and a solution defined to fit it.</p>
+	<p><strong>My goal is not just to build software. It is to build a solution with a clear reason to exist.</strong></p>',
 	array(
 		'template'     => 'page-templates/about.php',
-		'post_excerpt' => 'Physician and computer engineer. I design, build and support software for clinics and growing businesses.',
+		'post_excerpt' => 'Founder of Hassani Labs. A software developer with an analytical, interdisciplinary background in medicine and engineering.',
 		'menu_order'   => 1,
 	),
 	array(
-		'qv_story_title' => 'Two disciplines, one habit of mind',
+		'qv_story_title' => 'Two disciplines, one way of thinking',
 		'qv_story_image' => '',
 		'qv_mission'     => 'To build software that clinics and small businesses can trust with their daily work: clear, secure, documented, and supported by the person who wrote it.',
 		'qv_vision'      => 'Tools that respect the people who use them and the data they hold, in Persian and in English.',
@@ -370,7 +379,7 @@ $qv_slides = array(
 foreach ( $qv_slides as $qv_i => $qv_slide ) {
 	$qv_sid = qvs_upsert_post( "slide-{$qv_i}", array( 'post_type' => 'qv_slide', 'post_title' => $qv_slide['title'], 'menu_order' => $qv_i ), $qv_slide['meta'] );
 	if ( isset( $qv_slide['image'] ) ) {
-		set_post_thumbnail( $qv_sid, qvs_image( "slide-{$qv_i}", "hero-slide-{$qv_i}.jpg", $qv_slide['image'], '' ) );
+		set_post_thumbnail( $qv_sid, qvs_image( "slide-{$qv_i}-v2", "hero-slide-{$qv_i}-v2.jpg", $qv_slide['image'], '' ) );
 	}
 }
 

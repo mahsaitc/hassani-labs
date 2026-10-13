@@ -47,14 +47,15 @@ foreach ( $qv_tiers as $qv_slug => $qv_tier ) {
 /* ------------------------------------------------------------------------
  * Categories
  * --------------------------------------------------------------------- */
+// Theme blues, navy and cyan only (v2 keys regenerate older warm-coloured images).
 $qv_palettes = array(
 	'cyan'   => array( '22D3EE', '5B6CFF' ),
-	'violet' => array( 'A78BFA', 'F472B6' ),
-	'green'  => array( '34D399', '22D3EE' ),
-	'amber'  => array( 'FBBF24', 'F97316' ),
+	'violet' => array( '818CF8', '5B6CFF' ),
+	'green'  => array( '2DD4BF', '22D3EE' ),
+	'amber'  => array( '67E8F9', '3A54E8' ),
 	'blue'   => array( '60A5FA', '818CF8' ),
 	'teal'   => array( '2DD4BF', '3B82F6' ),
-	'pink'   => array( 'F472B6', 'A78BFA' ),
+	'pink'   => array( '8B9BFF', '22D3EE' ),
 );
 
 $qv_categories = array(
@@ -107,8 +108,8 @@ $qv_cat_ids = array();
 foreach ( $qv_categories as $qv_slug => $qv_cat ) {
 	$qv_pal   = $qv_palettes[ $qv_cat['palette'] ];
 	$qv_thumb = qvs_image(
-		"cat-{$qv_slug}",
-		"category-{$qv_slug}.jpg",
+		"cat-{$qv_slug}-v2",
+		"category-{$qv_slug}-v2.jpg",
 		fn() => call_user_func( $qv_cat['mock'], 1440, 900, $qv_cat['name'], $qv_pal[0], $qv_pal[1], $qv_slug ),
 		"{$qv_cat['name']} by Hassani Labs"
 	);
@@ -129,8 +130,8 @@ foreach ( $qv_categories as $qv_slug => $qv_cat ) {
 	foreach ( $qv_cat['children'] as $qv_child_slug => $qv_child ) {
 		$qv_cpal   = $qv_palettes[ $qv_child[4] ];
 		$qv_cthumb = qvs_image(
-			"cat-{$qv_child_slug}",
-			"category-{$qv_child_slug}.jpg",
+			"cat-{$qv_child_slug}-v2",
+			"category-{$qv_child_slug}-v2.jpg",
 			fn() => call_user_func( $qv_child[3], 1440, 900, $qv_child[0], $qv_cpal[0], $qv_cpal[1], $qv_child_slug ),
 			"{$qv_child[0]} — {$qv_cat['name']}"
 		);
@@ -454,8 +455,8 @@ foreach ( $qv_products as $qv_index => $qv_p ) {
 	$qv_images  = array();
 	foreach ( $qv_p['mocks'] as $qv_m => $qv_mock ) {
 		$qv_images[] = qvs_image(
-			"product-{$qv_p['slug']}-{$qv_m}",
-			"product-{$qv_p['slug']}-{$qv_m}.jpg",
+			"product-{$qv_p['slug']}-{$qv_m}-v2",
+			"product-{$qv_p['slug']}-{$qv_m}-v2.jpg",
 			fn() => call_user_func( $qv_mock, 1440, 900, explode( ' — ', $qv_p['name'] )[0], $qv_m % 2 ? $qv_pal[1] : $qv_pal[0], $qv_m % 2 ? $qv_pal[0] : $qv_pal[1], $qv_p['slug'] . $qv_m ),
 			$qv_p['name'] . ( 0 === $qv_m ? ' — product preview' : " — screenshot {$qv_m}" )
 		);
