@@ -5,6 +5,7 @@
  * Usage:
  *   wp eval-file scripts/seed.php                 # all sections
  *   wp eval-file scripts/seed.php shop pages      # selected sections
+ *   wp eval-file scripts/seed.php catalog         # product categories, Products pages and menu only
  *
  * Sections run in this order: settings, shop, pages, portfolio, blog, languages.
  * Every seeded object carries a `_qv_seed_key` meta so re-runs update
@@ -18,7 +19,8 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 }
 
 $qv_all      = array( 'settings', 'shop', 'pages', 'portfolio', 'blog', 'languages' );
-$qv_sections = ! empty( $args ) ? array_values( array_intersect( $qv_all, $args ) ) : $qv_all;
+$qv_extra    = array( 'catalog' ); // Only when named: updates part of a site that is already set up.
+$qv_sections = ! empty( $args ) ? array_values( array_intersect( array_merge( $qv_all, $qv_extra ), $args ) ) : $qv_all;
 $qv_sections = array_values( array_filter( $qv_sections, fn( $s ) => file_exists( __DIR__ . "/seed/{$s}.php" ) ) );
 
 require_once __DIR__ . '/lib/images.php';

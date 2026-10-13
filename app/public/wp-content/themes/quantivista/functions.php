@@ -26,6 +26,7 @@ $qv_includes = array(
 	'i18n',
 	'clinic',
 	'work',
+	'catalog',
 );
 
 if ( class_exists( 'WooCommerce' ) ) {

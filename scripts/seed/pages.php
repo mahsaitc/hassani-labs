@@ -328,6 +328,9 @@ $qv_clinic_en = qvs_page(
 	)
 );
 
+// Products catalogue (English and Persian): page-templates/products.php.
+list( $qv_products_en, $qv_products_fa ) = qvs_catalog_pages();
+
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $qv_home );
 update_option( 'page_for_posts', $qv_blog );
@@ -420,15 +423,7 @@ qvs_menu_item(
 		'menu-item-title'  => 'Work',
 	)
 );
-$qv_products_item = qvs_menu_item(
-	$qv_primary,
-	array(
-		'menu-item-type'  => 'custom',
-		'menu-item-title' => 'Products',
-		'menu-item-url'   => function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ),
-	)
-);
-qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_en, 'Acupuncture Clinic Software' ), $qv_products_item );
+qvs_catalog_menu( $qv_primary, 'en', $qv_products_en );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_blog ) );
 $qv_policies_item = qvs_menu_item( $qv_primary, $qv_page_item( $qv_policies ) );
 foreach ( array( $qv_terms, $qv_privacy, $qv_refund, $qv_license ) as $qv_pid ) {
