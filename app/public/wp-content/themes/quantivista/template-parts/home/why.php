@@ -33,8 +33,8 @@ $qv_about = qv_page_by_path( 'about' );
 		qv_section_head(
 			array(
 				'eyebrow' => __( 'Why Hassani Labs', 'quantivista' ),
-				'title'   => __( 'From a real problem to a smart software solution', 'quantivista' ),
-				'lead'    => __( 'Websites, custom software and digital tools, built with an analytical, structured approach that fits your real needs.', 'quantivista' ),
+				'title'   => __( 'From understanding real needs to building software solutions', 'quantivista' ),
+				'lead'    => __( 'More than two decades in medicine taught me to recognise real problems and understand users\' needs up close. Software engineering lets me turn that understanding into practical, precise and scalable digital solutions, from specialised software to systems that make complex processes simpler.', 'quantivista' ),
 				'id'      => 'why-title',
 			)
 		);
