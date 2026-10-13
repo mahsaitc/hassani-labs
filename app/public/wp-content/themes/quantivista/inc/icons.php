@@ -122,7 +122,7 @@ function qv_logo_mark( $id = 'qv-mark' ) {
 	unset( $id );
 	return sprintf(
 		'<img class="brand-mark" src="%1$s" srcset="%1$s 1x, %2$s 2x" width="48" height="48" alt="" decoding="async">',
-		esc_url( QV_URI . '/assets/img/logo-mark-96.png' ),
-		esc_url( QV_URI . '/assets/img/logo-mark-192.png' )
+		esc_url( QV_URI . '/assets/img/logo-mark-96.png?v=' . qv_asset_version( 'assets/img/logo-mark-96.png' ) ),
+		esc_url( QV_URI . '/assets/img/logo-mark-192.png?v=' . qv_asset_version( 'assets/img/logo-mark-192.png' ) )
 	);
 }
