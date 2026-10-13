@@ -33,12 +33,15 @@ function qv_mod_defaults() {
 		'contact_phone'     => '',
 		'contact_address'   => 'Iran · Remote worldwide',
 		'contact_hours'     => '',
+		'contact_map'       => 'Shiraz, Iran',
 		'social_x'          => '',
 		'social_linkedin'   => 'https://www.linkedin.com/in/mahsahassani',
 		'social_github'     => 'https://github.com/mahsaitc',
 		'social_facebook'   => '',
 		'social_instagram'  => '',
 		'social_youtube'    => '',
+		'social_telegram'   => '',
+		'social_whatsapp'   => '',
 		'founder_name'      => 'Mahsa Hassani',
 		'founder_initials'  => 'MH',
 		'founder_role'      => 'Physician (General Medicine) and Computer Engineer — Software Design',
@@ -103,6 +106,7 @@ function qv_customize_register( WP_Customize_Manager $wp_customize ) {
 				'contact_phone'   => array( __( 'Phone', 'quantivista' ), 'text' ),
 				'contact_address' => array( __( 'Address', 'quantivista' ), 'textarea' ),
 				'contact_hours'   => array( __( 'Office hours', 'quantivista' ), 'text' ),
+				'contact_map'     => array( __( 'Map location (address or latitude,longitude; empty hides the map)', 'quantivista' ), 'text' ),
 			),
 		),
 		'qv_social'  => array(
@@ -117,8 +121,12 @@ function qv_customize_register( WP_Customize_Manager $wp_customize ) {
 		/* translators: %d: stat number */
 		$sections['qv_stats']['fields'][ "stat_{$i}_label" ] = array( sprintf( __( 'Stat %d label', 'quantivista' ), $i ), 'text' );
 	}
-	foreach ( array( 'x', 'linkedin', 'github', 'facebook', 'instagram', 'youtube' ) as $network ) {
-		$sections['qv_social']['fields'][ "social_{$network}" ] = array( ucfirst( $network ) . ' URL', 'url' );
+	foreach ( array( 'linkedin', 'github', 'instagram', 'telegram', 'whatsapp', 'youtube', 'x', 'facebook' ) as $network ) {
+		$hint = array(
+			'telegram' => ' (https://t.me/…)',
+			'whatsapp' => ' (https://wa.me/989…)',
+		)[ $network ] ?? '';
+		$sections['qv_social']['fields'][ "social_{$network}" ] = array( qv_social_networks()[ $network ] . ' URL' . $hint, 'url' );
 	}
 
 	$defaults = qv_mod_defaults();

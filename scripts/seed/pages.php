@@ -350,8 +350,8 @@ $qv_slides = array(
 			'qv_slide_subheadline' => 'Website, online booking and electronic patient records, installed on your clinic\'s own host.',
 			'qv_slide_cta_label'   => 'Learn more',
 			'qv_slide_cta_url'     => '/clinic-software/',
-			'qv_slide_cta2_label'  => 'نسخه فارسی',
-			'qv_slide_cta2_url'    => '/clinic-software-fa/',
+			'qv_slide_cta2_label'  => 'Ask a question',
+			'qv_slide_cta2_url'    => '/contact/',
 		),
 	),
 	array(
@@ -418,7 +418,6 @@ $qv_products_item = qvs_menu_item(
 	)
 );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_en, 'Acupuncture Clinic Software' ), $qv_products_item );
-qvs_menu_item( $qv_primary, $qv_page_item( $qv_clinic_fa, 'نرم‌افزار کلینیک (فارسی)' ), $qv_products_item );
 qvs_menu_item( $qv_primary, $qv_page_item( $qv_blog ) );
 $qv_policies_item = qvs_menu_item( $qv_primary, $qv_page_item( $qv_policies ) );
 foreach ( array( $qv_terms, $qv_privacy, $qv_refund, $qv_license ) as $qv_pid ) {
@@ -438,7 +437,6 @@ qvs_menu_item( $qv_footer_quick, $qv_page_item( $qv_wishlist ) );
 
 $qv_footer_products = qvs_menu( 'Footer — Products' );
 qvs_menu_item( $qv_footer_products, $qv_page_item( $qv_clinic_en, 'Acupuncture Clinic Software' ) );
-qvs_menu_item( $qv_footer_products, $qv_page_item( $qv_clinic_fa, 'نرم‌افزار کلینیک (فارسی)' ) );
 qvs_menu_item(
 	$qv_footer_products,
 	array(

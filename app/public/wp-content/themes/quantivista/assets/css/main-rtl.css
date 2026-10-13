@@ -2909,3 +2909,48 @@ html[lang^="fa"] input[type="url"],
 html[lang^="fa"] .work-metrics strong,
 html[lang^="fa"] .work-facts .check-list,
 html[lang^="fa"] .chip { font-family: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif; }
+
+/* ---------- Contact: social profiles and map ---------- */
+.contact-social__title { margin: 32px 0 14px; font-size: 1.05rem; }
+
+.social-links--named { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.social-links--named a {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: flex-start;
+	width: auto;
+	height: auto;
+	padding: 12px 14px;
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-md);
+	background: #fff;
+	color: var(--c-ink);
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-decoration: none;
+}
+.social-links--named a .icon { color: var(--c-blue-600); }
+.social-links--named a:hover { color: #fff; background: var(--c-navy-800); border-color: var(--c-navy-800); }
+.social-links--named a:hover .icon { color: var(--c-cyan-400); }
+
+.map-card {
+	margin: 28px 0 0;
+	overflow: hidden;
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-lg);
+	background: #fff;
+	box-shadow: var(--sh-sm);
+}
+.map-card iframe { display: block; width: 100%; height: 280px; border: 0; filter: saturate(0.85); }
+.map-card figcaption {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	padding: 14px 18px;
+	font-size: 0.93rem;
+	color: var(--c-body);
+}
+.map-card figcaption .icon { color: var(--c-blue-600); }
+.map-card figcaption a { margin-inline-start: auto; font-weight: 600; color: var(--c-blue-600); }

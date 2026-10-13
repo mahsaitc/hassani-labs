@@ -1183,3 +1183,42 @@ msgstr "دو دهه در پزشکی کار کردم و بعد به نرم‌اف
 
 msgid "Language"
 msgstr "زبان"
+
+msgid "Location"
+msgstr "موقعیت"
+
+msgid "Find me on"
+msgstr "من را در این شبکه‌ها دنبال کنید"
+
+msgid "Location on Google Maps"
+msgstr "موقعیت روی نقشه گوگل"
+
+msgid "Open in Google Maps"
+msgstr "باز کردن در نقشه گوگل"
+
+msgid "Map location (address or latitude,longitude; empty hides the map)"
+msgstr "موقعیت روی نقشه (نشانی یا عرض,طول جغرافیایی؛ خالی بگذارید تا نقشه نمایش داده نشود)"
+
+msgid "LinkedIn"
+msgstr "لینکدین"
+
+msgid "GitHub"
+msgstr "گیت‌هاب"
+
+msgid "Instagram"
+msgstr "اینستاگرام"
+
+msgid "Telegram"
+msgstr "تلگرام"
+
+msgid "WhatsApp"
+msgstr "واتس‌اپ"
+
+msgid "YouTube"
+msgstr "یوتیوب"
+
+msgid "X"
+msgstr "ایکس"
+
+msgid "Facebook"
+msgstr "فیسبوک"
