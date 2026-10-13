@@ -1339,3 +1339,9 @@ msgstr "درباره پروژه‌تان صحبت کنیم"
 
 msgid "Services"
 msgstr "خدمات"
+
+msgid "From a real problem to a smart software solution"
+msgstr "از یک مسئله واقعی، تا یک راهکار نرم‌افزاری هوشمند"
+
+msgid "Websites, custom software and digital tools, built with an analytical, structured approach that fits your real needs."
+msgstr "طراحی و توسعه وب‌سایت، نرم‌افزارهای اختصاصی و ابزارهای دیجیتال؛ با رویکردی تحلیلی، ساختاریافته و متناسب با نیاز واقعی شما."
