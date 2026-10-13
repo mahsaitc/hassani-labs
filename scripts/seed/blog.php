@@ -45,6 +45,7 @@ if ( is_wp_error( $qv_uid ) ) {
 	WP_CLI::warning( 'Author: ' . $qv_uid->get_error_message() );
 	$qv_uid = 1;
 }
+update_user_meta( $qv_uid, 'qv_local_avatar', 'founder-avatar.webp' ); // Her photo instead of Gravatar.
 wp_update_user(
 	array(
 		'ID'           => $qv_uid,
@@ -81,6 +82,12 @@ foreach ( array( 'product-updates', 'design', 'mobile', 'business' ) as $qv_slug
 
 
 $qv_palettes = array( array( '22D3EE', '5B6CFF' ), array( '818CF8', '22D3EE' ), array( '2DD4BF', '3B82F6' ) );
+// One illustration per article, matching its subject; others fall back to the code glyph.
+$qv_illustrations = array(
+	'check-then-act-double-booking-guard'               => 'qvimg_cover_booking',
+	'cqrs-without-the-ceremony'                        => 'qvimg_cover_cqrs',
+	'level-triggered-alerts-and-the-inbound-exception' => 'qvimg_cover_stock',
+);
 foreach ( $qv_data['posts'] as $qv_i => $qv_p ) {
 	$qv_post_id = qvs_upsert_post(
 		'article-' . $qv_p['slug'],
@@ -101,7 +108,14 @@ foreach ( $qv_data['posts'] as $qv_i => $qv_p ) {
 	$qv_pal = $qv_palettes[ $qv_i % count( $qv_palettes ) ];
 	set_post_thumbnail(
 		$qv_post_id,
-		qvs_image( 'cover-' . $qv_p['slug'] . '-v2', 'cover-' . $qv_p['slug'] . '-v2.jpg', fn() => qvimg_cover( 1600, 900, '{ }', $qv_pal[0], $qv_pal[1], $qv_p['slug'] ), $qv_p['title'] )
+		qvs_image(
+			'cover-' . $qv_p['slug'] . '-v3',
+			'cover-' . $qv_p['slug'] . '-v3.jpg',
+			fn() => isset( $qv_illustrations[ $qv_p['slug'] ] )
+				? call_user_func( $qv_illustrations[ $qv_p['slug'] ], 1600, 900, $qv_pal[0], $qv_pal[1] )
+				: qvimg_cover( 1600, 900, '{ }', $qv_pal[0], $qv_pal[1], $qv_p['slug'] ),
+			$qv_p['title']
+		)
 	);
 	WP_CLI::log( "    post: {$qv_p['title']} (#{$qv_post_id})" );
 }

@@ -567,6 +567,181 @@ function qvimg_cover( $w, $h, $glyph, $accent, $accent2, $seed ) {
 }
 
 /**
+ * Shared backdrop for article illustrations (same look as qvimg_cover).
+ */
+function qvimg_cover_bg( $w, $h, $accent, $accent2 ) {
+	$im = qvimg_canvas( $w, $h );
+	qvimg_gradient( $im, '070B24', qvimg_mix( '18225A', $accent2, 0.25 ) );
+	qvimg_glow( $im, (int) ( $w * 0.8 ), (int) ( $h * 0.25 ), (int) ( $w * 0.4 ), $accent, 4 );
+	qvimg_glow( $im, (int) ( $w * 0.12 ), (int) ( $h * 0.95 ), (int) ( $w * 0.35 ), $accent2, 4 );
+	qvimg_dot_grid( $im, 36, 'FFFFFF', 115 );
+	return $im;
+}
+
+/**
+ * Arrow from (x1,y1) to (x2,y2) with a filled head.
+ */
+function qvimg_arrow( $im, $x1, $y1, $x2, $y2, $hex, $thickness = 6 ) {
+	imagesetthickness( $im, $thickness );
+	imageline( $im, (int) $x1, (int) $y1, (int) $x2, (int) $y2, qvimg_color( $im, $hex ) );
+	imagesetthickness( $im, 1 );
+	$a  = atan2( $y2 - $y1, $x2 - $x1 );
+	$hl = $thickness * 4;
+	imagefilledpolygon(
+		$im,
+		array(
+			(int) $x2, (int) $y2,
+			(int) ( $x2 - $hl * cos( $a - 0.45 ) ), (int) ( $y2 - $hl * sin( $a - 0.45 ) ),
+			(int) ( $x2 - $hl * cos( $a + 0.45 ) ), (int) ( $y2 - $hl * sin( $a + 0.45 ) ),
+		),
+		qvimg_color( $im, $hex )
+	);
+}
+
+/**
+ * Article: booking calendar where a second, clashing booking is blocked.
+ */
+function qvimg_cover_booking( $w, $h, $accent, $accent2 ) {
+	$im    = qvimg_cover_bg( $w, $h, $accent, $accent2 );
+	$panel = '0D1440';
+	$cx    = (int) ( $w * 0.2 );
+	$cy    = (int) ( $h * 0.16 );
+	$cw    = (int) ( $w * 0.6 );
+	$ch    = (int) ( $h * 0.68 );
+	qvimg_rrect( $im, $cx, $cy, $cw, $ch, 36, $panel );
+	qvimg_rrect( $im, $cx, $cy, $cw, 96, 36, qvimg_mix( $panel, $accent2, 0.35 ) );
+	qvimg_rrect( $im, $cx, $cy + 60, $cw, 36, 0, qvimg_mix( $panel, $accent2, 0.35 ) );
+	foreach ( array( 0.22, 0.78 ) as $px ) { // Binder rings.
+		qvimg_rrect( $im, $cx + $cw * $px - 10, $cy - 26, 20, 56, 10, 'C7D2FE' );
+	}
+	$cols = 5;
+	$rows = 4;
+	$gx   = $cx + 40;
+	$gy   = $cy + 130;
+	$cellw = ( $cw - 80 ) / $cols;
+	$cellh = ( $ch - 170 ) / $rows;
+	for ( $r = 0; $r < $rows; $r++ ) {
+		for ( $c = 0; $c < $cols; $c++ ) {
+			qvimg_rrect( $im, $gx + $c * $cellw + 6, $gy + $r * $cellh + 6, $cellw - 12, $cellh - 12, 14, qvimg_mix( $panel, 'FFFFFF', 0.06 ) );
+		}
+	}
+	// Confirmed booking (cyan) in one slot.
+	$bx = $gx + 2 * $cellw + 6;
+	$by = $gy + 1 * $cellh + 6;
+	qvimg_rrect_gradient( $im, $bx, $by, (int) ( $cellw - 12 ), (int) ( $cellh - 12 ), 14, $accent, qvimg_mix( $accent, $accent2, 0.5 ) );
+	qvimg_line( $im, $bx + 18, $by + 22, $cellw * 0.5, 12, 'FFFFFF' );
+	qvimg_line( $im, $bx + 18, $by + 46, $cellw * 0.3, 10, 'E0F2FE' );
+	// Second booking for the same slot, offset and stopped by a shield.
+	$ox = $bx + $cellw * 0.55;
+	$oy = $by + $cellh * 0.55;
+	qvimg_rrect( $im, $ox, $oy, (int) ( $cellw - 12 ), (int) ( $cellh - 12 ), 14, qvimg_mix( $panel, $accent2, 0.55 ) );
+	qvimg_line( $im, $ox + 18, $oy + 22, $cellw * 0.45, 12, 'C7D2FE' );
+	// Shield with a check mark.
+	$sx = (int) ( $ox + $cellw - 30 );
+	$sy = (int) ( $oy - 20 );
+	$sr = 58;
+	imagefilledpolygon(
+		$im,
+		array( $sx, $sy - $sr, $sx + $sr, $sy - $sr * 0.6, $sx + $sr * 0.85, $sy + $sr * 0.5, $sx, $sy + $sr, $sx - $sr * 0.85, $sy + $sr * 0.5, $sx - $sr, $sy - $sr * 0.6 ),
+		qvimg_color( $im, '2DD4BF' )
+	);
+	qvimg_polyline( $im, array( array( $sx - 26, $sy ), array( $sx - 6, $sy + 22 ), array( $sx + 28, $sy - 22 ) ), '052E2B', 10 );
+	return $im;
+}
+
+/**
+ * Article: CQRS, commands to a write model and queries from a read model.
+ */
+function qvimg_cover_cqrs( $w, $h, $accent, $accent2 ) {
+	$im    = qvimg_cover_bg( $w, $h, $accent, $accent2 );
+	$panel = '0D1440';
+	$bw    = (int) ( $w * 0.2 );
+	$bh    = (int) ( $h * 0.2 );
+	$left  = (int) ( $w * 0.12 );
+	$right = (int) ( $w * 0.68 );
+	$top   = (int) ( $h * 0.18 );
+	$bot   = (int) ( $h * 0.62 );
+	$label = static function ( $x, $y, $bw, $text, $hex ) use ( $im ) {
+		$size = 34;
+		$tw   = qvimg_text_width( $size, $text, true );
+		qvimg_text( $im, $size, $x + ( $bw - $tw ) / 2, $y, $hex, $text, true );
+	};
+	// App (centre) sends commands up and asks queries down.
+	$ax = (int) ( $w / 2 - $bw * 0.6 );
+	$ay = (int) ( $h / 2 - $bh * 0.55 );
+	qvimg_rrect_gradient( $im, $ax, $ay, (int) ( $bw * 1.2 ), (int) ( $bh * 1.1 ), 30, $accent, $accent2 );
+	$label( $ax, $ay + $bh * 0.68, $bw * 1.2, 'App', 'FFFFFF' );
+	// Write side.
+	qvimg_rrect( $im, $left, $top, $bw, $bh, 28, qvimg_mix( $panel, $accent, 0.25 ) );
+	$label( $left, $top + $bh * 0.62, $bw, 'Write', qvimg_mix( $accent, 'FFFFFF', 0.4 ) );
+	// Read side.
+	qvimg_rrect( $im, $right, $bot, $bw, $bh, 28, qvimg_mix( $panel, $accent2, 0.3 ) );
+	$label( $right, $bot + $bh * 0.62, $bw, 'Read', qvimg_mix( $accent2, 'FFFFFF', 0.5 ) );
+	// Database cylinders under each side.
+	foreach ( array( array( $left + $bw / 2, $top + $bh + 120, $accent ), array( $right + $bw / 2, $bot - 120, $accent2 ) ) as $db ) {
+		list( $dx, $dy, $hex ) = $db;
+		$c = qvimg_color( $im, qvimg_mix( $panel, $hex, 0.45 ) );
+		imagefilledrectangle( $im, (int) ( $dx - 70 ), (int) ( $dy - 40 ), (int) ( $dx + 70 ), (int) ( $dy + 40 ), $c );
+		imagefilledellipse( $im, (int) $dx, (int) ( $dy + 40 ), 140, 44, $c );
+		imagefilledellipse( $im, (int) $dx, (int) ( $dy - 40 ), 140, 44, qvimg_color( $im, qvimg_mix( $hex, 'FFFFFF', 0.2 ) ) );
+	}
+	imagesetthickness( $im, 6 );
+	qvimg_arrow( $im, $ax, $ay + 20, $left + $bw + 24, $top + $bh / 2, qvimg_mix( $accent, 'FFFFFF', 0.3 ) );
+	qvimg_arrow( $im, $right, $bot + $bh / 2, $ax + $bw * 1.2 + 24, $ay + $bh * 1.1 - 20, qvimg_mix( $accent2, 'FFFFFF', 0.4 ) );
+	qvimg_text( $im, 26, $left + $bw + 80, $top + $bh / 2 + 80, 'C7D2FE', 'commands' );
+	qvimg_text( $im, 26, $right - 200, $bot + $bh / 2 - 50, 'C7D2FE', 'queries' );
+	return $im;
+}
+
+/**
+ * Article: stock levels with a threshold line and an alert bell.
+ */
+function qvimg_cover_stock( $w, $h, $accent, $accent2 ) {
+	$im    = qvimg_cover_bg( $w, $h, $accent, $accent2 );
+	$panel = '0D1440';
+	$px    = (int) ( $w * 0.14 );
+	$py    = (int) ( $h * 0.14 );
+	$pw    = (int) ( $w * 0.72 );
+	$ph    = (int) ( $h * 0.72 );
+	qvimg_rrect( $im, $px, $py, $pw, $ph, 36, $panel );
+	$base   = $py + $ph - 70;
+	$levels = array( 0.82, 0.64, 0.74, 0.22, 0.58, 0.9 );
+	$n      = count( $levels );
+	$slot   = ( $pw - 120 ) / $n;
+	$limit  = $base - ( $ph - 160 ) * 0.35;
+	foreach ( $levels as $i => $lv ) {
+		$bh  = ( $ph - 160 ) * $lv;
+		$bx  = $px + 60 + $i * $slot + $slot * 0.18;
+		$low = $lv < 0.35;
+		if ( $low ) {
+			qvimg_rrect( $im, $bx, $base - $bh, (int) ( $slot * 0.64 ), (int) $bh, 14, '93C5FD' );
+		} else {
+			qvimg_rrect_gradient( $im, $bx, (int) ( $base - $bh ), (int) ( $slot * 0.64 ), (int) $bh, 14, $accent, $accent2 );
+		}
+		// Box icon on top of each column.
+		qvimg_rrect( $im, $bx + $slot * 0.12, $base - $bh - 54, (int) ( $slot * 0.4 ), 40, 8, qvimg_mix( $panel, 'FFFFFF', 0.18 ) );
+		imageline( $im, (int) ( $bx + $slot * 0.32 ), (int) ( $base - $bh - 54 ), (int) ( $bx + $slot * 0.32 ), (int) ( $base - $bh - 14 ), qvimg_color( $im, $panel ) );
+	}
+	// Threshold (dashed).
+	$c = qvimg_color( $im, 'C7D2FE' );
+	imagesetthickness( $im, 4 );
+	for ( $x = $px + 40; $x < $px + $pw - 40; $x += 36 ) {
+		imageline( $im, (int) $x, (int) $limit, (int) ( $x + 18 ), (int) $limit, $c );
+	}
+	imagesetthickness( $im, 1 );
+	// Bell badge above the low column.
+	$lx = (int) ( $px + 60 + 3 * $slot + $slot * 0.5 );
+	$ly = (int) ( $limit - 150 );
+	imagefilledellipse( $im, $lx, $ly, 150, 150, qvimg_color( $im, '2DD4BF' ) );
+	$bell = '052E2B';
+	imagefilledarc( $im, $lx, $ly + 6, 70, 80, 180, 360, qvimg_color( $im, $bell ), IMG_ARC_PIE );
+	imagefilledrectangle( $im, $lx - 35, $ly + 6, $lx + 35, $ly + 26, qvimg_color( $im, $bell ) );
+	qvimg_rrect( $im, $lx - 46, $ly + 22, 92, 12, 6, $bell );
+	imagefilledellipse( $im, $lx, $ly + 44, 22, 22, qvimg_color( $im, $bell ) );
+	return $im;
+}
+
+/**
  * Initials avatar.
  */
 function qvimg_avatar( $size, $initials, $accent, $accent2 ) {
