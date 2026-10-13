@@ -50,6 +50,9 @@ Code: `mu-plugins/quantivista-core/clinic-orders.php`, `themes/quantivista/inc/c
   project, article, timeline entry and hero slide, linked to its English original, plus the Persian menus. Persian
   portfolio and article texts are in `scripts/seed/data/portfolio.fa.json`; page texts in `scripts/seed/translations.php`.
   After that, edit translations in the dashboard (each post shows its other-language version in the Languages box).
+- The Persian content is created in two extra WP-CLI processes (`scripts/seed/translations.php`, then
+  `scripts/seed/finish.php`, which links the pages and rebuilds the permalinks). If the seed prints a warning that a
+  step did not run, run those two files yourself with `wp eval-file`, in that order. Both are safe to re-run.
 - Theme texts (buttons, labels, forms): `themes/quantivista/languages/fa_IR.po`. After editing it, rebuild with
   `wp i18n make-mo` and `wp i18n make-php` on that file. Customizer texts that you change appear under
   Languages > Translations.

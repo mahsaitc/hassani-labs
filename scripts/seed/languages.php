@@ -52,12 +52,33 @@ foreach ( $qv_settings as $qv_key => $qv_value ) {
 		WP_CLI::warning( "Polylang option {$qv_key}: " . $qv_error->get_error_message() );
 	}
 }
+// Keep the English menus in place even before the Persian ones exist.
+$qv_nav_menus = PLL()->options->get( 'nav_menus' );
+foreach ( (array) get_theme_mod( 'nav_menu_locations', array() ) as $qv_location => $qv_menu_id ) {
+	if ( empty( $qv_nav_menus[ get_option( 'stylesheet' ) ][ $qv_location ]['en'] ) ) {
+		$qv_nav_menus[ get_option( 'stylesheet' ) ][ $qv_location ]['en'] = (int) $qv_menu_id;
+	}
+}
+PLL()->options->set( 'nav_menus', $qv_nav_menus );
 PLL()->options->save();
 
 // Polylang reads its languages once per request: create the Persian content
-// in a new process so it sees both languages.
-WP_CLI::runcommand( 'eval-file ' . escapeshellarg( __DIR__ . '/translations.php' ), array( 'launch' => true, 'exit_error' => true ) );
-WP_CLI::runcommand(
-	'eval ' . escapeshellarg( 'foreach ( (array) get_option( "qvs_fa_pairs" ) as $en => $fa ) { pll_save_post_translations( array( "en" => $en, "fa" => $fa ) ); } delete_option( "qvs_fa_pairs" );' ),
-	array( 'launch' => true, 'exit_error' => true )
-);
+// in a new process so it sees both languages, then link and flush in another.
+// If a process cannot be started (seen on Windows), print the commands to run.
+$GLOBALS['qvs_languages_done'] = true;
+foreach ( array( 'translations.php', 'finish.php' ) as $qv_step ) {
+	$qv_run = WP_CLI::runcommand(
+		'eval-file ' . escapeshellarg( __DIR__ . '/' . $qv_step ),
+		array( 'launch' => true, 'exit_error' => false, 'return' => 'all' )
+	);
+	if ( $qv_run->stdout ) {
+		WP_CLI::log( rtrim( $qv_run->stdout ) );
+	}
+	if ( 0 !== $qv_run->return_code ) {
+		WP_CLI::warning( "The Persian setup step {$qv_step} did not run here:\n" . trim( $qv_run->stderr ) );
+		WP_CLI::log( 'Run these two commands yourself, one after the other:' );
+		WP_CLI::log( '  wp eval-file "' . __DIR__ . DIRECTORY_SEPARATOR . 'translations.php"' );
+		WP_CLI::log( '  wp eval-file "' . __DIR__ . DIRECTORY_SEPARATOR . 'finish.php"' );
+		break;
+	}
+}

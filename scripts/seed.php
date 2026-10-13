@@ -31,6 +31,8 @@ foreach ( $qv_sections as $qv_section ) {
 	WP_CLI::log( sprintf( '    done in %.1fs', microtime( true ) - $qv_started ) );
 }
 
-// In a new process: Polylang's /fa/ rules depend on settings this run may have changed.
-WP_CLI::runcommand( 'rewrite flush', array( 'launch' => true ) );
+// The languages step rebuilds the permalinks itself (finish.php, in its own process).
+if ( empty( $GLOBALS['qvs_languages_done'] ) ) {
+	flush_rewrite_rules( false );
+}
 WP_CLI::success( 'Seed complete: ' . implode( ', ', $qv_sections ) );

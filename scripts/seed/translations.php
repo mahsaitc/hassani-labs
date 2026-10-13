@@ -441,7 +441,7 @@ foreach ( $qv_fa_locations as $qv_location => $qv_menu_id ) {
 PLL()->options->set( 'nav_menus', $qv_nav_menus );
 PLL()->options->save();
 
-// languages.php links every pair once more in a new process: links saved for
+// finish.php links every pair once more in a new process: links saved for
 // the front page and the blog page are dropped by Polylang during this run.
 update_option( 'qvs_fa_pairs', $GLOBALS['qvs_fa_pairs'] ?? array(), false );
 
