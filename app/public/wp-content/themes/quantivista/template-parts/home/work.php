@@ -12,7 +12,7 @@ if ( ! function_exists( 'qvc_projects' ) ) {
 }
 
 $qv_projects = qvc_projects( 3, true );
-$qv_about    = get_page_by_path( 'about' );
+$qv_about    = qv_page_by_path( 'about' );
 $qv_archive  = get_post_type_archive_link( 'qv_project' );
 ?>
 <section class="section" aria-labelledby="founder-title">

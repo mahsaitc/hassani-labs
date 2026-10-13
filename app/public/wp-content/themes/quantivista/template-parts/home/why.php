@@ -25,7 +25,7 @@ $qv_checks = array(
 	__( 'Medical software shaped by real clinical work', 'quantivista' ),
 );
 
-$qv_about = get_page_by_path( 'about' );
+$qv_about = qv_page_by_path( 'about' );
 ?>
 <section class="section section--dark" aria-labelledby="why-title">
 	<div class="container">

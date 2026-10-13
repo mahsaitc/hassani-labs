@@ -28,6 +28,7 @@ PLUGINS=(
 	advanced-custom-fields
 	wordpress-seo
 	contact-form-7
+	polylang
 	wordfence
 )
 for plugin in "${PLUGINS[@]}"; do

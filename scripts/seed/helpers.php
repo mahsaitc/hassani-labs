@@ -120,3 +120,61 @@ function qvs_update_option_merge( $option, array $values ) {
 	$current = get_option( $option, array() );
 	update_option( $option, array_merge( is_array( $current ) ? $current : array(), $values ) );
 }
+
+/**
+ * Create (or empty) a navigation menu by name.
+ */
+function qvs_menu( $name ) {
+	$menu = wp_get_nav_menu_object( $name );
+	$id   = $menu ? $menu->term_id : wp_create_nav_menu( $name );
+	foreach ( (array) wp_get_nav_menu_items( $id ) as $item ) {
+		wp_delete_post( $item->ID, true );
+	}
+	return $id;
+}
+
+function qvs_menu_item( $menu_id, array $args, $parent = 0 ) {
+	return wp_update_nav_menu_item(
+		$menu_id,
+		0,
+		array_merge(
+			array(
+				'menu-item-status'    => 'publish',
+				'menu-item-parent-id' => $parent,
+			),
+			$args
+		)
+	);
+}
+
+/**
+ * Article body blocks (p, h2, ul, quote, code) to HTML. Inline **bold**
+ * and `code` are kept.
+ */
+function qvs_blocks_html( array $blocks ) {
+	$inline = function ( $text ) {
+		$text = esc_html( $text );
+		$text = preg_replace( '/\*\*(.+?)\*\*/', '<strong>$1</strong>', $text );
+		return preg_replace( '/`([^`]+)`/', '<code>$1</code>', $text );
+	};
+	$html = '';
+	foreach ( $blocks as $b ) {
+		switch ( $b['type'] ) {
+			case 'h2':
+				$html .= '<h2>' . $inline( $b['text'] ) . "</h2>\n";
+				break;
+			case 'ul':
+				$html .= '<ul>' . implode( '', array_map( fn( $i ) => '<li>' . $inline( $i ) . '</li>', $b['items'] ) ) . "</ul>\n";
+				break;
+			case 'quote':
+				$html .= '<blockquote><p>' . $inline( $b['text'] ) . "</p></blockquote>\n";
+				break;
+			case 'code':
+				$html .= '<pre><code class="language-' . esc_attr( $b['lang'] ?? 'text' ) . '">' . esc_html( $b['code'] ) . "</code></pre>\n";
+				break;
+			default:
+				$html .= '<p>' . $inline( $b['text'] ) . "</p>\n";
+		}
+	}
+	return $html;
+}

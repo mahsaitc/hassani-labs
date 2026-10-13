@@ -17,7 +17,7 @@ get_header();
 		<p class="error-404__lead"><?php esc_html_e( 'The link may be broken or the page may have moved. Try a search or head back to safer ground.', 'quantivista' ); ?></p>
 		<?php get_search_form(); ?>
 		<div class="btn-row btn-row--center">
-			<a class="btn btn--accent" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Back to home', 'quantivista' ); ?></a>
+			<a class="btn btn--accent" href="<?php echo esc_url( qv_home_url() ); ?>"><?php esc_html_e( 'Back to home', 'quantivista' ); ?></a>
 			<?php if ( function_exists( 'wc_get_page_permalink' ) ) : ?>
 				<a class="btn btn--ghost" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Browse products', 'quantivista' ); ?></a>
 			<?php endif; ?>

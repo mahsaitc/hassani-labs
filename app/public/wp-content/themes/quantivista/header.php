@@ -42,12 +42,14 @@ $qv_cart_count = ( $qv_has_wc && WC()->cart ) ? WC()->cart->get_cart_contents_co
 				)
 			);
 			?>
+			<?php qv_language_switcher( 'lang-switch--mobile' ); ?>
 			<div class="primary-nav__mobile-cta">
 				<a class="btn btn--accent btn--block" href="<?php echo esc_url( qv_mod_url( 'header_cta_url' ) ); ?>"><?php echo esc_html( qv_mod( 'header_cta_label' ) ); ?></a>
 			</div>
 		</nav>
 
 		<div class="header-actions">
+			<?php qv_language_switcher( 'lang-switch--header' ); ?>
 			<button type="button" class="icon-btn" data-search-toggle aria-controls="search-panel" aria-expanded="false">
 				<?php qv_the_icon( 'search' ); ?>
 				<span class="screen-reader-text"><?php esc_html_e( 'Search', 'quantivista' ); ?></span>

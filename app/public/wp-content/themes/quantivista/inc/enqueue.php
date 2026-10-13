@@ -18,10 +18,12 @@ function qv_asset_version( $relative ) {
 
 add_action( 'wp_enqueue_scripts', 'qv_enqueue_assets' );
 function qv_enqueue_assets() {
-	wp_enqueue_style( 'quantivista', QV_URI . '/assets/css/main.css', array(), qv_asset_version( 'assets/css/main.css' ) );
+	// Right-to-left languages (Persian) get the generated *-rtl.css instead.
+	$rtl = is_rtl() ? '-rtl' : '';
+	wp_enqueue_style( 'quantivista', QV_URI . "/assets/css/main{$rtl}.css", array(), qv_asset_version( "assets/css/main{$rtl}.css" ) );
 
 	if ( class_exists( 'WooCommerce' ) ) {
-		wp_enqueue_style( 'quantivista-shop', QV_URI . '/assets/css/woocommerce.css', array( 'quantivista' ), qv_asset_version( 'assets/css/woocommerce.css' ) );
+		wp_enqueue_style( 'quantivista-shop', QV_URI . "/assets/css/woocommerce{$rtl}.css", array( 'quantivista' ), qv_asset_version( "assets/css/woocommerce{$rtl}.css" ) );
 	}
 
 	wp_enqueue_script(
@@ -65,7 +67,7 @@ add_action(
 		echo "<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.qvReady){document.documentElement.classList.add('no-reveal');}},2500);</script>\n";
 		printf(
 			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
-			esc_url( QV_URI . '/assets/fonts/inter-var-latin.woff2' )
+			esc_url( QV_URI . ( is_rtl() ? '/assets/fonts/vazirmatn-variable.woff2' : '/assets/fonts/inter-var-latin.woff2' ) )
 		);
 		echo '<meta name="theme-color" content="#070B24">' . "\n";
 	},

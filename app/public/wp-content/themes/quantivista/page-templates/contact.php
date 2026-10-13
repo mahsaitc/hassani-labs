@@ -70,15 +70,15 @@ while ( have_posts() ) :
 			</div>
 
 			<div class="form-card" id="contact-form">
-				<h2><?php esc_html_e( 'Tell us about your project', 'quantivista' ); ?></h2>
-				<p class="muted"><?php esc_html_e( 'We reply within one business day. Fields marked * are required.', 'quantivista' ); ?></p>
+				<h2><?php esc_html_e( 'Tell me about your project', 'quantivista' ); ?></h2>
+				<p class="muted"><?php esc_html_e( 'I reply within two business days. Fields marked * are required.', 'quantivista' ); ?></p>
 				<?php
 				if ( $qv_shortcode && shortcode_exists( 'contact-form-7' ) ) {
 					echo do_shortcode( $qv_shortcode );
 				} else {
 					printf(
 						'<p>%s <a href="mailto:%2$s">%2$s</a></p>',
-						esc_html__( 'Our contact form is being set up. Meanwhile, email us at', 'quantivista' ),
+						esc_html__( 'The contact form is being set up. Meanwhile, email me at', 'quantivista' ),
 						esc_html( antispambot( $qv_email ) )
 					);
 				}
