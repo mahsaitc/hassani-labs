@@ -71,9 +71,9 @@ add_action(
 		);
 		echo '<meta name="theme-color" content="#070B24">' . "\n";
 		if ( ! has_site_icon() ) { // A Site Icon set in the Customizer wins.
-			printf( '<link rel="icon" href="%s" sizes="32x32">' . "\n", esc_url( QV_URI . '/assets/img/favicon-32.png' ) );
-			printf( '<link rel="icon" href="%s" sizes="192x192">' . "\n", esc_url( QV_URI . '/assets/img/logo-mark-192.png' ) );
-			printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( QV_URI . '/assets/img/apple-touch-icon.png' ) );
+			printf( '<link rel="icon" href="%s" sizes="32x32">' . "\n", esc_url( QV_URI . '/assets/img/favicon-32.png?v=' . qv_asset_version( 'assets/img/favicon-32.png' ) ) );
+			printf( '<link rel="icon" href="%s" sizes="192x192">' . "\n", esc_url( QV_URI . '/assets/img/logo-mark-192.png?v=' . qv_asset_version( 'assets/img/logo-mark-192.png' ) ) );
+			printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( QV_URI . '/assets/img/apple-touch-icon.png?v=' . qv_asset_version( 'assets/img/apple-touch-icon.png' ) ) );
 		}
 	},
 	1
