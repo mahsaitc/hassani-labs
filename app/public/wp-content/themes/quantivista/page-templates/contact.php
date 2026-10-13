@@ -52,7 +52,7 @@ while ( have_posts() ) :
 					<li class="info-card">
 						<span class="info-card__icon"><?php qv_the_icon( 'map-pin' ); ?></span>
 						<span>
-							<span class="info-card__label"><?php esc_html_e( 'Office', 'quantivista' ); ?></span>
+							<span class="info-card__label"><?php esc_html_e( 'Location', 'quantivista' ); ?></span>
 							<span class="info-card__value"><?php echo esc_html( qv_mod( 'contact_address' ) ); ?></span>
 						</span>
 					</li>
@@ -66,7 +66,11 @@ while ( have_posts() ) :
 					</li>
 					<?php endif; ?>
 				</ul>
-				<?php qv_social_links(); ?>
+				<?php if ( array_filter( array_map( fn( $k ) => qv_mod( 'social_' . $k ), array_keys( qv_social_networks() ) ) ) ) : ?>
+					<h2 class="contact-social__title"><?php esc_html_e( 'Find me on', 'quantivista' ); ?></h2>
+					<?php qv_social_links( 'social-links--named', true ); ?>
+				<?php endif; ?>
+				<?php qv_contact_map(); ?>
 			</div>
 
 			<div class="form-card" id="contact-form">

@@ -175,34 +175,68 @@ function qv_share_links( $post_id = null ) {
 }
 
 /**
- * Social profile links from the Customizer.
+ * Social networks the Customizer offers, in display order: key => name.
  */
-function qv_social_links( $class = '' ) {
-	$networks = array(
-		'x'         => 'X',
-		'linkedin'  => 'LinkedIn',
-		'github'    => 'GitHub',
-		'facebook'  => 'Facebook',
-		'instagram' => 'Instagram',
-		'youtube'   => 'YouTube',
+function qv_social_networks() {
+	return array(
+		'linkedin'  => __( 'LinkedIn', 'quantivista' ),
+		'github'    => __( 'GitHub', 'quantivista' ),
+		'instagram' => __( 'Instagram', 'quantivista' ),
+		'telegram'  => __( 'Telegram', 'quantivista' ),
+		'whatsapp'  => __( 'WhatsApp', 'quantivista' ),
+		'youtube'   => __( 'YouTube', 'quantivista' ),
+		'x'         => __( 'X', 'quantivista' ),
+		'facebook'  => __( 'Facebook', 'quantivista' ),
 	);
-	$items    = '';
-	foreach ( $networks as $key => $label ) {
+}
+
+/**
+ * Social profile links from the Customizer. With $named, each link shows the
+ * network's name next to its icon (contact page); otherwise icons only.
+ */
+function qv_social_links( $class = '', $named = false ) {
+	$items = '';
+	foreach ( qv_social_networks() as $key => $label ) {
 		$url = qv_mod( 'social_' . $key );
 		if ( ! $url ) {
 			continue;
 		}
 		$items .= sprintf(
-			'<li><a href="%1$s" target="_blank" rel="noopener noreferrer me">%2$s<span class="screen-reader-text">%3$s</span></a></li>',
+			'<li><a href="%1$s" target="_blank" rel="noopener noreferrer me">%2$s%3$s</a></li>',
 			esc_url( $url ),
-			qv_icon( $key, array( 'size' => 18 ) ),
-			/* translators: %s: network name */
-			esc_html( sprintf( __( 'Hassani Labs on %s', 'quantivista' ), $label ) )
+			qv_icon( $key, array( 'size' => $named ? 20 : 18 ) ),
+			$named
+				? '<span>' . esc_html( $label ) . '</span>'
+				/* translators: %s: network name */
+				: '<span class="screen-reader-text">' . esc_html( sprintf( __( 'Hassani Labs on %s', 'quantivista' ), $label ) ) . '</span>'
 		);
 	}
 	if ( $items ) {
 		echo '<ul class="social-links ' . esc_attr( $class ) . '">' . $items . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
+}
+
+/**
+ * Embedded Google Map for the Customizer's map location (contact page).
+ */
+function qv_contact_map() {
+	$place = trim( (string) qv_mod( 'contact_map' ) );
+	if ( '' === $place ) {
+		return;
+	}
+	$lang  = is_rtl() ? 'fa' : 'en';
+	$embed = 'https://maps.google.com/maps?' . http_build_query( array( 'q' => $place, 'z' => 13, 'hl' => $lang, 'output' => 'embed' ) );
+	$open  = 'https://www.google.com/maps/search/?' . http_build_query( array( 'api' => 1, 'query' => $place ) );
+	?>
+	<figure class="map-card">
+		<iframe src="<?php echo esc_url( $embed ); ?>" title="<?php esc_attr_e( 'Location on Google Maps', 'quantivista' ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+		<figcaption>
+			<?php qv_the_icon( 'map-pin', array( 'size' => 18 ) ); ?>
+			<span><?php echo esc_html( qv_mod( 'contact_address' ) ); ?></span>
+			<a href="<?php echo esc_url( $open ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Open in Google Maps', 'quantivista' ); ?></a>
+		</figcaption>
+	</figure>
+	<?php
 }
 
 /**

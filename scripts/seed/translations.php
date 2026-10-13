@@ -145,6 +145,73 @@ $qv_fa_blog = qvs_fa(
 	)
 );
 
+/* Persian contact form (Contact Form 7), used on the Persian contact page. */
+$qv_fa_form_shortcode = '';
+if ( class_exists( 'WPCF7_ContactForm' ) ) {
+	$qv_fa_mailto  = function_exists( 'qv_mod' ) && qv_mod( 'contact_email' ) ? qv_mod( 'contact_email' ) : get_option( 'admin_email' );
+	$qv_fa_host    = wp_parse_url( home_url(), PHP_URL_HOST );
+	$qv_fa_form_id = qvs_find_by_key( 'cf7-project-inquiry-fa', 'wpcf7_contact_form' );
+	$qv_fa_form    = $qv_fa_form_id ? wpcf7_contact_form( $qv_fa_form_id ) : WPCF7_ContactForm::get_template( array( 'title' => 'فرم تماس (فارسی)' ) );
+	$qv_fa_form->set_properties(
+		array(
+			'form'     => qvs_html(
+				'<div class="form-grid">
+				<p><label>نام و نام خانوادگی *[text* your-name autocomplete:name placeholder "مثلاً سارا احمدی"]</label></p>
+				<p><label>ایمیل *[email* your-email autocomplete:email placeholder "you@example.com"]</label></p>
+				<p><label>شماره تماس[tel your-phone autocomplete:tel placeholder "09121234567"]</label></p>
+				<p><label>نام کلینیک یا شرکت[text your-company autocomplete:organization]</label></p>
+				<p class="full"><label>چه چیزی لازم دارید؟ *[select* your-service first_as_label "یکی را انتخاب کنید" "نرم‌افزار کلینیک طب سوزنی" "نرم‌افزار تحت وب سفارشی" "وب‌سایت" "تغییر در محصولی که خریده‌ام" "موضوع دیگر"]</label></p>
+				<p class="full"><label>توضیحات *[textarea* your-message placeholder "هدف، زمان‌بندی، نمونه‌هایی که دوست دارید…"]</label></p>
+				<p class="full">[acceptance your-consent] موافقم که Hassani Labs برای پاسخ به این پیام، طبق سیاست حریم خصوصی از اطلاعات من استفاده کند. [/acceptance]</p>
+				<p class="full">[submit class:btn class:btn--accent class:btn--lg "ارسال پیام"]</p>
+				</div>'
+			),
+			'mail'     => array(
+				'active'             => true,
+				'subject'            => '[Hassani Labs] پیام جدید از [your-name]',
+				'sender'             => "Hassani Labs Website <wordpress@{$qv_fa_host}>",
+				'recipient'          => $qv_fa_mailto,
+				'body'               => "نام: [your-name]\nایمیل: [your-email]\nتلفن: [your-phone]\nکلینیک یا شرکت: [your-company]\nموضوع: [your-service]\n\n[your-message]\n\n--\nارسال‌شده از فرم تماس فارسی [_site_url]",
+				'additional_headers' => 'Reply-To: [your-email]',
+				'attachments'        => '',
+				'use_html'           => false,
+				'exclude_blank'      => true,
+			),
+			'mail_2'   => array(
+				'active'             => true,
+				'subject'            => 'پیام شما رسید — Hassani Labs',
+				'sender'             => "Hassani Labs <wordpress@{$qv_fa_host}>",
+				'recipient'          => '[your-email]',
+				'body'               => "[your-name] عزیز، سلام\n\nممنون که پیام دادید. همه پیام‌ها را خودم می‌خوانم و ظرف دو روز کاری پاسخ می‌دهم.\n\nپیام شما:\n[your-message]\n\nمهسا حسنی\nHassani Labs\n[_site_url]",
+				'additional_headers' => "Reply-To: {$qv_fa_mailto}",
+				'attachments'        => '',
+				'use_html'           => false,
+				'exclude_blank'      => true,
+			),
+			'messages' => array(
+				'mail_sent_ok'             => 'ممنون! پیام شما ارسال شد. ظرف دو روز کاری پاسخ می‌دهم.',
+				'mail_sent_ng'             => 'ارسال پیام با خطا روبه‌رو شد. لطفاً دوباره تلاش کنید یا مستقیم ایمیل بزنید.',
+				'validation_error'         => 'یک یا چند فیلد خطا دارد. لطفاً بررسی کنید و دوباره بفرستید.',
+				'spam'                     => 'ارسال پیام با خطا روبه‌رو شد. لطفاً دوباره تلاش کنید.',
+				'accept_terms'             => 'برای ارسال، باید با شرایط موافقت کنید.',
+				'invalid_required'         => 'لطفاً این فیلد را پر کنید.',
+				'invalid_too_long'         => 'این فیلد بیش از حد طولانی است.',
+				'invalid_too_short'        => 'این فیلد بیش از حد کوتاه است.',
+				'upload_failed'            => 'بارگذاری فایل با خطا روبه‌رو شد.',
+				'invalid_email'            => 'لطفاً یک ایمیل درست وارد کنید.',
+				'invalid_tel'              => 'لطفاً یک شماره تلفن درست وارد کنید.',
+				'invalid_url'              => 'لطفاً یک نشانی اینترنتی درست وارد کنید.',
+				'invalid_number'           => 'لطفاً یک عدد وارد کنید.',
+				'invalid_date'             => 'لطفاً یک تاریخ درست وارد کنید.',
+			),
+			'locale'   => 'fa_IR',
+		)
+	);
+	$qv_fa_form->save();
+	update_post_meta( $qv_fa_form->id(), QVS_KEY, 'cf7-project-inquiry-fa' );
+	$qv_fa_form_shortcode = sprintf( '[contact-form-7 id="%d" title="فرم تماس (فارسی)"]', $qv_fa_form->id() );
+}
+
 $qv_fa_contact = qvs_fa(
 	$qv_page( 'page-contact' ),
 	array(
@@ -154,8 +221,8 @@ $qv_fa_contact = qvs_fa(
 	),
 	array(
 		'qv_faq' => "چقدر طول می‌کشد جواب بدهید؟ | ظرف دو روز کاری، معمولاً زودتر.\nبا مشتری‌های خارج از ایران هم کار می‌کنید؟ | بله. از راه دور و به فارسی و انگلیسی کار می‌کنم و تماس‌ها را با اختلاف ساعت هماهنگ می‌کنم.\nنرم‌افزار کلینیک برای کلینیک من قابل تغییر است؟ | بله. نام، لوگو و رنگ‌ها از پنل مدیریت تنظیم می‌شوند و تغییرات بزرگ‌تر جداگانه قیمت‌گذاری می‌شوند.\nقیمت پروژه سفارشی چطور تعیین می‌شود؟ | پس از یک تماس کوتاه، محدوده کار را با قیمت ثابت و مرحله‌بندی مکتوب می‌فرستم تا فقط برای کار تأییدشده پرداخت کنید.",
-	),
-	array( 'qv_form_shortcode' )
+		'qv_form_shortcode' => $qv_fa_form_shortcode ? $qv_fa_form_shortcode : get_post_meta( $qv_page( 'page-contact' ), 'qv_form_shortcode', true ),
+	)
 );
 
 $qv_fa_note = '<p class="callout"><strong>توجه:</strong> این متن یک پیش‌نویس است. پیش از انتشار، مشخصات کسب‌وکار را کامل کنید و آن را به تأیید یک مشاور حقوقی برسانید.</p>';
@@ -355,7 +422,7 @@ foreach ( $qv_fa_data['posts'] as $qv_slug => $qv_p ) {
  * --------------------------------------------------------------------- */
 $qv_fa_slides = array(
 	array( 'نرم‌افزاری که یک پزشک برنامه‌نویس می‌سازد', 'Hassani Labs', 'نرم‌افزار کلینیک، نرم‌افزار تحت وب و وب‌سایت؛ طراحی، ساخت و پشتیبانی توسط مهسا حسنی.', 'نمونه‌کارها', '/work/', 'تماس با من', '/contact/' ),
-	array( 'نرم‌افزار کلینیک طب سوزنی', 'محصول', 'وب‌سایت، نوبت‌دهی آنلاین و پرونده الکترونیک بیمار، نصب‌شده روی هاست خود کلینیک.', 'اطلاعات بیشتر و سفارش', '/clinic-software-fa/', 'English version', '/clinic-software/' ),
+	array( 'نرم‌افزار کلینیک طب سوزنی', 'محصول', 'وب‌سایت، نوبت‌دهی آنلاین و پرونده الکترونیک بیمار، نصب‌شده روی هاست خود کلینیک.', 'اطلاعات بیشتر و سفارش', '/clinic-software-fa/', 'سؤال دارید؟', '/contact/' ),
 	array( 'نرم‌افزار تحت وب سفارشی، از تعریف تا پشتیبانی', 'خدمات', 'ASP.NET Core و React، همراه با تست، مستندات و قیمت ثابت.', 'درخواست قیمت', '/contact/', 'نمونه‌کارها', '/work/' ),
 );
 foreach ( $qv_fa_slides as $qv_i => $qv_s ) {
@@ -413,9 +480,6 @@ qvs_menu_item( $qv_fa_quick, $qv_work_item );
 $qv_fa_products_menu = qvs_menu( 'Footer — Products (فارسی)' );
 if ( $qv_clinic_fa ) {
 	qvs_menu_item( $qv_fa_products_menu, $qv_fa_item( $qv_clinic_fa, 'نرم‌افزار کلینیک طب سوزنی' ) );
-}
-if ( $qv_clinic_en ) {
-	qvs_menu_item( $qv_fa_products_menu, $qv_fa_item( $qv_clinic_en, 'Clinic software (English)' ) );
 }
 
 $qv_fa_policies_menu = qvs_menu( 'Footer — Policies (فارسی)' );
