@@ -26,8 +26,6 @@ echo "==> Plugins"
 PLUGINS=(
 	woocommerce
 	advanced-custom-fields
-	wordpress-seo
-	contact-form-7
 	polylang
 	wordfence
 )
@@ -37,6 +35,11 @@ for plugin in "${PLUGINS[@]}"; do
 	else
 		$WP plugin install "$plugin" --activate
 	fi
+done
+
+# Replaced by the theme (inc/seo.php) and the built-in contact form: fewer plugins to keep updated.
+for plugin in wordpress-seo contact-form-7; do
+	$WP plugin is-active "$plugin" && $WP plugin deactivate "$plugin" || true
 done
 
 # Default themes are not needed; keep one as an emergency fallback.

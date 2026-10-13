@@ -12,7 +12,7 @@ Started from the Quantivista site; the portfolio content comes from mahsahassani
 ## Stack
 
 - WordPress 7.1, PHP 8.2, MySQL 8.4 (Local by Flywheel)
-- WooCommerce, Advanced Custom Fields, Yoast SEO, Contact Form 7, Wordfence
+- WooCommerce, Advanced Custom Fields, Polylang, Wordfence (SEO tags and the contact form are built into the theme)
 - Custom theme: `app/public/wp-content/themes/quantivista`
 
 ## Repository layout
@@ -83,6 +83,10 @@ the Customizer (Hassani Labs Options > Contact & Footer). Social profiles and th
   with Zarinpal. Translating WooCommerce products needs the paid Polylang for WooCommerce, not used here.
 
 ## Before launch
+
+- Hosting checklist (wp-config, server rules, admin account, Search Console): `docs/DEPLOY.fa.md`.
+- SEO without a plugin: `inc/seo.php` prints the meta description, Open Graph and JSON-LD, and turns itself off if
+  Yoast SEO or Rank Math is active. Copies that are not `production` (Local) are `noindex`.
 
 - Sample store products (FlowPilot, Nexus CRM and the others) are seeded as **drafts**. Delete them or replace
   them with real products; only the clinic software products are real.
