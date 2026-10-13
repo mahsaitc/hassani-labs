@@ -243,8 +243,8 @@
      }
     ]
    },
-   "poster": "kohanex.svg",
-   "alt": "KOHANEX website in English and Persian"
+   "poster": "kohanex.webp",
+   "alt": "KOHANEX homepage: sourcing between Iranian suppliers and international buyers"
   },
   {
    "slug": "drsajjadi",
@@ -296,8 +296,8 @@
     "heading": "SEO",
     "body": "Persian metadata with Open Graph on every page, sitemap and robots files, and Schema.org data for Physician, MedicalWebPage, FAQPage and BreadcrumbList."
    },
-   "poster": "drsajjadi.svg",
-   "alt": "Dr. Sajjadi website with a video hero and appointment calendar"
+   "poster": "drsajjadi.webp",
+   "alt": "Dr. Sajjadi psychiatry clinic homepage with appointment booking"
   },
   {
    "slug": "medadvice",
@@ -347,8 +347,8 @@
     "heading": "Tests",
     "body": "Unit tests for the cart, uploads, security and users, and integration tests on SQL Server for anti-forgery, routing and authorization, migrations and image serving."
    },
-   "poster": "medadvice.svg",
-   "alt": "MedAdvice doctor cards and advice questions"
+   "poster": "medadvice.webp",
+   "alt": "MedAdvice homepage with doctor search by specialist and condition"
   },
   {
    "slug": "rxclinic",
