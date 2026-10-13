@@ -1345,3 +1345,9 @@ msgstr "از یک مسئله واقعی، تا یک راهکار نرم‌افز
 
 msgid "Websites, custom software and digital tools, built with an analytical, structured approach that fits your real needs."
 msgstr "طراحی و توسعه وب‌سایت، نرم‌افزارهای اختصاصی و ابزارهای دیجیتال؛ با رویکردی تحلیلی، ساختاریافته و متناسب با نیاز واقعی شما."
+
+msgid "From understanding real needs to building software solutions"
+msgstr "از شناخت نیازهای واقعی تا ساخت راهکارهای نرم‌افزاری"
+
+msgid "More than two decades in medicine taught me to recognise real problems and understand users' needs up close. Software engineering lets me turn that understanding into practical, precise and scalable digital solutions, from specialised software to systems that make complex processes simpler."
+msgstr "بیش از دو دهه تجربه پزشکی، به من آموخته است که چگونه مسائل واقعی را بشناسم و نیازهای کاربران را از نزدیک درک کنم. دانش مهندسی نرم‌افزار به من امکان می‌دهد این شناخت را به راهکارهای دیجیتال کاربردی، دقیق و قابل توسعه تبدیل کنم؛ از نرم‌افزارهای تخصصی گرفته تا سیستم‌هایی که فرایندهای پیچیده را ساده‌تر می‌کنند."
