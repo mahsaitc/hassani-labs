@@ -42,6 +42,12 @@ Code: `mu-plugins/quantivista-core/clinic-orders.php`, `themes/quantivista/inc/c
   `wp eval-file scripts/seed.php portfolio blog`, or edit the posts in the admin afterwards.
 - Founder name, role and intro on the homepage: Appearance > Customize > Hassani Labs Options.
 
+## Contact form
+
+The Contact page (both languages) uses a built-in form (`mu-plugins/quantivista-core/contact.php`), so no form
+plugin is needed. Each message is saved under **Messages** in the dashboard and emailed to the contact email set in
+the Customizer (Hassani Labs Options > Contact & Footer). Social profiles and the map location are set there too.
+
 ## Languages (English and Persian)
 
 - [Polylang](https://wordpress.org/plugins/polylang/) (free): English at the site root, Persian under `/fa/`.

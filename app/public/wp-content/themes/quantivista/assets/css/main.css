@@ -2954,3 +2954,14 @@ html[lang^="fa"] .chip { font-family: "Inter", "Vazirmatn", ui-sans-serif, syste
 }
 .map-card figcaption .icon { color: var(--c-blue-600); }
 .map-card figcaption a { margin-inline-start: auto; font-weight: 600; color: var(--c-blue-600); }
+
+/* ---------- Built-in contact form ---------- */
+.contact-form label > input,
+.contact-form label > select,
+.contact-form label > textarea { margin-top: 6px; }
+.contact-form__consent label { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; color: var(--c-muted); }
+.contact-form__consent input { flex: none; width: auto; margin-top: 5px; }
+.contact-form__consent a { color: var(--c-blue-600); }
+.form-alert { margin: 0 0 20px; padding: 14px 18px; border: 1px solid; border-radius: var(--r-md); font-size: 0.95rem; }
+.form-alert--ok { border-color: var(--c-green-600); background: rgba(21, 128, 61, 0.06); color: var(--c-green-600); }
+.form-alert--error { border-color: var(--c-red-600); background: rgba(220, 38, 38, 0.05); color: var(--c-red-600); }

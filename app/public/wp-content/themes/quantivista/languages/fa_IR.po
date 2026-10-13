@@ -1222,3 +1222,57 @@ msgstr "ایکس"
 
 msgid "Facebook"
 msgstr "فیسبوک"
+
+msgid "Full name"
+msgstr "نام و نام خانوادگی"
+
+msgid "Clinic or company"
+msgstr "نام کلینیک یا شرکت"
+
+msgid "What do you need?"
+msgstr "چه چیزی لازم دارید؟"
+
+msgid "Choose one"
+msgstr "یکی را انتخاب کنید"
+
+msgid "Message"
+msgstr "پیام"
+
+msgid "Goals, timeline, links to references…"
+msgstr "هدف، زمان‌بندی، نمونه‌هایی که دوست دارید…"
+
+msgid "Send message"
+msgstr "ارسال پیام"
+
+msgid "Messages"
+msgstr "پیام‌ها"
+
+msgid "Search messages"
+msgstr "جستجوی پیام‌ها"
+
+msgid "Clinic software"
+msgstr "نرم‌افزار کلینیک طب سوزنی"
+
+msgid "A custom web application"
+msgstr "نرم‌افزار تحت وب سفارشی"
+
+msgid "A website"
+msgstr "وب‌سایت"
+
+msgid "Changes to a product I bought"
+msgstr "تغییر در محصولی که خریده‌ام"
+
+msgid "Something else"
+msgstr "موضوع دیگر"
+
+msgid "Thanks! Your message has been sent. I will reply within two business days."
+msgstr "ممنون! پیام شما ارسال شد. ظرف دو روز کاری پاسخ می‌دهم."
+
+msgid "Please fill in every field marked * correctly and tick the consent box."
+msgstr "لطفاً همه فیلدهای ستاره‌دار را درست پر کنید و تیک موافقت را بزنید."
+
+msgid "Too many messages were sent from here. Please try again in an hour or email me."
+msgstr "از اینجا پیام‌های زیادی ارسال شده است. لطفاً یک ساعت دیگر دوباره امتحان کنید یا ایمیل بزنید."
+
+msgid "I agree that Hassani Labs may use my details to answer this message, as described in the %s."
+msgstr "موافقم که Hassani Labs برای پاسخ به این پیام، طبق صفحه %s از اطلاعات من استفاده کند."
