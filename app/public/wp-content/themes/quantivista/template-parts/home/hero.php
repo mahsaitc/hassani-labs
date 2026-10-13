@@ -77,7 +77,7 @@ $qv_url = static fn( $url ) => ( $url && str_starts_with( $url, '/' ) ) ? home_u
 
 				<div class="container hero__content">
 					<?php if ( $qv_slide['eyebrow'] ) : ?>
-						<p class="hero__badge"><strong><?php esc_html_e( 'New', 'quantivista' ); ?></strong> <?php echo esc_html( $qv_slide['eyebrow'] ); ?></p>
+						<p class="hero__badge"><?php if ( 0 !== $qv_i ) : ?><strong><?php esc_html_e( 'New', 'quantivista' ); ?></strong> <?php endif; ?><?php echo esc_html( $qv_slide['eyebrow'] ); ?></p>
 					<?php endif; ?>
 
 					<?php $qv_tag = 0 === $qv_i ? 'h1' : 'h2'; ?>
