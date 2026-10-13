@@ -341,13 +341,15 @@ update_option( 'qv_wishlist_page_id', $qv_wishlist );
 $qv_slides = array(
 	array(
 		'title' => 'From a real problem to a smart software solution',
+		// Dr. Hassani's own introduction image (glass architecture, navy and blue).
+		'image' => fn() => imagecreatefromjpeg( get_template_directory() . '/assets/img/hero-intro.jpg' ),
 		'meta'  => array(
 			'qv_slide_eyebrow'     => 'Dr. Mahsa Hassani | Physician & Software Developer',
 			'qv_slide_subheadline' => 'Websites, custom software and digital tools, built with an analytical, structured approach that fits your real needs.',
-			'qv_slide_video'       => $qv_theme_uri . '/assets/video/hero-loop.mp4',
-			'qv_slide_cta_label'   => 'See my work',
+			'qv_slide_video'       => '',
+			'qv_slide_cta_label'   => 'View my work',
 			'qv_slide_cta_url'     => '/work/',
-			'qv_slide_cta2_label'  => 'Get in touch',
+			'qv_slide_cta2_label'  => 'Start a project',
 			'qv_slide_cta2_url'    => '/contact/',
 		),
 	),
