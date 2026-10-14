@@ -67,3 +67,9 @@
 .app-plan { max-width: 520px; margin-inline: auto; }
 .app-plan .btn-row { gap: 12px; }
 .app-plan__note { margin: 16px 0 0; font-size: 0.88rem; }
+
+.app-tech__stats { margin-bottom: clamp(32px, 5vw, 56px); }
+
+/* Persian page: Latin terms (AES-256, SHA-256, RFC 7914) keep Latin digits. */
+.app-landing.clinic-landing--fa,
+.app-landing.clinic-landing--fa :is(h1, h2, h3, p, li, summary, .btn) { font-family: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif; }
