@@ -253,8 +253,16 @@ function qv_seo_graph( $description, $url, $image ) {
 			'author'              => array( '@id' => $person ),
 			'publisher'           => array( '@id' => $org_id ),
 		);
+		$usd   = ! is_rtl() && function_exists( 'qvc_app_price_usd' ) ? qvc_app_price_usd( 'safejot' ) : 0;
 		$price = function_exists( 'qvc_app_price' ) ? qvc_app_price( 'safejot' ) : 0;
-		if ( $price > 0 ) {
+		if ( $usd > 0 ) {
+			$app['offers'] = array(
+				'@type'         => 'Offer',
+				'price'         => $usd,
+				'priceCurrency' => 'USD',
+				'availability'  => 'https://schema.org/InStock',
+			);
+		} elseif ( $price > 0 ) {
 			$app['offers'] = array(
 				'@type'         => 'Offer',
 				'price'         => $price * 10,

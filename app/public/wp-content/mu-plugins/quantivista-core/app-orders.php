@@ -17,24 +17,28 @@ defined( 'ABSPATH' ) || exit;
 const QVC_APP_OPTION = 'qvc_app_settings';
 
 /**
- * Apps sold this way: slug => name and default price in toman.
+ * Apps sold this way: slug => name and default prices (toman, and US
+ * dollars shown on the English page).
  */
 function qvc_apps() {
 	return array(
 		'safejot' => array(
 			'name'  => 'SafeJot',
 			'price' => 1000000,
+			'usd'   => 5,
 		),
 	);
 }
 
 /**
- * Settings with defaults: price_<slug> (toman) and link_<slug> (download link).
+ * Settings with defaults: price_<slug> (toman), usd_<slug> (US dollars) and
+ * link_<slug> (download link).
  */
 function qvc_app_settings() {
 	$defaults = array( 'notify_email' => get_option( 'admin_email' ) );
 	foreach ( qvc_apps() as $slug => $app ) {
 		$defaults[ 'price_' . $slug ] = (string) $app['price'];
+		$defaults[ 'usd_' . $slug ]   = (string) ( $app['usd'] ?? '' );
 		$defaults[ 'link_' . $slug ]  = '';
 	}
 	return wp_parse_args( (array) get_option( QVC_APP_OPTION, array() ), $defaults );
@@ -45,6 +49,13 @@ function qvc_app_settings() {
  */
 function qvc_app_price( $slug ) {
 	return (int) ( qvc_app_settings()[ 'price_' . $slug ] ?? 0 );
+}
+
+/**
+ * Price of an app in US dollars for the English page (0 = not shown).
+ */
+function qvc_app_price_usd( $slug ) {
+	return (float) ( qvc_app_settings()[ 'usd_' . $slug ] ?? 0 );
 }
 
 /**
@@ -231,6 +242,8 @@ add_action(
 					foreach ( array_keys( qvc_apps() ) as $slug ) {
 						$digits                = preg_replace( '/\D/', '', qvc_latin_digits( $input[ 'price_' . $slug ] ?? '' ) );
 						$out[ 'price_' . $slug ] = '' === $digits ? '' : (string) (int) $digits;
+						$usd                   = preg_replace( '/[^\d.]/', '', qvc_latin_digits( $input[ 'usd_' . $slug ] ?? '' ) );
+						$out[ 'usd_' . $slug ]   = is_numeric( $usd ) ? (string) round( (float) $usd, 2 ) : '';
 						$out[ 'link_' . $slug ]  = esc_url_raw( $input[ 'link_' . $slug ] ?? '' );
 					}
 					return $out;
@@ -265,6 +278,8 @@ function qvc_app_settings_page() {
 				foreach ( qvc_apps() as $slug => $app ) {
 					/* translators: %s: app name */
 					$row( 'price_' . $slug, sprintf( __( '%s: price (toman)', 'quantivista' ), $app['name'] ), __( 'Empty = "price on request".', 'quantivista' ) );
+					/* translators: %s: app name */
+					$row( 'usd_' . $slug, sprintf( __( '%s: price on the English page (US dollars)', 'quantivista' ), $app['name'] ), __( 'Shown to English visitors, who order through the contact page until a foreign payment gateway is added. Empty = the toman price is shown.', 'quantivista' ) );
 					/* translators: %s: app name */
 					$row( 'link_' . $slug, sprintf( __( '%s: download link', 'quantivista' ), $app['name'] ), __( 'The APK file (upload it in Media and paste its link) or a store page. Buyers get it only after payment, through a personal link. Empty = you send the app yourself.', 'quantivista' ), 'url' );
 				}

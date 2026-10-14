@@ -44,9 +44,14 @@ function qv_app_shots( $app, $lang ) {
 }
 
 /**
- * Price line for the page: toman from App Orders settings.
+ * Price line for the page from App Orders settings: US dollars on the
+ * English page when set, otherwise toman.
  */
 function qv_app_price_text( $app, $lang ) {
+	$usd = 'en' === $lang && function_exists( 'qvc_app_price_usd' ) ? qvc_app_price_usd( $app ) : 0;
+	if ( $usd > 0 ) {
+		return '$' . ( floor( $usd ) == $usd ? number_format( $usd ) : number_format( $usd, 2 ) );
+	}
 	$price = function_exists( 'qvc_app_price' ) ? qvc_app_price( $app ) : 0;
 	if ( $price <= 0 ) {
 		return 'en' === $lang ? 'Price on request' : 'استعلام قیمت';
@@ -194,9 +199,9 @@ function qv_app_strings( $app, $lang ) {
 				'plan_name'     => 'SafeJot licence for Android',
 				'plan_lead'     => 'One-time payment, no subscription',
 				'plan_features' => array( 'Android install file (APK)', 'English and Persian interface', 'Unlimited use on your own phone', 'Personal download link right after payment' ),
-				'buy_note'      => 'Online payment is in toman with an Iranian bank card (Zarinpal). Buying from outside Iran? Contact us.',
+				'buy_note'      => 'Buying from outside Iran? Contact us and we will send you a payment link and the app. In Iran, you can pay online in toman with an Iranian bank card (Zarinpal).',
 				'buy_fa'        => 'Pay with an Iranian card',
-				'contact'       => 'Contact us',
+				'contact'       => 'Contact us to buy',
 				'faq_eye'       => 'FAQ',
 				'faq_title'     => 'Good to know before you buy',
 				'faq'           => array(
