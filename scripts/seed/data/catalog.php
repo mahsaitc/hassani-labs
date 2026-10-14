@@ -19,7 +19,7 @@ return array(
 		'desc_fa' => 'اپلیکیشن موبایل، نرم‌افزار دسکتاپ، نرم‌افزار تحت وب، وب‌سایت و افزونه‌های وردپرس.',
 		'icon'    => 'layers',
 		'cats'    => array(
-			'mobile-apps'      => array( 'Mobile apps (Android & iOS)', 'اپلیکیشن موبایل (اندروید و iOS)', 'smartphone', 'Apps for Android and iPhone, with an admin panel and store-ready builds.', 'اپلیکیشن برای اندروید و آیفون، همراه با پنل مدیریت و آماده انتشار در فروشگاه‌ها.' ),
+			'mobile-apps'      => array( 'Mobile apps (Android & iOS)', 'اپلیکیشن موبایل (اندروید و iOS)', 'smartphone', 'Apps for Android and iPhone, with an admin panel and store-ready builds.', 'اپلیکیشن برای اندروید و آیفون، همراه با پنل مدیریت و آماده انتشار در فروشگاه‌ها.', 'safejot' ),
 			'desktop-software' => array( 'Windows & desktop software', 'نرم‌افزار ویندوز و دسکتاپ', 'monitor', 'Programs that run on Windows computers, online or offline, with installers and updates.', 'برنامه‌هایی که روی کامپیوترهای ویندوزی اجرا می‌شوند، با یا بدون اینترنت، همراه با نصب‌کننده و به‌روزرسانی.' ),
 			'web-apps'         => array( 'Web applications', 'نرم‌افزار تحت وب', 'code', 'Software that runs in the browser: panels, booking, records and management systems.', 'نرم‌افزارهایی که در مرورگر اجرا می‌شوند: پنل‌ها، نوبت‌دهی، پرونده‌ها و سامانه‌های مدیریتی.', 'clinic-software' ),
 			'websites'         => array( 'Websites', 'طراحی وب‌سایت', 'globe', 'Company, personal and shop websites that are fast, secure and easy to edit.', 'وب‌سایت شرکتی، شخصی و فروشگاهی؛ سریع، امن و با مدیریت آسان محتوا.' ),

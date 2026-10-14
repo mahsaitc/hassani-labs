@@ -25,6 +25,7 @@ $qv_includes = array(
 	'customizer',
 	'i18n',
 	'clinic',
+	'apps',
 	'work',
 	'catalog',
 	'seo',

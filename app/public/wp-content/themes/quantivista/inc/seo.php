@@ -241,6 +241,30 @@ function qv_seo_graph( $description, $url, $image ) {
 		);
 	}
 
+	if ( defined( 'QV_APP_TEMPLATES' ) && is_page_template( QV_APP_TEMPLATES ) ) {
+		$app   = array(
+			'@type'               => 'MobileApplication',
+			'name'                => 'SafeJot',
+			'description'         => $description,
+			'applicationCategory' => 'UtilitiesApplication',
+			'operatingSystem'     => 'Android 5.0+',
+			'url'                 => $url,
+			'image'               => QV_URI . '/assets/img/apps/safejot-icon.webp',
+			'author'              => array( '@id' => $person ),
+			'publisher'           => array( '@id' => $org_id ),
+		);
+		$price = function_exists( 'qvc_app_price' ) ? qvc_app_price( 'safejot' ) : 0;
+		if ( $price > 0 ) {
+			$app['offers'] = array(
+				'@type'         => 'Offer',
+				'price'         => $price * 10,
+				'priceCurrency' => 'IRR',
+				'availability'  => 'https://schema.org/InStock',
+			);
+		}
+		$graph[] = $app;
+	}
+
 	$crumbs = qv_seo_breadcrumbs();
 	if ( count( $crumbs ) > 1 ) {
 		$items = array();

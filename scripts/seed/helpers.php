@@ -287,6 +287,42 @@ function qvs_catalog_pages() {
 }
 
 /**
+ * App sales pages (English + Persian, linked in Polylang), listed as
+ * products of their categories in data/catalog.php. Sales and orders:
+ * theme inc/apps.php and mu-plugin app-orders.php.
+ */
+function qvs_app_pages() {
+	$en = qvs_upsert_post(
+		'page-safejot',
+		array(
+			'post_type'    => 'page',
+			'post_title'   => 'SafeJot for Android',
+			'post_name'    => 'safejot',
+			'post_content' => '',
+			'post_excerpt' => 'Turn notes and messages into unreadable coded text and back, fully offline. No account, no internet, nothing stored.',
+		)
+	);
+	$fa = qvs_upsert_post(
+		'page-safejot-fa',
+		array(
+			'post_type'    => 'page',
+			'post_title'   => 'اپلیکیشن SafeJot برای اندروید',
+			'post_name'    => 'safejot-fa',
+			'post_content' => '',
+			'post_excerpt' => 'یادداشت‌ها و پیام‌هایتان را با یک لمس به متن رمزی تبدیل کنید و دوباره برگردانید؛ کاملاً آفلاین، بدون حساب کاربری و بدون ذخیره هیچ متنی.',
+		)
+	);
+	update_post_meta( $en, '_wp_page_template', 'page-templates/app-safejot-en.php' );
+	update_post_meta( $fa, '_wp_page_template', 'page-templates/app-safejot.php' );
+	if ( $en && $fa && function_exists( 'pll_set_post_language' ) && in_array( 'fa', (array) pll_languages_list(), true ) ) {
+		pll_set_post_language( $en, 'en' );
+		pll_set_post_language( $fa, 'fa' );
+		pll_save_post_translations( array( 'en' => $en, 'fa' => $fa ) );
+	}
+	return array( $en, $fa );
+}
+
+/**
  * Append the "Products" mega menu (groups as columns, categories under
  * them) to a menu. English links go to the store categories, Persian links
  * to the category cards on the Persian Products page ("#…" links with the

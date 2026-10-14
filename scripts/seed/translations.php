@@ -339,6 +339,10 @@ $qv_fa_terms = qvs_fa(
 
 // The Products pages exist in both languages too.
 list( $qv_products_en, $qv_products_fa ) = qvs_catalog_pages();
+list( $qv_app_en, $qv_app_fa ) = qvs_app_pages(); // SafeJot sales pages.
+if ( $qv_app_en && $qv_app_fa ) {
+	$GLOBALS['qvs_fa_pairs'][ $qv_app_en ] = (int) $qv_app_fa;
+}
 if ( $qv_products_en && $qv_products_fa ) {
 	$GLOBALS['qvs_fa_pairs'][ $qv_products_en ] = (int) $qv_products_fa;
 }
