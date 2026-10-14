@@ -93,7 +93,29 @@ if ( ! $qv_fa && function_exists( 'pll_get_post' ) ) {
 		</section>
 	<?php endif; ?>
 
-	<section class="section" aria-labelledby="app-steps">
+	<?php if ( ! empty( $qv_t['tech'] ) ) : ?>
+		<section class="section app-tech" aria-labelledby="app-tech">
+			<div class="container">
+				<?php qv_section_head( array( 'eyebrow' => $qv_t['tech_eye'], 'title' => $qv_t['tech_title'], 'lead' => $qv_t['tech_lead'], 'id' => 'app-tech' ) ); ?>
+				<ul class="stats app-tech__stats" data-reveal>
+					<?php foreach ( $qv_t['stats'] as $qv_stat ) : ?>
+						<li class="stat"><span class="stat__value"><?php echo esc_html( $qv_stat[0] ); ?></span> <span class="stat__label"><?php echo esc_html( $qv_stat[1] ); ?></span></li>
+					<?php endforeach; ?>
+				</ul>
+				<div class="grid grid--4 clinic-features">
+					<?php foreach ( $qv_t['tech'] as $qv_f ) : ?>
+						<div class="clinic-card" data-reveal>
+							<span class="clinic-card__icon"><?php qv_the_icon( $qv_f[0], array( 'size' => 22 ) ); ?></span>
+							<h3 class="clinic-card__title"><?php echo esc_html( $qv_f[1] ); ?></h3>
+							<p class="clinic-card__text"><?php echo esc_html( $qv_f[2] ); ?></p>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
+	<section class="section section--muted" aria-labelledby="app-steps">
 		<div class="container">
 			<?php qv_section_head( array( 'eyebrow' => $qv_t['steps_eye'], 'title' => $qv_t['steps_title'], 'id' => 'app-steps' ) ); ?>
 			<ol class="clinic-steps app-steps">
