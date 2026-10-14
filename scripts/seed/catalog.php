@@ -37,6 +37,7 @@ if ( function_exists( 'wc_recount_all_terms' ) ) {
 }
 
 list( $qv_products_en, $qv_products_fa ) = qvs_catalog_pages();
+qvs_app_pages();
 
 $qv_locations = get_theme_mod( 'nav_menu_locations', array() );
 $qv_menus     = array( 'en' => (int) ( $qv_locations['primary'] ?? 0 ) );

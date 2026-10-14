@@ -1379,3 +1379,30 @@ msgstr "نمونه‌کارها: نرم‌افزار برای کلینیک‌ه�
 
 msgid "Too many failed login attempts. Please try again in %d minutes."
 msgstr "تعداد تلاش‌های ناموفق ورود زیاد است. لطفاً %d دقیقه دیگر دوباره امتحان کنید."
+
+msgid "App Orders"
+msgstr "سفارش‌های اپلیکیشن"
+
+msgid "App Order"
+msgstr "سفارش اپلیکیشن"
+
+msgid "Buyer"
+msgstr "خریدار"
+
+msgid "App"
+msgstr "اپلیکیشن"
+
+msgid "App Orders Settings"
+msgstr "تنظیمات سفارش‌های اپلیکیشن"
+
+msgid "Zarinpal merchant ID and test mode are set in Clinic Orders → Settings and used here too."
+msgstr "کد مرچنت زرین‌پال و حالت آزمایشی در «سفارش‌های کلینیک ← تنظیمات» تعیین می‌شوند و این‌جا هم استفاده می‌شوند."
+
+msgid "%s: price (toman)"
+msgstr "%s: قیمت (تومان)"
+
+msgid "%s: download link"
+msgstr "%s: لینک دانلود"
+
+msgid "The APK file (upload it in Media and paste its link) or a store page. Buyers get it only after payment, through a personal link. Empty = you send the app yourself."
+msgstr "فایل APK (آن را در «رسانه» بارگذاری و لینکش را این‌جا بچسبانید) یا صفحه فروشگاه. خریدار فقط بعد از پرداخت و از طریق لینک شخصی به آن می‌رسد. خالی = برنامه را خودتان می‌فرستید."
