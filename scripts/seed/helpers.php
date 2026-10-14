@@ -299,7 +299,7 @@ function qvs_app_pages() {
 			'post_title'   => 'SafeJot for Android',
 			'post_name'    => 'safejot',
 			'post_content' => '',
-			'post_excerpt' => 'Turn notes and messages into unreadable coded text and back, fully offline. No account, no internet, nothing stored.',
+			'post_excerpt' => 'Lock private notes and messages with your own password: AES-256 encryption, English and Persian, fully offline, nothing stored.',
 		)
 	);
 	$fa = qvs_upsert_post(
@@ -309,7 +309,7 @@ function qvs_app_pages() {
 			'post_title'   => 'اپلیکیشن SafeJot برای اندروید',
 			'post_name'    => 'safejot-fa',
 			'post_content' => '',
-			'post_excerpt' => 'یادداشت‌ها و پیام‌هایتان را با یک لمس به متن رمزی تبدیل کنید و دوباره برگردانید؛ کاملاً آفلاین، بدون حساب کاربری و بدون ذخیره هیچ متنی.',
+			'post_excerpt' => 'یادداشت‌ها و پیام‌های خصوصی را با رمز عبور خودتان قفل کنید: رمزنگاری AES-256، فارسی و انگلیسی، کاملاً آفلاین و بدون ذخیره هیچ متنی.',
 		)
 	);
 	update_post_meta( $en, '_wp_page_template', 'page-templates/app-safejot-en.php' );

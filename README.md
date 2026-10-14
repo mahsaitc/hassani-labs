@@ -68,7 +68,7 @@ the Customizer (Hassani Labs Options > Contact & Footer). Social profiles and th
 - Pages `/safejot/` (English) and `/fa/safejot-fa/` (Persian), listed under **Mobile apps** on the Products page. Texts: theme `inc/apps.php`; layout: `template-parts/apps/`.
 - Persian page: order form → Zarinpal in toman → personal download link on the page and by email (20 downloads per order). Orders: dashboard **App Orders**; price (default 1,000,000 toman) and download link: **App Orders → Settings**. The Zarinpal merchant ID and test mode come from **Clinic Orders → Settings**.
 - English page: same content; buyers pay with an Iranian card on the Persian page or contact you.
-- Administrators can upload `.apk` files to Media. Screenshots: `assets/img/apps/safejot-{home,encrypt,decrypt}.webp` (phone screens); missing ones are skipped.
+- Administrators can upload `.apk` files to Media. Screenshots: `assets/img/apps/safejot-{home,encrypt,decrypt}.webp` (Persian) and `-en.webp` (English), 540x1170, rendered by the SafeJot repo (`test_shots/`); missing ones are skipped.
 - Existing site: `wp eval-file scripts/seed.php catalog` creates the pages and adds them to the category.
 
 ## Languages (English and Persian)
