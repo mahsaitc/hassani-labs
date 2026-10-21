@@ -16,6 +16,15 @@ $qv_fa    = 'fa' === $qv_lang;
 $qv_t     = qv_app_strings( $qv_app, $qv_lang );
 $qv_shots = qv_app_shots( $qv_app, $qv_lang );
 $qv_icon  = QV_URI . '/assets/img/apps/' . $qv_app . '-icon.webp';
+// Phone screens (540x1170) for an app, browser screens (1280x800) for a website.
+$qv_web   = 'web' === ( $qv_t['shots_kind'] ?? 'phone' );
+$qv_frame = function ( $shot, $attrs ) use ( $qv_web ) {
+	$size = $qv_web ? 'width="1280" height="800"' : 'width="540" height="1170"';
+	$img  = sprintf( '<img src="%s" %s alt="%s" %s>', esc_url( $shot[0] ), $size, esc_attr( $shot[1] ), $attrs );
+	return $qv_web
+		? '<span class="app-browser"><span class="app-browser__bar" aria-hidden="true"><i></i><i></i><i></i></span>' . $img . '</span>'
+		: '<span class="app-phone">' . $img . '</span>';
+};
 $qv_num   = fn( $n ) => $qv_fa ? strtr( (string) $n, array_combine( range( 0, 9 ), mb_str_split( '۰۱۲۳۴۵۶۷۸۹' ) ) ) : (string) $n;
 
 // English page: buy on the Persian page (Zarinpal) or ask by contact.
@@ -48,10 +57,10 @@ if ( ! $qv_fa && function_exists( 'pll_get_post' ) ) {
 					<?php endforeach; ?>
 				</ul>
 			</div>
-			<div class="app-hero__visual">
+			<div class="app-hero__visual<?php echo $qv_web ? ' app-hero__visual--web' : ''; ?>">
 				<?php if ( $qv_shots ) : ?>
-					<figure class="app-phone">
-						<img src="<?php echo esc_url( $qv_shots[0][0] ); ?>" width="540" height="1170" alt="<?php echo esc_attr( $qv_shots[0][1] ); ?>" fetchpriority="high">
+					<figure class="app-hero__figure">
+						<?php echo $qv_frame( $qv_shots[0], 'fetchpriority="high"' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in $qv_frame. ?>
 					</figure>
 				<?php else : ?>
 					<div class="app-hero__icon">
@@ -81,10 +90,10 @@ if ( ! $qv_fa && function_exists( 'pll_get_post' ) ) {
 		<section class="section section--muted" aria-labelledby="app-shots">
 			<div class="container">
 				<?php qv_section_head( array( 'eyebrow' => $qv_t['shots_eye'], 'title' => $qv_t['shots_title'], 'id' => 'app-shots' ) ); ?>
-				<div class="app-shots">
+				<div class="app-shots<?php echo $qv_web ? ' app-shots--web' : ''; ?>">
 					<?php foreach ( $qv_shots as $qv_shot ) : ?>
 						<figure class="app-shots__item" data-reveal>
-							<span class="app-phone"><img src="<?php echo esc_url( $qv_shot[0] ); ?>" width="540" height="1170" alt="<?php echo esc_attr( $qv_shot[1] ); ?>" loading="lazy"></span>
+							<?php echo $qv_frame( $qv_shot, 'loading="lazy"' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in $qv_frame. ?>
 							<figcaption><?php echo esc_html( $qv_shot[1] ); ?></figcaption>
 						</figure>
 					<?php endforeach; ?>
@@ -160,7 +169,7 @@ if ( ! $qv_fa && function_exists( 'pll_get_post' ) ) {
 	<?php if ( $qv_fa ) : ?>
 		<section class="section" id="order" aria-labelledby="app-order">
 			<div class="container container--narrow">
-				<?php get_template_part( 'template-parts/apps/order-form', null, array( 'app' => $qv_app, 'name' => $qv_t['name'] ) ); ?>
+				<?php get_template_part( 'template-parts/apps/order-form', null, array( 'app' => $qv_app, 'name' => $qv_t['name'], 'texts' => array_intersect_key( $qv_t, array_flip( array( 'order_lead', 'order_notes', 'order_consent', 'order_pay' ) ) ) ) ); ?>
 			</div>
 		</section>
 	<?php endif; ?>

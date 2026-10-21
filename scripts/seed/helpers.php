@@ -287,39 +287,53 @@ function qvs_catalog_pages() {
 }
 
 /**
- * App sales pages (English + Persian, linked in Polylang), listed as
- * products of their categories in data/catalog.php. Sales and orders:
- * theme inc/apps.php and mu-plugin app-orders.php.
+ * The product sales pages, English and Persian, linked as translations:
+ * SafeJot (Android app, under Mobile apps) and Aesthetic Clinic Suite
+ * (website, under Websites and Medical). Returns the SafeJot pair; all pairs
+ * are in qvs_all_app_pages().
  */
 function qvs_app_pages() {
-	$en = qvs_upsert_post(
-		'page-safejot',
-		array(
-			'post_type'    => 'page',
-			'post_title'   => 'SafeJot for Android',
-			'post_name'    => 'safejot',
-			'post_content' => '',
-			'post_excerpt' => 'Lock private notes and messages with your own password: AES-256 encryption, English and Persian, fully offline, nothing stored.',
-		)
+	return qvs_all_app_pages()['safejot'];
+}
+
+/**
+ * Creates or updates every product sales page pair; returns slug => array( en id, fa id ).
+ */
+function qvs_all_app_pages() {
+	$pages = array(
+		'safejot'          => array(
+			'en' => array( 'page-safejot', 'SafeJot for Android', 'safejot', 'page-templates/app-safejot-en.php', 'Lock private notes and messages with your own password: AES-256 encryption, English and Persian, fully offline, nothing stored.' ),
+			'fa' => array( 'page-safejot-fa', 'اپلیکیشن SafeJot برای اندروید', 'safejot-fa', 'page-templates/app-safejot.php', 'یادداشت‌ها و پیام‌های خصوصی را با رمز عبور خودتان قفل کنید: رمزنگاری AES-256، فارسی و انگلیسی، کاملاً آفلاین و بدون ذخیره هیچ متنی.' ),
+		),
+		'aesthetic-clinic' => array(
+			'en' => array( 'page-aesthetic-clinic', 'Aesthetic Clinic Suite: website and panel for aesthetic clinics', 'aesthetic-clinic-suite', 'page-templates/app-aesthetic-clinic-en.php', 'A bilingual website, online booking with deposits, treatment previews on a photo, patient records, SMS reminders and reports for aesthetic, injection and laser clinics, installed on the clinic\'s own server.' ),
+			'fa' => array( 'page-aesthetic-clinic-fa', 'وب‌سایت و پنل مدیریت کلینیک زیبایی', 'aesthetic-clinic-suite-fa', 'page-templates/app-aesthetic-clinic.php', 'سایت دوزبانه، نوبت‌دهی آنلاین با بیعانه، پیش‌نمایش درمان روی عکس، پرونده الکترونیک، پیامک یادآوری و گزارش‌های مدیریتی برای کلینیک‌های زیبایی، تزریق و لیزر؛ نصب روی سرور خود کلینیک.' ),
+		),
 	);
-	$fa = qvs_upsert_post(
-		'page-safejot-fa',
-		array(
-			'post_type'    => 'page',
-			'post_title'   => 'اپلیکیشن SafeJot برای اندروید',
-			'post_name'    => 'safejot-fa',
-			'post_content' => '',
-			'post_excerpt' => 'یادداشت‌ها و پیام‌های خصوصی را با رمز عبور خودتان قفل کنید: رمزنگاری AES-256، فارسی و انگلیسی، کاملاً آفلاین و بدون ذخیره هیچ متنی.',
-		)
-	);
-	update_post_meta( $en, '_wp_page_template', 'page-templates/app-safejot-en.php' );
-	update_post_meta( $fa, '_wp_page_template', 'page-templates/app-safejot.php' );
-	if ( $en && $fa && function_exists( 'pll_set_post_language' ) && in_array( 'fa', (array) pll_languages_list(), true ) ) {
-		pll_set_post_language( $en, 'en' );
-		pll_set_post_language( $fa, 'fa' );
-		pll_save_post_translations( array( 'en' => $en, 'fa' => $fa ) );
+	$out = array();
+	foreach ( $pages as $slug => $langs ) {
+		$ids = array();
+		foreach ( $langs as $lang => $p ) {
+			$ids[ $lang ] = qvs_upsert_post(
+				$p[0],
+				array(
+					'post_type'    => 'page',
+					'post_title'   => $p[1],
+					'post_name'    => $p[2],
+					'post_content' => '',
+					'post_excerpt' => $p[4],
+				)
+			);
+			update_post_meta( $ids[ $lang ], '_wp_page_template', $p[3] );
+		}
+		if ( $ids['en'] && $ids['fa'] && function_exists( 'pll_set_post_language' ) && in_array( 'fa', (array) pll_languages_list(), true ) ) {
+			pll_set_post_language( $ids['en'], 'en' );
+			pll_set_post_language( $ids['fa'], 'fa' );
+			pll_save_post_translations( $ids );
+		}
+		$out[ $slug ] = array( $ids['en'], $ids['fa'] );
 	}
-	return array( $en, $fa );
+	return $out;
 }
 
 /**

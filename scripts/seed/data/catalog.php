@@ -22,7 +22,7 @@ return array(
 			'mobile-apps'      => array( 'Mobile apps (Android & iOS)', 'اپلیکیشن موبایل (اندروید و iOS)', 'smartphone', 'Apps for Android and iPhone, with an admin panel and store-ready builds.', 'اپلیکیشن برای اندروید و آیفون، همراه با پنل مدیریت و آماده انتشار در فروشگاه‌ها.', 'safejot' ),
 			'desktop-software' => array( 'Windows & desktop software', 'نرم‌افزار ویندوز و دسکتاپ', 'monitor', 'Programs that run on Windows computers, online or offline, with installers and updates.', 'برنامه‌هایی که روی کامپیوترهای ویندوزی اجرا می‌شوند، با یا بدون اینترنت، همراه با نصب‌کننده و به‌روزرسانی.' ),
 			'web-apps'         => array( 'Web applications', 'نرم‌افزار تحت وب', 'code', 'Software that runs in the browser: panels, booking, records and management systems.', 'نرم‌افزارهایی که در مرورگر اجرا می‌شوند: پنل‌ها، نوبت‌دهی، پرونده‌ها و سامانه‌های مدیریتی.', 'clinic-software' ),
-			'websites'         => array( 'Websites', 'طراحی وب‌سایت', 'globe', 'Company, personal and shop websites that are fast, secure and easy to edit.', 'وب‌سایت شرکتی، شخصی و فروشگاهی؛ سریع، امن و با مدیریت آسان محتوا.' ),
+			'websites'         => array( 'Websites', 'طراحی وب‌سایت', 'globe', 'Company, personal and shop websites that are fast, secure and easy to edit.', 'وب‌سایت شرکتی، شخصی و فروشگاهی؛ سریع، امن و با مدیریت آسان محتوا.', 'aesthetic-clinic-suite' ),
 			'wordpress'        => array( 'WordPress plugins & themes', 'افزونه و قالب وردپرس', 'plug', 'Plugins and themes that add features to WordPress and WooCommerce sites.', 'افزونه‌ها و قالب‌هایی که امکانات تازه به سایت‌های وردپرس و ووکامرس اضافه می‌کنند.' ),
 			'bots'             => array( 'Bots & chat assistants', 'ربات تلگرام، بله و دستیار گفتگو', 'bot', 'Telegram and Bale bots and chat assistants for orders, booking and support.', 'ربات‌های تلگرام و بله و دستیارهای گفتگو برای سفارش، نوبت‌دهی و پشتیبانی.' ),
 		),
@@ -34,7 +34,7 @@ return array(
 		'desc_fa' => 'نرم‌افزارهایی که برای کار روزانه یک حرفه یا کسب‌وکار ساخته شده‌اند.',
 		'icon'    => 'briefcase',
 		'cats'    => array(
-			'medical-healthcare'      => array( 'Medical & healthcare', 'پزشکی و سلامت', 'stethoscope', 'Software for clinics, doctors and therapists: booking, patient records and reports.', 'نرم‌افزار برای کلینیک‌ها، پزشکان و درمانگران: نوبت‌دهی، پرونده بیمار و گزارش‌ها.', 'clinic-software' ),
+			'medical-healthcare'      => array( 'Medical & healthcare', 'پزشکی و سلامت', 'stethoscope', 'Software for clinics, doctors and therapists: booking, patient records and reports.', 'نرم‌افزار برای کلینیک‌ها، پزشکان و درمانگران: نوبت‌دهی، پرونده بیمار و گزارش‌ها.', 'clinic-software,aesthetic-clinic-suite' ),
 			'engineering'             => array( 'Engineering', 'مهندسی', 'ruler', 'Calculation, project control and reporting tools for engineers and contractors.', 'ابزارهای محاسبه، کنترل پروژه و گزارش‌گیری برای مهندسان و پیمانکاران.' ),
 			'legal'                   => array( 'Legal & law firms', 'حقوقی و وکالت', 'scale', 'Case management, client files and deadlines for lawyers and legal offices.', 'مدیریت پرونده‌ها، اطلاعات موکلان و مهلت‌ها برای وکلا و دفاتر حقوقی.' ),
 			'education'               => array( 'Education & e-learning', 'آموزش و آموزش آنلاین', 'graduation', 'Online courses, exams and student management for schools and teachers.', 'دوره‌های آنلاین، آزمون و مدیریت دانش‌آموزان برای آموزشگاه‌ها و مدرسان.' ),

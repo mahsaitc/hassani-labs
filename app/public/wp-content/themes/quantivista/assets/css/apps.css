@@ -73,3 +73,47 @@
 /* Persian page: Latin terms (AES-256, SHA-256, RFC 7914) keep Latin digits. */
 .app-landing.clinic-landing--fa,
 .app-landing.clinic-landing--fa :is(h1, h2, h3, p, li, summary, .btn) { font-family: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif; }
+
+/* Website products: screenshots in a browser window instead of a phone. */
+.app-hero__figure { margin: 0; }
+.app-hero__visual--web { align-self: center; }
+.app-hero__visual--web .app-hero__figure { width: 100%; }
+
+.app-browser {
+	display: block;
+	width: 100%;
+	border: 1px solid var(--c-on-dark-line);
+	border-radius: 14px;
+	overflow: hidden;
+	background: #0b1024;
+	box-shadow: 0 30px 80px -30px rgba(34, 211, 238, 0.45);
+}
+
+.app-browser__bar {
+	display: flex;
+	gap: 6px;
+	padding: 9px 12px;
+	background: #151b33;
+}
+
+.app-browser__bar i {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.25);
+}
+
+.app-browser img {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: #fff;
+}
+
+.app-shots--web { justify-items: stretch; gap: 36px 28px; }
+
+@media (min-width: 760px) {
+	.app-shots--web { grid-template-columns: repeat(2, 1fr); }
+}
+
+.app-shots--web .app-browser { box-shadow: var(--sh-md); border-color: var(--c-line, rgba(0, 0, 0, 0.08)); }

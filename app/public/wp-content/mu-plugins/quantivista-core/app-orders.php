@@ -17,17 +17,32 @@ defined( 'ABSPATH' ) || exit;
 const QVC_APP_OPTION = 'qvc_app_settings';
 
 /**
- * Apps sold this way: slug => name and default prices (toman, and US
- * dollars shown on the English page).
+ * Products sold this way: slug => name, default prices (toman, and US
+ * dollars shown on the English page) and, in Persian, what the buyer gets
+ * after paying when there is no download link.
  */
 function qvc_apps() {
 	return array(
-		'safejot' => array(
-			'name'  => 'SafeJot',
-			'price' => 1000000,
-			'usd'   => 5,
+		'safejot'          => array(
+			'name'    => 'SafeJot',
+			'price'   => 1000000,
+			'usd'     => 5,
+			'deliver' => 'فایل نصب برنامه را به‌زودی برایتان می‌فرستیم.',
+		),
+		'aesthetic-clinic' => array(
+			'name'    => 'Aesthetic Clinic Suite',
+			'price'   => 30000000,
+			'usd'     => 150,
+			'deliver' => 'برای تحویل سورس کامل و هماهنگی نصب وب‌سایت روی سرور و دامنه شما به‌زودی تماس می‌گیریم.',
 		),
 	);
+}
+
+/**
+ * What the buyer gets after paying when no download link is set (Persian).
+ */
+function qvc_app_deliver_text( $slug ) {
+	return qvc_apps()[ $slug ]['deliver'] ?? 'فایل محصول را به‌زودی برایتان می‌فرستیم.';
 }
 
 /**
@@ -281,7 +296,7 @@ function qvc_app_settings_page() {
 					/* translators: %s: app name */
 					$row( 'usd_' . $slug, sprintf( __( '%s: price on the English page (US dollars)', 'quantivista' ), $app['name'] ), __( 'Shown to English visitors, who order through the contact page until a foreign payment gateway is added. Empty = the toman price is shown.', 'quantivista' ) );
 					/* translators: %s: app name */
-					$row( 'link_' . $slug, sprintf( __( '%s: download link', 'quantivista' ), $app['name'] ), __( 'The APK file (upload it in Media and paste its link) or a store page. Buyers get it only after payment, through a personal link. Empty = you send the app yourself.', 'quantivista' ), 'url' );
+					$row( 'link_' . $slug, sprintf( __( '%s: download link', 'quantivista' ), $app['name'] ), __( 'The file (an APK or a zip uploaded in Media, or a store page). Buyers get it only after payment, through a personal link. Empty = you deliver it yourself.', 'quantivista' ), 'url' );
 				}
 				$row( 'notify_email', __( 'Send new orders to', 'quantivista' ), '', 'email' );
 				?>
@@ -535,7 +550,7 @@ function qvc_app_order_notify( $order_id ) {
 		$lines[] = 'پرداخت شما برای ' . $name . ' انجام شد. کد پیگیری: ' . $get( 'qvc_ref_id' );
 		$lines[] = $download
 			? 'لینک دانلود شخصی شما (آن را با دیگران به اشتراک نگذارید): ' . $download
-			: 'فایل نصب برنامه را به‌زودی برایتان می‌فرستیم.';
+			: qvc_app_deliver_text( $get( 'qvc_app' ) );
 	} else {
 		$lines[] = 'درخواست شما برای خرید ' . $name . ' ثبت شد. به‌زودی با شماره ' . $get( 'qvc_mobile' ) . ' تماس می‌گیریم.';
 	}

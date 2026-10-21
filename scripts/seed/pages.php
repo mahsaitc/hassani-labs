@@ -330,8 +330,8 @@ $qv_clinic_en = qvs_page(
 
 // Products catalogue (English and Persian): page-templates/products.php.
 list( $qv_products_en, $qv_products_fa ) = qvs_catalog_pages();
-// App sales pages (SafeJot): listed under Mobile apps.
-qvs_app_pages();
+// Product sales pages: SafeJot under Mobile apps, Aesthetic Clinic Suite under Websites and Medical.
+qvs_all_app_pages();
 
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $qv_home );

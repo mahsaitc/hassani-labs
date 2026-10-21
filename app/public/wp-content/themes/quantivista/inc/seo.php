@@ -241,20 +241,23 @@ function qv_seo_graph( $description, $url, $image ) {
 		);
 	}
 
-	if ( defined( 'QV_APP_TEMPLATES' ) && is_page_template( QV_APP_TEMPLATES ) ) {
-		$app   = array(
-			'@type'               => 'MobileApplication',
-			'name'                => 'SafeJot',
+	$qv_app_slug = function_exists( 'qv_current_app' ) ? qv_current_app() : '';
+	if ( $qv_app_slug ) {
+		$qv_app_t = qv_app_strings( $qv_app_slug, is_rtl() ? 'fa' : 'en' );
+		$qv_web   = 'web' === ( $qv_app_t['shots_kind'] ?? 'phone' );
+		$app      = array(
+			'@type'               => $qv_web ? 'WebApplication' : 'MobileApplication',
+			'name'                => $qv_app_t['name'],
 			'description'         => $description,
-			'applicationCategory' => 'UtilitiesApplication',
-			'operatingSystem'     => 'Android 5.0+',
+			'applicationCategory' => $qv_web ? 'BusinessApplication' : 'UtilitiesApplication',
+			'operatingSystem'     => $qv_web ? 'Web (Linux server with Docker)' : 'Android 5.0+',
 			'url'                 => $url,
-			'image'               => QV_URI . '/assets/img/apps/safejot-icon.webp',
+			'image'               => QV_URI . '/assets/img/apps/' . $qv_app_slug . '-icon.webp',
 			'author'              => array( '@id' => $person ),
 			'publisher'           => array( '@id' => $org_id ),
 		);
-		$usd   = ! is_rtl() && function_exists( 'qvc_app_price_usd' ) ? qvc_app_price_usd( 'safejot' ) : 0;
-		$price = function_exists( 'qvc_app_price' ) ? qvc_app_price( 'safejot' ) : 0;
+		$usd   = ! is_rtl() && function_exists( 'qvc_app_price_usd' ) ? qvc_app_price_usd( $qv_app_slug ) : 0;
+		$price = function_exists( 'qvc_app_price' ) ? qvc_app_price( $qv_app_slug ) : 0;
 		if ( $usd > 0 ) {
 			$app['offers'] = array(
 				'@type'         => 'Offer',
