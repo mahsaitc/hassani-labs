@@ -27,49 +27,12 @@ WordPress core, third-party plugins, uploads and `wp-config.php` are not tracked
 
 ## Clinic software pages
 
-Sales pages for the acupuncture clinic software (sold and installed per clinic):
+Sales pages for the acupuncture clinic software (sold and installed per clinic), with the same layout as the other product pages (`template-parts/apps/`); texts in theme `inc/apps.php` (`acupuncture-clinic`):
 
-- `/clinic-software-fa/` (Persian, template "Clinic Software (Persian)"): plans and an order form. Orders are saved under **Clinic Orders** in the dashboard and paid through Zarinpal in toman, independent of the store currency. Set the merchant ID, test mode, plan prices, demo link and notification email at **Clinic Orders → Settings**. A plan without a price, or no merchant ID, takes the order as a request without payment.
-- `/clinic-software/` (English, template "Clinic Software (English)"): plans are the hidden service products `QV-CLINIC-BASIC`, `QV-CLINIC-PRO` and `QV-CLINIC-RENEW`, bought through the normal store checkout. Set their prices in Products; until then the page shows "Price on request".
-
-Code: `mu-plugins/quantivista-core/clinic-orders.php`, `themes/quantivista/inc/clinic.php`, `template-parts/clinic/`, `assets/css/clinic-software.css`. The Persian font is Vazirmatn (SIL OFL 1.1).
-
-## Portfolio
-
-- Projects are the `qv_project` post type at `/work/` (case study pages at `/work/<slug>/`), with a
-  Technology taxonomy and fields for tagline, year, repository link, demo link, stack and metrics.
-- Content source: `scripts/seed/data/portfolio.json` (projects, timeline, skills, blog posts). Edit it and re-run
-  `wp eval-file scripts/seed.php portfolio blog`, or edit the posts in the admin afterwards.
-- Founder name, role and intro on the homepage: Appearance > Customize > Hassani Labs Options.
-
-## Contact form
-
-The Contact page (both languages) uses a built-in form (`mu-plugins/quantivista-core/contact.php`), so no form
-plugin is needed. Each message is saved under **Messages** in the dashboard and emailed to the contact email set in
-the Customizer (Hassani Labs Options > Contact & Footer). Social profiles and the map location are set there too.
-
-## Product categories and the Products menu
-
-- Categories are in two groups, **Software by platform** (mobile apps, Windows/desktop, web applications, websites,
-  WordPress plugins and themes, bots) and **Software by field** (medical, engineering, legal, education, business and
-  accounting, e-commerce, AI and automation, restaurants, real estate). List, Persian names, icons and descriptions:
-  `scripts/seed/data/catalog.php`.
-- The **Products** page (`/products/`, Persian `/fa/products-fa/`, template "Products Catalogue") shows every category as
-  a card. A category with no products yet says "Coming soon" and links to the contact page for custom software.
-- The main menu's **Products** item opens a mega menu with both groups. In English a category opens its store page;
-  in Persian (the store is English only) it opens its card on the Persian Products page.
-- Each category's Persian name and description, icon, and "Product pages" (pages shown as its products, e.g.
-  `clinic-software` under Medical and Web applications) can be edited in Products > Categories.
-- To add the categories, pages and menu to a site that is already set up, without touching anything else:
-  `wp eval-file scripts/seed.php catalog`.
-
-## App sales pages (SafeJot)
-
-- Pages `/safejot/` (English) and `/fa/safejot-fa/` (Persian), listed under **Mobile apps** on the Products page. Texts: theme `inc/apps.php`; layout: `template-parts/apps/`.
-- Persian page: order form → Zarinpal in toman → personal download link on the page and by email (20 downloads per order). Orders: dashboard **App Orders**; price (default 1,000,000 toman) and download link: **App Orders → Settings**. The Zarinpal merchant ID and test mode come from **Clinic Orders → Settings**.
-- English page: same content; buyers pay with an Iranian card on the Persian page or contact you.
-- Administrators can upload `.apk` files to Media. Screenshots: `assets/img/apps/safejot-{home,encrypt,decrypt}.webp` (Persian) and `-en.webp` (English), 540x1170, rendered by the SafeJot repo (`test_shots/`); missing ones are skipped.
-- Existing site: `wp eval-file scripts/seed.php catalog` creates the pages and adds them to the category.
+- `/clinic-software-fa/` (Persian, template "Clinic Software (Persian)"): order form → Zarinpal in toman. Orders: dashboard **App Orders**. Price: 30,000,000 toman, and $100 on the English page (**App Orders → Settings**).
+- `/clinic-software/` (English, template "Clinic Software (English)"): the dollar price; buyers pay with an Iranian card on the Persian page or contact you.
+- Screenshots: `assets/img/apps/acupuncture-clinic-*.webp` (Persian) and `-en.webp` (English), 1280x800, taken from the software's demo mode (made-up doctors and patients). Icon: `acupuncture-clinic-icon.webp`.
+- Earlier versions sold three plans: **Clinic Orders** (`clinic-orders.php`) keeps those orders, and the hidden service products `QV-CLINIC-*` are no longer shown on the page. `inc/clinic.php` and `template-parts/clinic/` are no longer used by the pages.
 
 ## Website sales pages (Aesthetic Clinic Suite)
 
