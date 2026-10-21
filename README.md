@@ -71,6 +71,14 @@ the Customizer (Hassani Labs Options > Contact & Footer). Social profiles and th
 - Administrators can upload `.apk` files to Media. Screenshots: `assets/img/apps/safejot-{home,encrypt,decrypt}.webp` (Persian) and `-en.webp` (English), 540x1170, rendered by the SafeJot repo (`test_shots/`); missing ones are skipped.
 - Existing site: `wp eval-file scripts/seed.php catalog` creates the pages and adds them to the category.
 
+## Website sales pages (Aesthetic Clinic Suite)
+
+- Pages `/aesthetic-clinic-suite/` (English) and `/fa/aesthetic-clinic-suite-fa/` (Persian), listed under **Websites** and **Medical & healthcare** on the Products page. Same layout as the app pages (`template-parts/apps/`); texts in theme `inc/apps.php` (`aesthetic-clinic`).
+- Persian page: order form → Zarinpal in toman; after payment the buyer is told you will get in touch to deliver the source and install it (or gets a personal download link if one is set). Orders: dashboard **App Orders**. Price: 30,000,000 toman, and $150 on the English page (**App Orders → Settings**).
+- English page: the dollar price; buyers pay with an Iranian card on the Persian page or contact you.
+- Screenshots: `assets/img/apps/aesthetic-clinic-*.webp` (Persian) and `-en.webp` (English), 1280x800, taken from the suite's site and panel with sample data (no real patient or person in them). Icon: `aesthetic-clinic-icon.webp`.
+- Existing site: `wp eval-file scripts/seed.php catalog` creates the pages and adds them to the categories.
+
 ## Languages (English and Persian)
 
 - [Polylang](https://wordpress.org/plugins/polylang/) (free): English at the site root, Persian under `/fa/`.
