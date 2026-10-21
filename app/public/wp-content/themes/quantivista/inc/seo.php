@@ -226,21 +226,6 @@ function qv_seo_graph( $description, $url, $image ) {
 		);
 	}
 
-	if ( is_page_template( array( 'page-templates/clinic-software.php', 'page-templates/clinic-software-en.php' ) ) ) {
-		$graph[] = array(
-			'@type'               => 'SoftwareApplication',
-			'name'                => wp_strip_all_tags( get_the_title() ),
-			'description'         => $description,
-			'applicationCategory' => 'HealthApplication',
-			'operatingSystem'     => 'Web',
-			'inLanguage'          => array( 'fa-IR', 'en' ),
-			'url'                 => $url,
-			'image'               => $image[0],
-			'author'              => array( '@id' => $person ),
-			'publisher'           => array( '@id' => $org_id ),
-		);
-	}
-
 	$qv_app_slug = function_exists( 'qv_current_app' ) ? qv_current_app() : '';
 	if ( $qv_app_slug ) {
 		$qv_app_t = qv_app_strings( $qv_app_slug, is_rtl() ? 'fa' : 'en' );
@@ -250,7 +235,7 @@ function qv_seo_graph( $description, $url, $image ) {
 			'name'                => $qv_app_t['name'],
 			'description'         => $description,
 			'applicationCategory' => $qv_web ? 'BusinessApplication' : 'UtilitiesApplication',
-			'operatingSystem'     => $qv_web ? 'Web (Linux server with Docker)' : 'Android 5.0+',
+			'operatingSystem'     => $qv_app_t['os'] ?? ( $qv_web ? 'Web (Linux server with Docker)' : 'Android 5.0+' ),
 			'url'                 => $url,
 			'image'               => QV_URI . '/assets/img/apps/' . $qv_app_slug . '-icon.webp',
 			'author'              => array( '@id' => $person ),

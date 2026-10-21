@@ -10,5 +10,5 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-get_template_part( 'template-parts/clinic/landing', null, array( 'lang' => 'fa' ) );
+get_template_part( 'template-parts/apps/landing', null, array( 'app' => 'acupuncture-clinic', 'lang' => 'fa' ) );
 get_footer();
